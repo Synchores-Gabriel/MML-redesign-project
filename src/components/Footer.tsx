@@ -1,0 +1,112 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { Mail, Phone, MapPin, Facebook, Linkedin, Twitter } from "lucide-react";
+
+export const Footer = () => {
+  return (
+    <footer className="relative bg-primary overflow-hidden pt-24 pb-12 px-12">
+      {/* Dark Wood Overlay Texture */}
+      <div className="absolute inset-0 opacity-15 wood-overlay pointer-events-none" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-24">
+          {/* Column 1: Branding */}
+          <div className="space-y-8">
+            <Link href="/" className="flex items-center gap-4 group">
+              <div className="relative w-14 h-14">
+                <Image
+                  src="/asset/mma-logo-hq.png"
+                  alt="MML Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-logo text-2xl leading-tight tracking-[0.05em] text-white">
+                  M. M. LAZARO
+                </span>
+                <span className="font-logo text-[10px] leading-none tracking-[0.4em] text-neutral/40 uppercase">
+                  & ASSOCIATES
+                </span>
+              </div>
+            </Link>
+            <p className="font-sans text-sm text-neutral/40 leading-relaxed max-w-xs uppercase tracking-widest font-semibold italic">
+              Heritage Modernist Architecture & Jurisprudence. Multi-Generational Legal Craftsmanship.
+            </p>
+          </div>
+
+          {/* Column 2: Services */}
+          <div className="space-y-8">
+            <h4 className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral/30 border-b border-white/5 pb-4">
+              Practices
+            </h4>
+            <ul className="grid grid-cols-1 gap-4 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60 overflow-hidden">
+              {["Corporate Litigation", "Maritime Law", "Real Estate", "Intellectual Property", "Family Law", "Taxation"].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="hover:text-white transition-colors duration-400">
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Navigation */}
+          <div className="space-y-8">
+            <h4 className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral/30 border-b border-white/5 pb-4">
+              Firm
+            </h4>
+            <ul className="space-y-4 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60">
+              {["ABOUT THE FIRM", "OUR LAWYERS", "OUR PRACTICE AREAS", "CONTACT US"].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="hover:text-white transition-colors duration-400">
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Direct Entry */}
+          <div className="space-y-8">
+            <h4 className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral/30 border-b border-white/5 pb-4">
+              Direct Contact
+            </h4>
+            <ul className="space-y-6 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60">
+              <li className="flex gap-4">
+                <Phone size={14} className="text-secondary shrink-0" />
+                <span>+63 (2) 123 4567</span>
+              </li>
+              <li className="flex gap-4">
+                <Mail size={14} className="text-secondary shrink-0" />
+                <span>contact@mmlazaro.com</span>
+              </li>
+              <li className="flex gap-4">
+                <MapPin size={14} className="text-secondary shrink-0" />
+                <span>Metro Manila, Philippines</span>
+              </li>
+            </ul>
+            <div className="flex gap-6 pt-4 border-t border-white/5">
+              <Link href="#" className="text-neutral/20 hover:text-white transition-colors"><Facebook size={18} /></Link>
+              <Link href="#" className="text-neutral/20 hover:text-white transition-colors"><Linkedin size={18} /></Link>
+              <Link href="#" className="text-neutral/20 hover:text-white transition-colors"><Twitter size={18} /></Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-6 grayscale opacity-30">
+             <Image src="/asset/mma-logo-hq.png" alt="Law Firm" width={30} height={30} />
+             <span className="text-[9px] uppercase tracking-[0.5em] font-bold text-white">The Jurisprudence Group</span>
+          </div>
+          <p className="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral/20">
+            © {new Date().getFullYear()} M. M. LAZARO AND ASSOCIATES. PIXEL-PERFECTION IN LEGAL SERVICE.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};

@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-logo: "Times New Roman", Times, serif;
+  --grid-template-columns-15: repeat(15, minmax(0, 1fr));
+
+  --color-primary: #012B55;
+  --color-primary-container: #001C3D;
+  --color-secondary: #745853; /* Wood */
+  --color-tertiary: #B38E3E; /* Heritage Gold */
+  --color-gold-bright: #D4B478;
+  --color-gold-dark: #8A6D3B;
+  --color-neutral: #F5F2ED;
+  --color-ghost: #bfc8c7;
+
+  --shadow-ambient: 0 20px 40px rgba(28, 28, 24, 0.05);
+  --shadow-gold-glow: 0 0 20px rgba(197, 160, 89, 0.3);
+
+  --animate-grid-pulse: grid-pulse 4s ease-in-out infinite;
+
+  @keyframes grid-pulse {
+    0%, 100% { opacity: 0; transform: scale(0.98); }
+    50% { opacity: 0.15; transform: scale(1); }
+  }
+}
+
+:root {
+  --background: #F5F2ED;
+  --foreground: #012B55;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Glassmorphism Refinement */
+.glass {
+  background: rgba(252, 249, 242, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(191, 200, 199, 0.1);
+}
+
+/* Glowing Gold Button */
+.glow-gold {
+  background: linear-gradient(135deg, #B38E3E 0%, #8A6D3B 100%);
+  box-shadow: 0 4px 15px rgba(138, 109, 59, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-gold:hover {
+  box-shadow: 0 0 25px rgba(197, 160, 89, 0.5), 0 0 50px rgba(197, 160, 89, 0.2);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+/* Square Grid Helper */
+.grid-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Wood Textures */
+.wood-strip {
+  background: linear-gradient(rgba(26, 36, 63, 0.88), rgba(26, 36, 63, 0.88)), url('/asset/office/4.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Typography Calibration */
+.text-display-lg {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Reveals */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-stagger.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Grid Pulses */
+.grid-pulse-item {
+  animation: grid-pulse 4s ease-in-out infinite;
+}
