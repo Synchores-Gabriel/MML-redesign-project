@@ -9,7 +9,7 @@ export const Footer = () => {
     <footer className="relative bg-primary overflow-hidden pt-24 pb-12 px-12">
       {/* Dark Wood Overlay Texture */}
       <div className="absolute inset-0 opacity-15 wood-overlay pointer-events-none" />
-      
+
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-24">
           {/* Column 1: Branding */}
@@ -28,7 +28,7 @@ export const Footer = () => {
                   M. M. LAZARO
                 </span>
                 <span className="font-logo text-[10px] leading-none tracking-[0.4em] text-neutral/40 uppercase">
-                  & ASSOCIATES
+                  and ASSOCIATES
                 </span>
               </div>
             </Link>
@@ -99,8 +99,8 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-6 grayscale opacity-30">
-             <Image src="/asset/mma-logo-hq.png" alt="Law Firm" width={30} height={30} />
-             <span className="text-[9px] uppercase tracking-[0.5em] font-bold text-white">The Jurisprudence Group</span>
+            <Image src="/asset/mma-logo-hq.png" alt="Law Firm" width={30} height={30} />
+            <span className="text-[9px] uppercase tracking-[0.5em] font-bold text-white">The Jurisprudence Group</span>
           </div>
           <p className="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral/20">
             © {new Date().getFullYear()} M. M. LAZARO AND ASSOCIATES. PIXEL-PERFECTION IN LEGAL SERVICE.

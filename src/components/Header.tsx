@@ -52,7 +52,7 @@ export const Header = () => {
               M. M. LAZARO
             </span>
             <span className="font-logo text-[10px] leading-none tracking-[0.3em] text-secondary opacity-70">
-              & ASSOCIATES
+              and ASSOCIATES
             </span>
           </div>
         </Link>
