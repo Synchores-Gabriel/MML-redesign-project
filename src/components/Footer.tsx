@@ -54,20 +54,18 @@ export const Footer = () => {
           </div>
 
           {/* Column 3: Navigation */}
-          <div className="space-y-8">
-            <h4 className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral/30 border-b border-white/5 pb-4">
+            <h4 className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral/30 border-b border-white/5 pb-4 mml-global-footer__link-col-title">
               Firm
             </h4>
-            <ul className="space-y-4 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60">
+            <ul className="space-y-4 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60 mml-global-footer__link-col">
               {["ABOUT THE FIRM", "OUR LAWYERS", "OUR PRACTICE AREAS", "CONTACT US"].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="hover:text-white transition-colors duration-400">
+                  <Link href="#" className="hover:text-white transition-colors duration-400 mml-global-footer__link">
                     {item}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
 
           {/* Column 4: Direct Entry */}
           <div className="space-y-8">
@@ -102,7 +100,7 @@ export const Footer = () => {
             <Image src="/asset/mma-logo-hq.png" alt="Law Firm" width={30} height={30} />
             <span className="text-[9px] uppercase tracking-[0.5em] font-bold text-white">The Jurisprudence Group</span>
           </div>
-          <p className="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral/20">
+          <p className="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral/20 mml-global-footer__disclaimer">
             © {new Date().getFullYear()} M. M. LAZARO AND ASSOCIATES. PIXEL-PERFECTION IN LEGAL SERVICE.
           </p>
         </div>

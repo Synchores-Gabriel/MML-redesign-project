@@ -141,10 +141,10 @@ export default function Home() {
                   Leveraging its collective expertise, the Firm is committed to advocating its clients&apos; legal and business interests with the highest degree of competence and integrity.
                 </p>
               </div>
-              <div className="relative pt-20 max-w-2xl mx-auto mml-lp-about__quote-container">
-                <span className="absolute top-[2] -left-20 text-[280px] z-20 text-tertiary font-serif leading-none italic mml-lp-about__quote-symbol pointer-events-none select-none">&ldquo;</span>
-                <blockquote className="relative z-10 bg-white p-16 border-l-8 border-tertiary italic font-serif text-primary text-3xl shadow-2xl mml-lp-about__quote">
-                  Trust is the cornerstone of every defense.
+              <div className="relative pt-20 max-w-4xl mx-auto mml-lp-about__quote-container">
+                <span className="absolute -top-10 -left-20 text-[280px] z-20 text-tertiary/20 font-serif leading-none italic mml-lp-about__quote-symbol pointer-events-none select-none">&ldquo;</span>
+                <blockquote className="relative z-10 bg-white p-12 md:p-16 border-l-8 border-tertiary italic font-sans text-primary text-xl md:text-2xl shadow-2xl mml-lp-about__quote leading-relaxed text-left">
+                  An innovative law firm by building long-term relationships with clients based on reciprocity, trust and highest standards of professional ethics. By adopting new models for the delivery of legal services, we strive to redefine the role that a law firm plays in an emerging regional market, in order to produce truly exceptional results for our clients.
                 </blockquote>
               </div>
             </Reveal>

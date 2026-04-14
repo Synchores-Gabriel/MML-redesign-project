@@ -1,106 +1,183 @@
+"use client";
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { HeroSection } from "@/components/HeroSection";
 import { Reveal, RevealStagger } from "@/components/Reveal";
+import { ContactSection } from "@/components/ContactSection";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen bg-neutral">
       <Header />
-      <main className="flex-grow">
-        {/* HERO */}
-        <HeroSection
-          title="About\nThe Firm"
-          subtitle="Redefining the role of a law firm in an emerging regional market through reciprocity, trust, and professional ethics."
-          imageSrc="/asset/office/2.png"
-          overlayOpacity={0.4}
-        />
 
-        {/* NARRATIVE SECTION */}
-        <section id="mml-ab-narrative" className="py-32 px-6 bg-neutral mml-ab-narrative">
-          <div className="max-w-4xl mx-auto space-y-16">
-            <RevealStagger className="space-y-8">
-              <span className="text-secondary uppercase tracking-[0.3em] font-semibold text-xs text-center block">Philosophy</span>
-              <h2 className="text-3xl md:text-5xl font-serif text-primary text-center leading-tight">
-                An innovative law firm building long-term relationships.
-              </h2>
-              <div className="font-sans text-lg text-primary/70 leading-relaxed space-y-6">
+      <main className="flex-grow text-primary">
+        {/* Hidden SVG for Precision Clipping of Headshot */}
+        <svg width="0" height="0" className="absolute pointer-events-none opacity-0">
+          <defs>
+            <clipPath id="popout-clip-js" clipPathUnits="objectBoundingBox">
+              {/* 
+                Mathematical Pop-out Path:
+                Rectangle for top 60% (Headroom + Upper half of circle)
+                Semi-circle for bottom 40% (Lower half of circle)
+                Ensures 100% cross-browser reliability (Safari/Firefox)
+              */}
+              <path d="M0,0 H1 V0.6 A0.5,0.4 0 0,1 0,0.6 Z" />
+            </clipPath>
+          </defs>
+        </svg>
+
+        {/* 1. HERO SECTION - DARK WITH QUOTE BLOCK */}
+        <section id="mml-ab-hero" className="relative pt-40 pb-32 px-12 bg-[#4A4A4A] text-white flex flex-col items-center mml-ab-hero">
+          <RevealStagger className="w-full max-w-7xl mx-auto flex flex-col items-center space-y-16">
+            <h1 className="text-5xl md:text-7xl font-serif text-white text-center leading-tight mml-ab-hero__title">
+              About the Firm
+            </h1>
+
+            {/* Quote Block - Replicated from Landing Page Style */}
+            <div className="relative pt-20 max-w-4xl mx-auto mml-ab-hero__quote-container">
+              {/* Large Quote Symbol */}
+              <span className="absolute -top-10 -left-6 md:-left-20 text-[200px] md:text-[280px] z-20 text-tertiary/20 font-serif leading-none italic pointer-events-none select-none mml-ab-hero__quote-symbol">
+                &ldquo;
+              </span>
+
+              <blockquote className="relative z-10 bg-white p-10 md:p-16 border-l-8 border-tertiary italic font-sans text-primary text-xl md:text-2xl shadow-2xl leading-relaxed text-left mml-ab-hero__quote">
+                An innovative law firm by building long-term relationships with clients based on reciprocity, trust and highest standards of professional ethics. By adopting new models for the delivery of legal services, we strive to redefine the role that a law firm plays in an emerging regional market, in order to produce truly exceptional results for our clients.
+              </blockquote>
+            </div>
+          </RevealStagger>
+        </section>
+
+        {/* 2. DISCOVERY SECTION - 2 COLUMN WITH OVERFLOW HEADSHOT */}
+        <section id="mml-ab-discovery" className="pt-48 pb-32 px-12 relative overflow-hidden bg-neutral mml-ab-discovery">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center relative z-10">
+
+            {/* Left Column: Complex Overflow Headshot - Cross-Browser Precision Fix */}
+            <div className="relative flex justify-center lg:justify-start mml-ab-discovery__image-col h-[600px]">
+              {/* Outer Wrapper with overflow-visible to show the head popping out */}
+              <Reveal
+                className="relative w-full h-full flex items-end justify-center lg:justify-start mml-ab-discovery__headshot-container"
+                style={{ overflow: "visible" }}
+              >
+                {/* 1. Circular Background Layer */}
+                <div
+                  className="absolute bottom-0 w-[340px] h-[340px] md:w-[480px] md:h-[480px] rounded-full bg-[#E2E8F0] mml-ab-discovery__circle-bg shadow-inner"
+                />
+
+                {/* 2. Image Layer - Integrated Bounding Box Clipping */}
+                <div
+                  className="relative w-[340px] h-[425px] md:w-[480px] md:h-[600px] mml-ab-discovery__image-clipper pointer-events-none"
+                  style={{ clipPath: 'url(#popout-clip-js)' }}
+                >
+                  {/* Container height is 600px (1.25x circle height of 480px) */}
+                  <div className="absolute inset-0 w-full h-full flex items-end justify-center scale-110">
+                    <Image
+                      src="/asset/avatar/JusticeManuelLazaro-3679-transparent.png"
+                      alt="Justice Manuel Lazaro"
+                      fill
+                      className="object-contain object-bottom mml-ab-discovery__headshot-img"
+                      priority
+                    />
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Right Column: Text Bio */}
+            <RevealStagger className="space-y-8 mml-ab-discovery__bio-col">
+              <div className="space-y-4">
+                <h2 className="text-5xl md:text-7xl font-serif text-primary leading-tight mml-ab-discovery__bio-title italic">Discover</h2>
+                <div className="space-y-1">
+                  <span className="text-secondary uppercase tracking-[0.4em] font-bold text-sm block mml-ab-discovery__bio-name">M.M. LAZARO</span>
+                  <div className="w-12 h-0.5 bg-tertiary/30" />
+                </div>
+              </div>
+
+              <div className="space-y-6 text-primary/70 font-sans leading-relaxed text-lg mml-ab-discovery__bio-text">
                 <p>
-                  By adopting new models for the delivery of legal services, we strive to redefine 
-                  the role that a law firm plays in an emerging regional market. Our mission is to 
-                  produce truly exceptional results for our clients.
+                  An innovative law firm building long-term relationships with clients based on reciprocity,
+                  trust and highest standards of professional ethics. By adopting new models for the
+                  delivery of legal services, we strive to redefine the role that a law firm plays in
+                  an emerging regional market, in order to produce truly exceptional results for our clients.
                 </p>
                 <p>
-                  We believe in Asymmetric Authority—the idea that legal solutions should not just 
-                  be functional, but bespoke and authoritative. Our history is rooted in the 
-                  Philippines, yet our eyes are set on the global legal horizon.
+                  Precision legal counsel grounded in heritage and modern jurisprudence. Experience
+                  the apex of legal craftsmanship through our multi-generational expertise.
+                  A heritage of authority, multi-generational legal craftsmanship.
                 </p>
               </div>
             </RevealStagger>
           </div>
         </section>
 
-        {/* MISSION & VISION */}
-        <section id="mml-ab-mission-vision" className="py-24 px-6 bg-white relative mml-ab-mission-vision">
-          <div className="absolute top-0 left-0 w-1/4 h-full bg-neutral/50" />
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
-            <Reveal className="p-12 bg-neutral ring-1 ring-ghost space-y-6">
-              <h3 className="text-2xl font-serif text-primary uppercase tracking-tighter">Our Mission</h3>
-              <p className="font-sans text-primary/60 leading-relaxed">
-                To provide high-end legal counsel that balances the gravitas of history with the 
-                fluidity of modern business, ensuring our clients are always positioned for success.
-              </p>
-              <div className="pt-4 flex items-center gap-4 text-xs font-bold tracking-widest text-secondary">
-                <div className="w-8 h-[1px] bg-secondary" /> 01 / PURPOSE
-              </div>
+        {/* 3. MISSION & VISION OVERLAY SECTION */}
+        <div className="relative mml-ab-cards-bridge z-30">
+          <section id="mml-ab-cards-container" className="px-12 relative -translate-y-[60px] mml-ab-cards-container">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+
+              {/* Mission Overlay Box */}
+              <Reveal className="mml-ab-card">
+                <div className="bg-white p-12 md:p-16 shadow-2xl border-t-8 border-tertiary flex flex-col space-y-6 mml-ab-card__glass-wrap">
+                  <h3 className="text-3xl font-serif text-primary uppercase font-black mml-ab-card__title">Mission</h3>
+                  <p className="font-sans text-base text-primary/60 leading-relaxed mml-ab-card__text">
+                    Curabitur quas nets lacus et nulat iaculis lorems etis nisle varius vitae seditum
+                    fugiatur ligula aliquam qui sequi. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit rutrum eleif arcu sit aspernatur nets fugit, sed quia.
+                  </p>
+                </div>
+              </Reveal>
+
+              {/* Vision Overlay Box */}
+              <Reveal className="mml-ab-card" delay={0.2}>
+                <div className="bg-white p-12 md:p-16 shadow-2xl border-t-8 border-secondary flex flex-col space-y-6 mml-ab-card__glass-wrap">
+                  <h3 className="text-3xl font-serif text-primary uppercase font-black mml-ab-card__title">Vision</h3>
+                  <p className="font-sans text-base text-primary/60 leading-relaxed mml-ab-card__text">
+                    Curabitur quas nets lacus et nulat iaculis lorems etis nisle varius vitae seditum
+                    fugiatur ligula aliquam qui sequi. Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit rutrum eleif arcu sit aspernatur nets fugit, sed quia.
+                  </p>
+                </div>
+              </Reveal>
+
+            </div>
+          </section>
+        </div>
+
+        {/* 4. QUICK LINKS SECTION - PERFECTLY CENTERED BREATHER */}
+        <section id="mml-lp-quick-links" className="pt-24 pb-48 px-12 relative w-full z-20 translate-y-[0%] md:translate-y-[30%] mml-ab-quick-link">
+          <div className="max-w-7xl mx-auto flex flex-col items-center">
+            <Reveal className="mb-12 text-center">
+              <h2 className="text-3xl font-serif text-primary/10 uppercase tracking-[0.3em]">Explore Further</h2>
             </Reveal>
-            <Reveal className="p-12 bg-primary text-white space-y-6">
-              <h3 className="text-2xl font-serif text-white uppercase tracking-tighter">Our Vision</h3>
-              <p className="font-sans text-neutral/60 leading-relaxed">
-                To be the most trusted legal partner in the region, known for our innovative 
-                approach, absolute integrity, and the heritage we carry into every courtroom.
-              </p>
-              <div className="pt-4 flex items-center gap-4 text-xs font-bold tracking-widest text-secondary">
-                <div className="w-8 h-[1px] bg-secondary" /> 02 / ASPIRATION
-              </div>
-            </Reveal>
+            <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+              {[
+                { name: "About the Firm", href: "/about" },
+                { name: "Our Lawyers", href: "/lawyers" },
+                { name: "Practice Areas", href: "/practice-areas" },
+              ].map((link, i) => (
+                <Link key={i} href={link.href} className="group relative block aspect-[16/7] overflow-hidden bg-primary shadow-2xl rounded-sm mml-lp-quick-links__link">
+                  <div className="absolute inset-4 border-[0.5px] border-tertiary/20 z-20 group-hover:border-tertiary group-hover:inset-3 transition-all duration-500 mml-lp-quick-links__frame" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1A243F] via-[#232D4B] to-[#0A0E1A] z-10 mml-lp-quick-links__gradient" />
+                  <div className="relative z-30 h-full w-full p-8 lg:p-10 flex flex-col justify-end mml-lp-quick-links__content">
+                    <span className="text-tertiary uppercase tracking-[0.4em] font-sans font-bold text-[8px] mb-2 opacity-60 group-hover:opacity-100 transition-opacity mml-lp-quick-links__tag">Explore</span>
+                    <h3 className="text-xl lg:text-2xl font-serif text-white uppercase tracking-tight mml-lp-quick-links__title leading-tight">{link.name}</h3>
+                  </div>
+                  <div className="absolute top-0 right-0 p-8 z-30 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-2 group-hover:-translate-y-2 mml-lp-quick-links__icon">
+                    <ArrowRight size={20} className="text-tertiary" />
+                  </div>
+                </Link>
+              ))}
+            </RevealStagger>
           </div>
         </section>
 
-        {/* DISCOVER PARTNER (Asymmetric Offset) */}
-        <section id="mml-ab-partner-legacy" className="py-32 px-6 bg-neutral overflow-hidden mml-ab-partner-legacy">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
-            <div className="md:w-1/2 relative group">
-              <Reveal className="aspect-[4/5] relative overflow-hidden rounded-[0.25rem]">
-                <Image 
-                  src="/asset/avatar/JusticeManuelLazaro-3679.jpg" 
-                  alt="Justice Manuel Lazaro" 
-                  fill 
-                  className="object-cover group-hover:scale-105 transition-transform duration-700" 
-                />
-              </Reveal>
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-secondary/10 rounded-full blur-3xl" />
-            </div>
-            <div className="md:w-1/2 space-y-8">
-              <RevealStagger className="space-y-6">
-                <span className="text-secondary uppercase tracking-[0.3em] font-semibold text-xs">Founding Authority</span>
-                <h2 className="text-5xl font-serif text-primary uppercase leading-[1.1]">The Heritage of Excellence.</h2>
-                <p className="text-primary/70 font-sans leading-relaxed text-lg">
-                  Lead by Justice Manuel Lazaro and Atty. Michelle Lazaro, the firm embodies 
-                  decades of supreme legal practice and uncompromising dedication to the rule of law.
-                </p>
-                <div className="pt-6">
-                  <button className="px-10 py-4 bg-primary text-white font-sans font-bold tracking-widest text-xs uppercase hover:bg-secondary transition-colors duration-400 rounded-[0.25rem]">
-                    FULL PARTNER BIOGRAPHY
-                  </button>
-                </div>
-              </RevealStagger>
-            </div>
-          </div>
-        </section>
+        {/* 5. CONTACT SECTION - REFINED WITH MAP */}
+        <ContactSection />
       </main>
+
       <Footer />
-    </>
+    </div>
   );
 }

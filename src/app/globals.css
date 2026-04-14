@@ -43,10 +43,38 @@ body {
   border: 1px solid rgba(191, 200, 199, 0.1);
 }
 
+.glass-card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
 .glass-overlay {
   background: rgba(179, 142, 62, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+/* Paper Texture */
+.paper-texture {
+  background-color: #F5F2ED;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  /* Alternative data URI for offline support if needed */
+}
+
+/* Discovery Oval Background */
+.oval-bg-element {
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(230,230,230,0.5) 0%, rgba(245,242,237,0) 70%);
+  border-radius: 50%;
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Glowing Gold Button */
