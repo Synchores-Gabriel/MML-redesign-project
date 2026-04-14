@@ -48,11 +48,15 @@ export const Header = () => {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-logo text-xl leading-tight tracking-[0.05em] text-primary group-hover:text-secondary transition-colors duration-400">
+            <span className={cn("font-logo text-xl leading-tight tracking-[0.05em] transition-colors duration-400",
+              isScrolled ? "text-primary group-hover:text-secondary" : "text-white group-hover:text-secondary"
+            )}>
               M. M. LAZARO
             </span>
-            <span className="font-logo text-[10px] leading-none tracking-[0.3em] text-secondary opacity-70">
-              and ASSOCIATES
+            <span className={cn("font-logo text-[10px] leading-none tracking-[0.3em] opacity-70",
+              isScrolled ? "text-primary group-hover:text-secondary" : "text-white group-hover:text-secondary"
+            )}>
+              AND ASSOCIATES
             </span>
           </div>
         </Link>
@@ -63,7 +67,9 @@ export const Header = () => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-[10px] font-sans font-bold tracking-[0.2em] text-primary hover:text-secondary transition-all duration-400 py-2 border-b-2 border-transparent hover:border-secondary/40"
+              className={cn("text-[10px] font-sans font-bold tracking-[0.2em] text-primary hover:text-secondary transition-all duration-400 py-2 border-b-2 border-transparent hover:border-secondary/40",
+                isScrolled ? "text-primary hover:text-secondary" : "text-white hover:text-white"
+              )}
             >
               {link.name}
             </Link>

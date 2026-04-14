@@ -28,14 +28,14 @@ export const HeroGridOverlay = () => {
         return row * cols + col;
       });
       setActiveIndices(newIndices);
-    }, 1500); // More frequent update
+    }, 3000); // More frequent update
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
-      <div className="grid grid-cols-15 w-full h-full opacity-40">
+      <div className="grid grid-cols-15 w-full h-full opacity-20">
         {Array.from({ length: 225 }).map((_, i) => (
           <div
             key={i}
