@@ -3,7 +3,6 @@
 @theme inline {
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
-  --font-logo: "Times New Roman", Times, serif;
   --grid-template-columns-15: repeat(15, minmax(0, 1fr));
 
   --color-primary: #012B55;
@@ -44,6 +43,12 @@ body {
   border: 1px solid rgba(191, 200, 199, 0.1);
 }
 
+.glass-overlay {
+  background: rgba(179, 142, 62, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 /* Glowing Gold Button */
 .glow-gold {
   background: linear-gradient(135deg, #B38E3E 0%, #8A6D3B 100%);
@@ -64,7 +69,13 @@ body {
 
 /* Wood Textures */
 .wood-strip {
-  background: linear-gradient(rgba(26, 36, 63, 0.88), rgba(26, 36, 63, 0.88)), url('/asset/office/4.jpg');
+  background: linear-gradient(rgba(1, 43, 85, 0.7), rgba(1, 43, 85, 0.7)), url('/asset/office/4.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.wood-dark {
+  background: linear-gradient(rgba(0, 21, 36, 0.9), rgba(0, 21, 36, 0.9)), url('/asset/office/4.jpg');
   background-size: cover;
   background-position: center;
 }

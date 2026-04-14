@@ -49,12 +49,12 @@ export const Header = () => {
             />
           </div>
           <div className="flex flex-col">
-            <span className={cn("font-logo text-xl leading-tight tracking-[0.05em] transition-colors duration-400",
+            <span className={cn("font-serif text-xl leading-tight tracking-[0.05em] transition-colors duration-400",
               isScrolled ? "text-primary group-hover:text-secondary" : "text-white group-hover:text-secondary"
             )}>
               M. M. LAZARO
             </span>
-            <span className={cn("font-logo text-[10px] leading-none tracking-[0.3em] opacity-70",
+            <span className={cn("font-serif text-[10px] leading-none tracking-[0.3em] opacity-70",
               isScrolled ? "text-primary group-hover:text-secondary" : "text-white group-hover:text-secondary"
             )}>
               AND ASSOCIATES

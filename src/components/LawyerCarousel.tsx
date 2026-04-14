@@ -44,14 +44,14 @@ export const LawyerCarousel = () => {
 
       <div className="max-w-7xl mx-auto w-full px-12 relative z-10 py-20 mml-comp-lawyers-carousel__wrapper">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-5xl font-sans text-white uppercase tracking-tight font-medium">Meet our Lawyers</h2>
+          <h2 className="text-5xl font-serif text-white uppercase tracking-tight font-medium">Meet our Lawyers</h2>
           <p className="max-w-4xl mx-auto text-white/80 font-sans text-sm leading-relaxed">
             Our lawyers and other professionals are recognized for their innovative approach to solving
             complex legal problems and exceptional service, high ethical standards, attention to detail, and responsiveness.
           </p>
         </div>
 
-        <div className="relative h-[500px]">
+        <div className="relative h-[500px] mml-comp-lawyers-carousel__track">
           <AnimatePresence mode="wait">
             {lawyers[index].type === "partner" ? (
               <motion.div
@@ -97,11 +97,11 @@ export const LawyerCarousel = () => {
                 className="max-w-6xl mx-auto mml-comp-lawyers-carousel__slide mml-comp-lawyers-carousel__slide--grid"
               >
                 <div className="text-center mb-8 mml-comp-lawyers-carousel__header">
-                  <h3 className="text-2xl font-sans text-white uppercase tracking-tighter mml-comp-lawyers-carousel__title">Other Lawyers</h3>
+                  <h3 className="text-2xl font-serif text-white uppercase tracking-tighter mml-comp-lawyers-carousel__title">Other Lawyers</h3>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative mml-comp-lawyers-carousel__grid">
-                  {/* White-to-transparent gradient as per mockup */}
-                  <div className="absolute -inset-x-12 -bottom-12 h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-10 pointer-events-none" />
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10 mml-comp-lawyers-carousel__grid">
+                  {/* White-to-transparent gradient as per mockup - FULL SECTION BOTTOM FILL */}
+                  <div className="absolute -inset-x-[200vw] -bottom-[300px] h-[800px] bg-gradient-to-t from-white from-[40%] via-white/80 to-transparent z-0 pointer-events-none mml-comp-lawyers-carousel__full-gradient" />
 
                   {lawyers[index].members!.map((m, i) => (
                     <div key={i} className="bg-white p-4 shadow-lg group hover:-translate-y-2 transition-transform duration-500">
@@ -122,18 +122,18 @@ export const LawyerCarousel = () => {
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
 
-        {/* Carousel Controls */}
-        <div className="absolute top-1/2 left-4 md:left-12 -translate-y-1/2 z-20">
-          <button onClick={prev} className="p-4 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors">
-            <ChevronLeft size={32} />
-          </button>
-        </div>
-        <div className="absolute top-1/2 right-4 md:right-12 -translate-y-1/2 z-20">
-          <button onClick={next} className="p-4 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors">
-            <ChevronRight size={32} />
-          </button>
+          {/* Carousel Controls - ALIGNED TO TRACK CENTER */}
+          <div className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 z-20 mml-comp-lawyers-carousel__prev">
+            <button onClick={prev} className="p-4 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors">
+              <ChevronLeft size={32} />
+            </button>
+          </div>
+          <div className="absolute top-1/2 -right-4 md:-right-12 -translate-y-1/2 z-20 mml-comp-lawyers-carousel__next">
+            <button onClick={next} className="p-4 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors">
+              <ChevronRight size={32} />
+            </button>
+          </div>
         </div>
 
         {/* Indicators */}

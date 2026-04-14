@@ -24,10 +24,10 @@ export const Footer = () => {
                 />
               </div>
               <div className="flex flex-col mml-global-footer__logo-text">
-                <span className="font-logo text-2xl leading-tight tracking-[0.05em] text-white">
+                <span className="font-serif text-2xl leading-tight tracking-[0.05em] text-white">
                   M. M. LAZARO
                 </span>
-                <span className="font-logo text-[10px] leading-none tracking-[0.4em] text-neutral/40 uppercase">
+                <span className="font-serif text-[10px] leading-none tracking-[0.4em] text-neutral/40 uppercase">
                   and ASSOCIATES
                 </span>
               </div>
