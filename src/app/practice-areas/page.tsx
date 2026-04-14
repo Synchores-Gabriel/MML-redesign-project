@@ -58,16 +58,16 @@ export default function PracticeAreasPage() {
           </RevealStagger>
 
           {/* Accordion Style List */}
-          <div className="space-y-4">
+          <div id="mml-pa-editorial-layout" className="space-y-4 mml-pa-list">
             {practices.map((practice, i) => (
               <Reveal key={i} className="w-full">
                 <div 
-                  className={`group border-b border-primary/5 transition-all duration-500 overflow-hidden ${openIndex === i ? 'bg-white shadow-ambient mb-8' : 'hover:bg-primary/5'}`}
+                  className={`group border-b border-primary/5 transition-all duration-500 overflow-hidden mml-pa-list__item ${openIndex === i ? 'bg-white shadow-ambient mb-8 mml-pa-list__item--active' : 'hover:bg-primary/5'}`}
                 >
                   {/* Collapsed Header */}
                   <button 
                     onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                    className="w-full text-left p-8 md:p-12 flex items-center justify-between"
+                    className="w-full text-left p-8 md:p-12 flex items-center justify-between mml-pa-list__header"
                   >
                     <div className="flex items-center gap-8">
                       <span className="text-[10px] font-sans font-bold text-primary/30 tracking-widest">
@@ -96,8 +96,8 @@ export default function PracticeAreasPage() {
                         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                       >
                         <div className="p-8 md:p-12 pt-0 grid grid-cols-1 md:grid-cols-2 gap-12">
-                          <div className="space-y-6">
-                            <p className="font-sans text-lg text-primary leading-relaxed">
+                          <div className="space-y-6 mml-pa-item__content">
+                            <p className="font-sans text-lg text-primary leading-relaxed mml-pa-item__summary-text">
                               {practice.description}
                             </p>
                             <p className="font-sans text-primary/60 leading-relaxed">

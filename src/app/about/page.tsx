@@ -18,7 +18,7 @@ export default function AboutPage() {
         />
 
         {/* NARRATIVE SECTION */}
-        <section className="py-32 px-6 bg-neutral">
+        <section id="mml-ab-narrative" className="py-32 px-6 bg-neutral mml-ab-narrative">
           <div className="max-w-4xl mx-auto space-y-16">
             <RevealStagger className="space-y-8">
               <span className="text-secondary uppercase tracking-[0.3em] font-semibold text-xs text-center block">Philosophy</span>
@@ -42,7 +42,7 @@ export default function AboutPage() {
         </section>
 
         {/* MISSION & VISION */}
-        <section className="py-24 px-6 bg-white relative">
+        <section id="mml-ab-mission-vision" className="py-24 px-6 bg-white relative mml-ab-mission-vision">
           <div className="absolute top-0 left-0 w-1/4 h-full bg-neutral/50" />
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
             <Reveal className="p-12 bg-neutral ring-1 ring-ghost space-y-6">
@@ -69,7 +69,7 @@ export default function AboutPage() {
         </section>
 
         {/* DISCOVER PARTNER (Asymmetric Offset) */}
-        <section className="py-32 px-6 bg-neutral overflow-hidden">
+        <section id="mml-ab-partner-legacy" className="py-32 px-6 bg-neutral overflow-hidden mml-ab-partner-legacy">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
             <div className="md:w-1/2 relative group">
               <Reveal className="aspect-[4/5] relative overflow-hidden rounded-[0.25rem]">

@@ -32,23 +32,23 @@ export default function LawyersPage() {
           </RevealStagger>
 
           {/* Grid */}
-          <RevealStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+          <RevealStagger id="mml-lw-grid-main" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 mml-lw-grid">
             {lawyers.map((lawyer, i) => (
-              <div key={i} className="group cursor-pointer">
-                <div className="relative aspect-[3/4] overflow-hidden mb-6 ring-1 ring-ghost group-hover:shadow-ambient transition-all duration-500">
+              <div key={i} className="group cursor-pointer mml-lw-card">
+                <div className="relative aspect-[3/4] overflow-hidden mb-6 ring-1 ring-ghost group-hover:shadow-ambient transition-all duration-500 mml-lw-card__photo-frame">
                   <Image
                     src={lawyer.img}
                     alt={lawyer.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 grayscale-[0.2] group-hover:grayscale-0"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 grayscale-[0.2] group-hover:grayscale-0 mml-lw-card__photo"
                   />
-                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-500 mml-lw-card__overlay" />
                 </div>
-                <div className="space-y-1 px-2">
-                  <h3 className="font-serif text-xl uppercase text-primary transition-colors duration-400 group-hover:text-secondary">
+                <div className="space-y-1 px-2 mml-lw-card__bio">
+                  <h3 className="font-serif text-xl uppercase text-primary transition-colors duration-400 group-hover:text-secondary mml-lw-card__name">
                     {lawyer.name}
                   </h3>
-                  <p className="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-primary/40">
+                  <p className="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-primary/40 mml-lw-card__title">
                     {lawyer.title}
                   </p>
                 </div>

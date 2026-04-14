@@ -6,16 +6,16 @@ import { Mail, Phone, MapPin, Facebook, Linkedin, Twitter } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-primary overflow-hidden pt-24 pb-12 px-12">
+    <footer id="mml-global-footer" className="relative bg-primary overflow-hidden pt-24 pb-12 px-12 mml-global-footer">
       {/* Dark Wood Overlay Texture */}
       <div className="absolute inset-0 opacity-15 wood-overlay pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-24">
+      <div className="relative z-10 max-w-7xl mx-auto mml-global-footer__wrapper">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-24 mml-global-footer__grid">
           {/* Column 1: Branding */}
           <div className="space-y-8">
-            <Link href="/" className="flex items-center gap-4 group">
-              <div className="relative w-14 h-14">
+            <Link href="/" className="flex items-center gap-4 group mml-global-footer__logo">
+              <div className="relative w-14 h-14 mml-global-footer__logo-icon">
                 <Image
                   src="/asset/mma-logo-hq.png"
                   alt="MML Logo"
@@ -23,7 +23,7 @@ export const Footer = () => {
                   className="object-contain"
                 />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col mml-global-footer__logo-text">
                 <span className="font-logo text-2xl leading-tight tracking-[0.05em] text-white">
                   M. M. LAZARO
                 </span>
@@ -42,10 +42,10 @@ export const Footer = () => {
             <h4 className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral/30 border-b border-white/5 pb-4">
               Practices
             </h4>
-            <ul className="grid grid-cols-1 gap-4 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60 overflow-hidden">
+            <ul className="grid grid-cols-1 gap-4 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60 overflow-hidden mml-global-footer__list">
               {["Corporate Litigation", "Maritime Law", "Real Estate", "Intellectual Property", "Family Law", "Taxation"].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="hover:text-white transition-colors duration-400">
+                <li key={item} className="mml-global-footer__list-item">
+                  <Link href="#" className="hover:text-white transition-colors duration-400 mml-global-footer__list-link">
                     {item}
                   </Link>
                 </li>

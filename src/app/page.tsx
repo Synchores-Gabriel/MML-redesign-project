@@ -51,7 +51,7 @@ export default function Home() {
       
       <main className="flex-grow scroll-smooth bg-neutral">
         {/* HERO SECTION 1 - CINEMATIC SQUARE GRID */}
-        <section className="relative h-screen flex items-center px-12 overflow-hidden bg-primary">
+        <section id="mml-lp-hero" className="relative h-screen flex items-center px-12 overflow-hidden bg-primary mml-lp-hero">
           <Image 
             src="/asset/office/1.jpg" 
             alt="MML Hero" 
@@ -64,25 +64,25 @@ export default function Home() {
           {/* Hydration-safe Grid Overlay */}
           <HeroGridOverlay />
 
-          <div className="relative z-30 max-w-7xl mx-auto w-full pt-20">
-            <RevealStagger className="space-y-10 max-w-4xl">
-              <div className="space-y-4">
-                <span className="text-tertiary uppercase tracking-[0.5em] font-bold text-xs inline-block">Established 1970</span>
-                <h1 className="text-display-lg font-serif text-white uppercase font-black">
+          <div className="relative z-30 max-w-7xl mx-auto w-full pt-20 mml-lp-hero__wrapper">
+            <RevealStagger className="space-y-10 max-w-4xl mml-lp-hero__stagger">
+              <div className="space-y-4 mml-lp-hero__content">
+                <span className="text-tertiary uppercase tracking-[0.5em] font-bold text-xs inline-block mml-lp-hero__subtitle">Established 1970</span>
+                <h1 className="text-display-lg font-serif text-white uppercase font-black mml-lp-hero__title">
                   Eminence in Every Case.<br />Integrity in Every Action.
                 </h1>
-                <p className="text-neutral/60 font-sans text-xl max-w-2xl leading-relaxed">
+                <p className="text-neutral/60 font-sans text-xl max-w-2xl leading-relaxed mml-lp-hero__desc">
                   Precision legal counsel grounded in heritage and modern jurisprudence. 
                   Experience the apex of legal craftsmanship.
                 </p>
               </div>
-              <div className="flex gap-6">
-                <button className="glow-gold px-12 py-5 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-xs uppercase">
+              <div className="flex gap-6 mml-lp-hero__actions">
+                <button className="glow-gold px-12 py-5 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-xs uppercase mml-lp-hero__btn-more">
                   MORE ABOUT US
                 </button>
-                <div className="w-px h-12 bg-white/10 hidden md:block" />
-                <button className="group flex items-center gap-4 text-white font-sans font-bold tracking-[0.2em] text-xs uppercase hover:text-tertiary transition-colors duration-400">
-                  CONSULT NOW <span className="bg-white/10 p-2 rounded-full group-hover:bg-tertiary/20 group-hover:pl-4 transition-all duration-400"><ArrowRight size={14} /></span>
+                <div className="w-px h-12 bg-white/10 hidden md:block mml-lp-hero__divider" />
+                <button className="group flex items-center gap-4 text-white font-sans font-bold tracking-[0.2em] text-xs uppercase hover:text-tertiary transition-colors duration-400 mml-lp-hero__btn-consult">
+                  CONSULT NOW <span className="bg-white/10 p-2 rounded-full group-hover:bg-tertiary/20 group-hover:pl-4 transition-all duration-400 mml-lp-hero__btn-icon"><ArrowRight size={14} /></span>
                 </button>
               </div>
             </RevealStagger>
@@ -90,17 +90,17 @@ export default function Home() {
         </section>
 
         {/* HERO SECTION 2 - BRANDED STRIP 1 */}
-        <section className="relative h-[400px] flex items-center justify-center text-center px-12 wood-strip">
-          <div className="absolute inset-0 bg-primary/40 z-10" />
-          <Reveal className="relative z-20 space-y-6 max-w-3xl">
-            <h2 className="text-4xl md:text-5xl font-serif text-white uppercase italic tracking-tight">
+        <section id="mml-lp-strip-1" className="relative h-[400px] flex items-center justify-center text-center px-12 wood-strip mml-lp-strip">
+          <div className="absolute inset-0 bg-primary/40 z-10 mml-lp-strip__overlay" />
+          <Reveal className="relative z-20 space-y-6 max-w-3xl mml-lp-strip__content">
+            <h2 className="text-4xl md:text-5xl font-serif text-white uppercase italic tracking-tight mml-lp-strip__title">
               &quot;All our clients make the right choices!&quot;
             </h2>
-            <p className="text-tertiary/80 font-sans font-bold tracking-[0.3em] text-xs uppercase">
+            <p className="text-tertiary/80 font-sans font-bold tracking-[0.3em] text-xs uppercase mml-lp-strip__desc">
               Get in touch today we look forward to hearing from you.
             </p>
-            <div className="pt-4">
-               <button className="glow-gold px-10 py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-[10px] uppercase">
+            <div className="pt-4 mml-lp-strip__actions">
+               <button className="glow-gold px-10 py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-[10px] uppercase mml-lp-strip__btn">
                 OUR LAWYERS
                </button>
             </div>
@@ -154,12 +154,12 @@ export default function Home() {
         </section>
 
         {/* LAWYER CAROUSEL SECTION */}
-        <section id="lawyers">
+        <section id="mml-lp-lawyers" className="mml-lp-lawyers">
            <LawyerCarousel />
         </section>
 
         {/* PRACTICE DASHBOARD - MASSIVE SCALE FIG */}
-        <section className="py-48 px-12 bg-[#F5F5F3] relative overflow-hidden flex items-center min-h-[900px]">
+        <section id="mml-lp-practice" className="py-48 px-12 bg-[#F5F5F3] relative overflow-hidden flex items-center min-h-[900px] mml-lp-practice">
           {/* Practice Area massive graphic: Off-screen left as per Screenshot 3 (Red Mark) */}
           <div className="absolute -left-[200px] top-1/2 -translate-y-1/2 opacity-10 pointer-events-none z-0">
              <div className="w-[1000px] h-[1000px] rounded-full border-[60px] border-primary/20 flex items-center justify-center">
@@ -267,7 +267,7 @@ export default function Home() {
           </section>
 
           {/* CONTACT SECTION */}
-          <section id="contact" className="py-48 pb-64 px-12 bg-primary font-sans mt-[-100px] pt-[200px] text-white">
+          <section id="mml-lp-contact" className="py-48 pb-64 px-12 bg-primary font-sans mt-[-100px] pt-[200px] text-white mml-lp-contact">
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24">
               {/* Left: Info & Map */}
               <div className="lg:w-1/2 space-y-12">

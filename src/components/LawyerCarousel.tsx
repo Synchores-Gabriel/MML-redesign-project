@@ -39,10 +39,10 @@ export const LawyerCarousel = () => {
   const prev = () => setIndex((i) => (i - 1 + lawyers.length) % lawyers.length);
 
   return (
-    <div className="relative w-full overflow-hidden min-h-[700px] flex items-center justify-center bg-[#4D4D4D]">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#4A4A4A] to-[#333333]" />
+    <div id="mml-comp-lawyers-carousel" className="relative w-full overflow-hidden min-h-[700px] flex items-center justify-center bg-[#4D4D4D] mml-comp-lawyers-carousel">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#4A4A4A] to-[#333333] mml-comp-lawyers-carousel__bg" />
 
-      <div className="max-w-7xl mx-auto w-full px-12 relative z-10 py-20">
+      <div className="max-w-7xl mx-auto w-full px-12 relative z-10 py-20 mml-comp-lawyers-carousel__wrapper">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-5xl font-sans text-white uppercase tracking-tight font-medium">Meet our Lawyers</h2>
           <p className="max-w-4xl mx-auto text-white/80 font-sans text-sm leading-relaxed">
@@ -60,7 +60,7 @@ export const LawyerCarousel = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col md:flex-row bg-white rounded-sm overflow-hidden shadow-2xl h-full max-w-5xl mx-auto"
+                className="flex flex-col md:flex-row bg-white rounded-sm overflow-hidden shadow-2xl h-full max-w-5xl mx-auto mml-comp-lawyers-carousel__slide mml-comp-lawyers-carousel__slide--partner"
               >
                 <div className="relative w-full md:w-[45%] aspect-[4/5] md:aspect-auto">
                   <Image
@@ -94,12 +94,12 @@ export const LawyerCarousel = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -100 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="max-w-6xl mx-auto"
+                className="max-w-6xl mx-auto mml-comp-lawyers-carousel__slide mml-comp-lawyers-carousel__slide--grid"
               >
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-sans text-white uppercase tracking-tighter">Other Lawyers</h3>
+                <div className="text-center mb-8 mml-comp-lawyers-carousel__header">
+                  <h3 className="text-2xl font-sans text-white uppercase tracking-tighter mml-comp-lawyers-carousel__title">Other Lawyers</h3>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative mml-comp-lawyers-carousel__grid">
                   {/* White-to-transparent gradient as per mockup */}
                   <div className="absolute -inset-x-12 -bottom-12 h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-10 pointer-events-none" />
 

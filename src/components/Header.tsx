@@ -31,14 +31,15 @@ export const Header = () => {
 
   return (
     <header
+      id="mml-global-header"
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-12 flex items-center h-20",
-        isScrolled ? "glass ring-1 ring-ghost bg-neutral/80" : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-12 flex items-center h-20 mml-global-header",
+        isScrolled ? "glass ring-1 ring-ghost bg-neutral/80 mml-glass-wrap mml-global-header--scrolled" : "bg-transparent mml-global-header--transparent"
       )}
     >
       <div className="w-full mx-auto flex items-center justify-between">
         {/* Logo Section */}
-        <Link href="/" className="flex items-center gap-4 group">
+        <Link href="/" className="flex items-center gap-4 group mml-global-header__logo">
           <div className="relative w-12 h-12">
             <Image
               src="/asset/mma-logo-hq.png"
@@ -62,13 +63,13 @@ export const Header = () => {
         </Link>
 
         {/* Navigation - Right Aligned as per Structural Reference */}
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden md:flex items-center gap-10 mml-global-header__nav">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className={cn("text-[10px] font-sans font-bold tracking-[0.2em] text-primary hover:text-secondary transition-all duration-400 py-2 border-b-2 border-transparent hover:border-secondary/40",
-                isScrolled ? "text-primary hover:text-secondary" : "text-white hover:text-white"
+              className={cn("text-[10px] font-sans font-bold tracking-[0.2em] text-primary hover:text-secondary transition-all duration-400 py-2 border-b-2 border-transparent hover:border-secondary/40 mml-global-header__nav-link",
+                isScrolled ? "text-primary hover:text-secondary mml-global-header__nav-link--scrolled" : "text-white hover:text-white mml-global-header__nav-link--transparent"
               )}
             >
               {link.name}
