@@ -33,14 +33,15 @@ export const Header = () => {
     <header
       id="mml-global-header"
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-12 flex items-center h-20 mml-global-header",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 md:px-12 flex items-center min-h-[5rem] mml-global-header",
         isScrolled ? "glass ring-1 ring-ghost bg-neutral/80 mml-glass-wrap mml-global-header--scrolled" : "bg-transparent mml-global-header--transparent"
       )}
     >
-      <div className="w-full mx-auto flex items-center justify-between">
+      <div className="w-full max-w-screen-2xl mx-auto flex items-center justify-between mml-res-container">
+
         {/* Logo Section */}
-        <Link href="/" className="flex items-center gap-4 group mml-global-header__logo">
-          <div className="relative w-12 h-12">
+        <Link href="/" className="flex items-center gap-4 group mml-global-header__logo mml-res-flow--desktop items-center">
+          <div className="relative w-10 h-10 md:w-12 md:h-12 shrink-0">
             <Image
               src="/asset/mma-logo-hq.png"
               alt="MML Logo"
@@ -48,19 +49,20 @@ export const Header = () => {
               className="object-contain"
             />
           </div>
-          <div className="flex flex-col">
-            <span className={cn("font-serif text-xl leading-tight tracking-[0.05em] transition-colors duration-400 mml-global-header__logo-text",
+          <div className="flex flex-col mml-res-stack--mobile">
+            <span className={cn("font-serif text-lg md:text-xl leading-tight tracking-[0.05em] transition-colors duration-400 mml-global-header__logo-text mml-res-text--fluid",
               isScrolled ? "text-primary group-hover:text-secondary" : "text-white group-hover:text-secondary"
             )}>
               M. M. LAZARO
             </span>
-            <span className={cn("font-serif text-[10px] leading-none tracking-[0.3em] opacity-70 mml-global-header__logo-text--desc",
+            <span className={cn("font-serif text-[8px] md:text-[10px] leading-none tracking-[0.3em] opacity-70 mml-global-header__logo-text--desc",
               isScrolled ? "text-primary group-hover:text-secondary" : "text-white group-hover:text-secondary"
             )}>
               AND ASSOCIATES
             </span>
           </div>
         </Link>
+
 
         {/* Navigation - Right Aligned as per Structural Reference */}
         <nav className="hidden md:flex items-center gap-10 mml-global-header__nav">

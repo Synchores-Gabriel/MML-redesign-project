@@ -10,12 +10,13 @@ export const Footer = () => {
       {/* Dark Wood Overlay Texture */}
       <div className="absolute inset-0 opacity-15 wood-overlay pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto mml-global-footer__wrapper">
+      <div className="relative z-10 max-w-screen-2xl mx-auto mml-res-container">
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-24 mml-global-footer__grid">
           {/* Column 1: Branding */}
           <div className="space-y-8">
-            <Link href="/" className="flex items-center gap-4 group mml-global-footer__logo">
-              <div className="relative w-14 h-14 mml-global-footer__logo-icon">
+            <Link href="/" className="flex items-center gap-4 group mml-global-footer__logo mml-res-flow--desktop items-center">
+              <div className="relative w-12 h-12 md:w-14 md:h-14 mml-global-footer__logo-icon shrink-0">
                 <Image
                   src="/asset/mma-logo-hq.png"
                   alt="MML Logo"
@@ -23,15 +24,16 @@ export const Footer = () => {
                   className="object-contain"
                 />
               </div>
-              <div className="flex flex-col mml-global-footer__logo-text">
-                <span className="font-serif text-2xl leading-tight tracking-[0.05em] text-white">
+              <div className="flex flex-col mml-global-footer__logo-text mml-res-stack--mobile">
+                <span className="font-serif text-xl md:text-2xl leading-tight tracking-[0.05em] text-white mml-res-text--fluid">
                   M. M. LAZARO
                 </span>
-                <span className="font-serif text-[10px] leading-none tracking-[0.4em] text-neutral/40 uppercase">
+                <span className="font-serif text-[8px] md:text-[10px] leading-none tracking-[0.4em] text-neutral/40 uppercase">
                   and ASSOCIATES
                 </span>
               </div>
             </Link>
+
             <p className="font-sans text-sm text-neutral/40 leading-relaxed max-w-xs uppercase tracking-widest font-semibold italic">
               Heritage Modernist Architecture & Jurisprudence. Multi-Generational Legal Craftsmanship.
             </p>

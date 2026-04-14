@@ -39,17 +39,19 @@ export const LawyerCarousel = () => {
   const prev = () => setIndex((i) => (i - 1 + lawyers.length) % lawyers.length);
 
   return (
-    <div id="mml-comp-lawyers-carousel" className="relative w-full overflow-hidden min-h-[700px] flex items-center justify-center bg-[#4D4D4D] mml-comp-lawyers-carousel">
+    <div id="mml-comp-lawyers-carousel" className="relative w-full overflow-hidden min-h-[500px] md:min-h-[700px] flex items-center justify-center bg-[#4D4D4D] mml-comp-lawyers-carousel">
       <div className="absolute inset-0 bg-gradient-to-b from-[#4A4A4A] to-[#333333] mml-comp-lawyers-carousel__bg" />
 
-      <div className="max-w-7xl mx-auto w-full px-12 relative z-10 py-20 mml-comp-lawyers-carousel__wrapper">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-5xl font-serif text-white uppercase tracking-tight font-medium">Meet our Lawyers</h2>
-          <p className="max-w-4xl mx-auto text-white/80 font-sans text-sm leading-relaxed">
+      <div className="max-w-screen-2xl mx-auto w-full px-6 md:px-12 relative z-10 py-12 md:py-20 mml-res-container">
+
+        <div className="text-center mb-16 space-y-4 mml-res-stack--mobile">
+          <h2 className="text-3xl md:text-5xl font-serif text-white uppercase tracking-tight font-medium mml-res-text--fluid-lg">Meet our Lawyers</h2>
+          <p className="max-w-4xl mx-auto text-white/80 font-sans text-xs md:text-sm leading-relaxed mml-res-text--fluid">
             Our lawyers and other professionals are recognized for their innovative approach to solving
             complex legal problems and exceptional service, high ethical standards, attention to detail, and responsiveness.
           </p>
         </div>
+
 
         <div className="relative h-[500px] mml-comp-lawyers-carousel__track">
           <AnimatePresence mode="wait">
@@ -60,8 +62,9 @@ export const LawyerCarousel = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col md:flex-row bg-white rounded-sm overflow-hidden shadow-2xl h-full max-w-5xl mx-auto mml-comp-lawyers-carousel__slide mml-comp-lawyers-carousel__slide--partner"
+                className="flex flex-col md:flex-row bg-white rounded-sm overflow-hidden shadow-2xl min-h-[400px] max-w-5xl mx-auto mml-comp-lawyers-carousel__slide mml-comp-lawyers-carousel__slide--partner"
               >
+
                 <div className="relative w-full md:w-[45%] aspect-[4/5] md:aspect-auto">
                   <Image
                     src={lawyers[index].img!}

@@ -8,22 +8,24 @@ export const ContactSection = () => {
   return (
     <section 
       id="mml-ab-contact" 
-      className="py-48 pb-64 px-12 bg-primary font-sans mt-[-100px] pt-[200px] text-white overflow-hidden mml-ab-contact"
+      className="py-24 md:py-48 pb-32 md:pb-64 px-6 md:px-12 bg-primary font-sans mt-[-100px] pt-[200px] text-white overflow-hidden mml-ab-contact"
     >
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 relative z-10 mml-ab-contact__grid">
+      <div className="max-w-screen-2xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 relative z-10 mml-res-container">
+
         
         {/* Left: Info & Map */}
         <div className="lg:w-1/2 space-y-12 mml-ab-contact__info-col">
           <RevealStagger className="space-y-10">
-            <div className="space-y-6">
-              <h2 className="text-4xl font-serif text-white uppercase font-black mml-ab-contact__info-title">Contact Section</h2>
-              <div className="space-y-4 font-sans text-sm text-white/60">
-                <p className="font-bold text-tertiary tracking-widest text-xs uppercase">Location</p>
-                <p className="text-lg leading-relaxed text-white mml-ab-contact__info-item--address">
+            <div className="space-y-6 mml-res-stack--mobile">
+              <h2 className="text-4xl md:text-5xl font-serif text-white uppercase font-black mml-res-text--fluid-lg">Contact Section</h2>
+              <div className="space-y-4 font-sans text-sm text-white/60 mml-res-stack--mobile">
+                <p className="font-bold text-tertiary tracking-widest text-[10px] md:text-xs uppercase">Location</p>
+                <p className="text-base md:text-lg leading-relaxed text-white mml-res-text--fluid">
                   19th Floor Chatham House Building<br />Valero cor. V.A. Rufino Sts.<br />Salcedo Village, Makati City 1227
                 </p>
               </div>
             </div>
+
             
             <div className="space-y-4 text-sm font-sans pt-8 border-t border-white/5 mml-ab-contact__info-items">
               <p className="flex gap-4 items-center mml-ab-contact__info-item">
@@ -64,11 +66,12 @@ export const ContactSection = () => {
         <div className="lg:w-1/2 p-16 bg-primary rounded-sm shadow-2xl relative overflow-hidden flex flex-col justify-center mml-ab-contact__form-col">
           <div className="absolute inset-0 opacity-10 wood-strip pointer-events-none scale-150 rotate-3" />
           <RevealStagger className="relative z-10 space-y-12">
-            <div className="space-y-4">
+            <div className="space-y-4 mml-res-stack--mobile">
               <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px]">Case Inquiry</span>
-              <h3 className="text-5xl font-serif text-white uppercase tracking-tight font-black mml-ab-contact__info-title">Request Counsel</h3>
-              <p className="text-white/40 font-sans text-xs">A designated representative will respond to your inquiry within 24 hours.</p>
+              <h3 className="text-3xl md:text-5xl font-serif text-white uppercase tracking-tight font-black mml-res-text--fluid-lg">Request Counsel</h3>
+              <p className="text-white/40 font-sans text-[10px] md:text-xs mml-res-text--fluid">A designated representative will respond to your inquiry within 24 hours.</p>
             </div>
+
             
             <form className="space-y-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

@@ -51,7 +51,8 @@ export default function Home() {
 
       <main className="flex-grow scroll-smooth bg-neutral">
         {/* HERO SECTION 1 - CINEMATIC SQUARE GRID */}
-        <section id="mml-lp-hero" className="relative h-screen flex items-center px-12 overflow-hidden bg-primary mml-lp-hero">
+        <section id="mml-lp-hero" className="relative h-screen flex items-center px-6 md:px-12 overflow-hidden bg-primary mml-res-container">
+
           <Image
             src="/asset/office/1.jpg"
             alt="MML Hero"
@@ -64,18 +65,20 @@ export default function Home() {
           {/* Hydration-safe Grid Overlay */}
           <HeroGridOverlay />
 
-          <div className="relative z-30 max-w-7xl mx-auto w-full pt-20 mml-lp-hero__wrapper">
+          <div className="relative z-30 max-w-screen-2xl mx-auto w-full pt-20 mml-res-container">
+
             <RevealStagger className="space-y-10 max-w-4xl mml-lp-hero__stagger">
-              <div className="space-y-4 mml-lp-hero__content">
-                <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-xs inline-block mml-lp-hero__subtitle">Established 1970</span>
-                <h1 className="text-display-lg font-serif text-white uppercase font-black mml-lp-hero__title">
-                  Eminence in Every Case.<br />Integrity in Every Action.
+              <div className="space-y-4 mml-res-stack--mobile">
+                <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] md:text-xs inline-block">Established 1970</span>
+                <h1 className="text-4xl md:text-display-lg font-serif text-white uppercase font-black mml-res-text--fluid-lg leading-tight">
+                  Eminence in Every Case.<br className="hidden md:block" />Integrity in Every Action.
                 </h1>
-                <p className="text-neutral/60 font-sans text-xl max-w-2xl leading-relaxed mml-lp-hero__desc">
+                <p className="text-neutral/60 font-sans text-lg md:text-xl max-w-2xl leading-relaxed mml-res-text--fluid">
                   Precision legal counsel grounded in heritage and modern jurisprudence.
                   Experience the apex of legal craftsmanship.
                 </p>
               </div>
+
               <div className="flex gap-6 mml-lp-hero__actions">
                 <button className="glow-gold px-12 py-5 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-xs uppercase mml-lp-hero__btn-more">
                   MORE ABOUT US
@@ -90,17 +93,17 @@ export default function Home() {
         </section>
 
         {/* HERO SECTION 2 - BRANDED STRIP 1 */}
-        <section id="mml-lp-strip-1" className="relative h-[400px] flex items-center justify-start text-left px-24 wood-strip mml-lp-strip">
-          <div className="absolute inset-0 bg-primary/40 z-10 mml-lp-strip__overlay" />
-          <Reveal style={{ overflow: "visible" }} className="relative z-20 space-y-6 max-w-3xl mml-lp-strip__content">
-            <h2 className="text-4xl md:text-5xl font-serif text-white uppercase italic tracking-tight mml-lp-strip__title">
+        <section id="mml-lp-strip-1" className="relative min-h-[300px] md:h-[400px] flex items-center justify-start text-left px-6 md:px-24 wood-strip">
+          <div className="absolute inset-0 bg-primary/40 z-10" />
+          <Reveal style={{ overflow: "visible" }} className="relative z-20 space-y-6 max-w-3xl mml-res-stack--mobile">
+            <h2 className="text-3xl md:text-5xl font-serif text-white uppercase italic tracking-tight mml-res-text--fluid-lg">
               &quot;All our clients make the right choices!&quot;
             </h2>
-            <p className="text-tertiary/80 font-sans font-bold tracking-[0.3em] text-xs uppercase mml-lp-strip__desc">
+            <p className="text-tertiary/80 font-sans font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mml-res-text--fluid">
               Get in touch today we look forward to hearing from you.
             </p>
-            <div className="pt-4 mml-lp-strip__actions">
-              <button className="glow-gold px-10 py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-[10px] uppercase mml-lp-strip__btn">
+            <div className="pt-4">
+              <button className="glow-gold px-10 py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-[10px] uppercase">
                 OUR LAWYERS
               </button>
             </div>
@@ -108,7 +111,8 @@ export default function Home() {
         </section>
 
         {/* HERO SECTION 3 - BRANDED STRIP 2 */}
-        <section id="mml-lp-strip-2" className="relative h-[400px] flex items-center justify-end text-right px-24 bg-[#1A243F] mml-lp-strip mml-lp-strip--alt">
+        <section id="mml-lp-strip-2" className="relative min-h-[300px] md:h-[400px] flex items-center justify-end text-right px-6 md:px-24 bg-[#1A243F]">
+
           <div className="absolute inset-x-0 bottom-0 top-0 opacity-10 wood-strip pointer-events-none" />
           <Reveal style={{ overflow: "visible" }} className="relative z-20 space-y-8 max-w-4xl mml-lp-strip__content">
             <h2 className="text-4xl md:text-5xl font-serif text-white uppercase tracking-tighter mml-lp-strip__title">
@@ -126,13 +130,14 @@ export default function Home() {
         </section>
 
         {/* ABOUT THE FIRM SECTION */}
-        <section id="mml-lp-about" className="py-40 px-12 wood-dark relative overflow-hidden mml-lp-about">
-          <div className="max-w-4xl mx-auto text-center space-y-16 relative z-10 mml-lp-about__wrapper">
-            <Reveal className="space-y-12 mml-lp-about__content">
-              <div className="space-y-6">
-                <span className="text-tertiary uppercase tracking-[0.6em] font-sans font-bold text-xs mml-lp-about__subtitle">The Legacy</span>
-                <h2 className="text-5xl md:text-6xl font-serif text-white uppercase leading-tight font-black mml-lp-about__title">Authority of Experience.</h2>
+        <section id="mml-lp-about" className="py-24 md:py-40 px-6 md:px-12 wood-dark relative overflow-hidden">
+          <div className="max-w-screen-2xl mx-auto text-center space-y-16 relative z-10 mml-res-container">
+            <Reveal className="space-y-12">
+              <div className="space-y-6 mml-res-stack--mobile">
+                <span className="text-tertiary uppercase tracking-[0.6em] font-sans font-bold text-[10px] md:text-xs">The Legacy</span>
+                <h2 className="text-4xl md:text-6xl font-serif text-white uppercase leading-tight font-black mml-res-text--fluid-lg">Authority of Experience.</h2>
               </div>
+
               <div className="space-y-8 text-neutral/60 font-sans leading-relaxed text-lg max-w-3xl mx-auto mml-lp-about__desc">
                 <p>
                   M. M. Lazaro and Associates is an established, full-service law firm with an impeccable record in its more than four (4) decades of providing premier legal service.
@@ -159,23 +164,24 @@ export default function Home() {
         </section>
 
         {/* PRACTICE DASHBOARD - MASSIVE SCALE FIG */}
-        <section id="mml-lp-practice" className="py-48 px-12 bg-[#F5F5F3] relative overflow-hidden flex items-center min-h-[900px] mml-lp-practice">
+        <section id="mml-lp-practice" className="py-24 md:py-48 px-6 md:px-12 bg-[#F5F5F3] relative overflow-hidden flex items-center min-h-[600px] md:min-h-[900px] mml-res-container">
           {/* Practice Area massive graphic: Off-screen left logic for mobile/desktop */}
-          <div className="absolute -left-[300px] lg:-left-[200px] top-1/2 -translate-y-1/2 opacity-[0.07] pointer-events-none z-0 mml-lp-practice__bg-graphic">
-            <div className="w-[1200px] h-[1200px] rounded-full border-[60px] border-primary/20 flex items-center justify-center mml-lp-practice__outer-ring">
-              <div className="w-[1000px] h-[1000px] rounded-full border-[40px] border-primary/10 flex items-center justify-center mml-lp-practice__inner-ring">
-                <Scale size={400} className="text-primary/5 translate-x-[150px] mml-lp-practice__icon-bg" />
+          <div className="absolute -left-[300px] lg:-left-[200px] top-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none z-0">
+            <div className="w-[800px] h-[800px] md:w-[1200px] md:h-[1200px] rounded-full border-[30px] md:border-[60px] border-primary/20 flex items-center justify-center">
+              <div className="w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] rounded-full border-[20px] md:border-[40px] border-primary/10 flex items-center justify-center">
+                <Scale size={300} className="text-primary/5 translate-x-[100px] md:translate-x-[150px]" />
               </div>
             </div>
           </div>
 
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-24 relative z-10 w-full mml-lp-practice__wrapper">
+          <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-24 relative z-10 w-full mml-res-container">
             <Reveal
               style={{ overflow: "visible" }}
-              className="col-start-1 row-start-1 lg:relative h-full lg:h-auto flex items-center justify-center lg:justify-start z-0 mml-lp-practice__graphic-col"
+              className="col-start-1 row-start-1 lg:relative h-64 md:h-full lg:h-auto flex items-center justify-center lg:justify-start z-0"
             >
               {/* CORE GRAPHIC - Icon Hub (Green in diagram) with overflow visible for bleeding icons */}
-              <div className="w-80 h-80 md:w-[500px] md:h-[500px] lg:w-[480px] lg:h-[480px] rounded-full border border-primary/20 flex items-center justify-center relative bg-white/40 backdrop-blur-xl shadow-2xl mml-lp-practice__core -translate-x-[40%] lg:translate-x-0 opacity-10 lg:opacity-100 transition-all duration-1000">
+              <div className="w-64 h-64 md:w-[500px] md:h-[500px] lg:w-[480px] lg:h-[480px] rounded-full border border-primary/20 flex items-center justify-center relative bg-white/40 backdrop-blur-xl shadow-2xl transition-all duration-1000">
+
 
                 {/* Inner hub ring */}
                 <div className="w-[85%] h-[85%] rounded-full border border-primary/10 flex items-center justify-center relative mml-lp-practice__core-inner lg:bg-white/10">
@@ -197,16 +203,17 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <div className="col-start-1 row-start-1 lg:col-start-2 lg:row-start-auto z-10 space-y-16 mml-lp-practice__content-col">
+            <div className="col-start-1 row-start-1 lg:col-start-2 lg:row-start-auto z-10 space-y-12 md:space-y-16 mml-res-stack--mobile">
               <RevealStagger className="space-y-6">
-                <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-xs inline-block">Expertise Dashboard</span>
-                <h2 className="text-5xl font-serif text-primary uppercase leading-tight font-black">Our Practice Areas</h2>
-                <p className="text-primary/60 font-sans max-w-xl leading-relaxed">
+                <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] inline-block">Expertise Dashboard</span>
+                <h2 className="text-4xl md:text-5xl font-serif text-primary uppercase leading-tight font-black mml-res-text--fluid-lg">Our Practice Areas</h2>
+                <p className="text-primary/60 font-sans max-w-xl leading-relaxed mml-res-text--fluid">
                   A vision to create a true corporate meritocracy dedicated to excellence in the practice of law.
                 </p>
               </RevealStagger>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mml-lp-practice__grid">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+
                 {practiceAreas.map((area) => (
                   <Reveal key={area.id} width="100%" className="h-full">
                     <button
@@ -252,9 +259,10 @@ export default function Home() {
 
         <div className="relative">
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
-          <section id="mml-lp-quick-links" className="px-12 relative z-30 -translate-y-[20%] mml-lp-quick-links">
-            <div className="max-w-7xl mx-auto">
+          <section id="mml-lp-quick-links" className="px-6 md:px-12 relative z-30 -translate-y-[10%] md:-translate-y-[20%]">
+            <div className="max-w-screen-2xl mx-auto mml-res-container">
               <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
                 {[
                   { name: "About the Firm", href: "/about" },
                   { name: "Our Lawyers", href: "/lawyers" },

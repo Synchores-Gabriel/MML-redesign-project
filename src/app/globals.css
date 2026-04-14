@@ -34,7 +34,39 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
+  width: 100%;
 }
+
+/* Global Responsive Fortress Utilities */
+.mml-res-container {
+  width: 100%;
+  max-width: 1536px; /* 2xl screen */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mml-res-stack--mobile {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .mml-res-flow--desktop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.mml-res-text--fluid {
+  font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+}
+
+.mml-res-text--fluid-lg {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
 
 /* Glassmorphism Refinement */
 .glass {

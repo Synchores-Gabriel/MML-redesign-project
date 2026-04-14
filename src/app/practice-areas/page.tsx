@@ -42,18 +42,19 @@ export default function PracticeAreasPage() {
   return (
     <>
       <Header />
-      <main className="flex-grow bg-neutral pt-44 pb-0 overflow-x-clip">
+      <main className="flex-grow bg-neutral pt-32 md:pt-44 pb-0 overflow-x-hidden">
         {/* Header Section */}
-        <div id="mml-pa-root" className="max-w-7xl mx-auto px-6 md:px-12 mb-24">
-          <RevealStagger className="space-y-6 max-w-3xl">
+        <div id="mml-pa-root" className="max-w-screen-2xl mx-auto px-6 md:px-12 mb-16 md:mb-24 mml-res-container">
+          <RevealStagger className="space-y-6 max-w-3xl mml-res-stack--mobile">
             <span className="text-tertiary uppercase tracking-[0.4em] font-sans font-bold text-[10px] block">Expertise</span>
-            <h1 className="text-5xl md:text-6xl font-serif text-primary uppercase leading-tight font-black">Our Practice Areas</h1>
-            <p className="text-primary/60 font-sans leading-relaxed text-lg max-w-2xl">
+            <h1 className="text-4xl md:text-6xl font-serif text-primary uppercase leading-tight font-black mml-res-text--fluid-lg">Our Practice Areas</h1>
+            <p className="text-primary/60 font-sans leading-relaxed text-base md:text-lg max-w-2xl mml-res-text--fluid">
               Precision legal counsel grounded in heritage and modern jurisprudence. 
               Our specialized departments represent the pinnacle of legal excellence in the Philippines.
             </p>
           </RevealStagger>
         </div>
+
 
         {/* Continuous Image Wall Accordion */}
         <section className="w-full relative mb-32">
@@ -74,7 +75,8 @@ export default function PracticeAreasPage() {
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     className="relative w-full border-b border-primary/5 last:border-b-0"
                   >
-                    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-0 relative">
+                    <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-0 relative mml-res-container">
+
                       
                       {/* Left Column (Text) */}
                       <div className="relative p-12 lg:p-16 flex flex-col justify-center min-h-[300px] md:min-h-[400px] mml-pa-row__desc">
@@ -133,9 +135,10 @@ export default function PracticeAreasPage() {
                       </div>
 
                       {/* Right Column (Continuous Image) */}
-                      <div className="relative h-[300px] md:h-auto mml-pa-row__img-wrap">
-                        {/* Breakout container: only expands on active */}
+                      <div className="relative h-[250px] md:h-auto">
+                        {/* Breakout container: only expands on active and md screen upwards */}
                         <div className={`absolute inset-0 transition-all duration-1000 ease-[0.16,1,0.3,1] z-10 ${isActive ? 'md:-mr-[calc(50vw-50%)]' : ''}`}>
+
                           <Image
                             src={practice.image}
                             alt={practice.title}
@@ -143,6 +146,7 @@ export default function PracticeAreasPage() {
                             className="object-cover"
                             priority={i < 2}
                           />
+
                           {/* Interaction Overlays */}
                           <div className={`absolute inset-0 bg-primary/20 mix-blend-multiply transition-opacity duration-700 ${isActive ? 'opacity-40' : 'opacity-0'}`} />
                           <div className={`absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-primary/60 to-transparent transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-0'}`} />

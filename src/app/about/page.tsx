@@ -30,8 +30,9 @@ export default function AboutPage() {
         </svg>
 
         {/* 1. HERO SECTION - DARK WITH QUOTE BLOCK */}
-        <section id="mml-ab-hero" className="relative pt-40 pb-32 px-12 bg-[#4A4A4A] text-white flex flex-col items-center mml-ab-hero">
-          <RevealStagger className="w-full max-w-7xl mx-auto flex flex-col items-center space-y-16">
+        <section id="mml-ab-hero" className="relative pt-32 md:pt-40 pb-24 md:pb-32 px-6 md:px-12 bg-[#4A4A4A] text-white flex flex-col items-center">
+          <RevealStagger className="w-full max-w-screen-2xl mx-auto flex flex-col items-center space-y-16 mml-res-container">
+
             <h1 className="text-5xl md:text-7xl font-serif text-white text-center leading-tight mml-ab-hero__title">
               About the Firm
             </h1>
@@ -51,11 +52,12 @@ export default function AboutPage() {
         </section>
 
         {/* 2. DISCOVERY SECTION - 2 COLUMN WITH OVERFLOW HEADSHOT */}
-        <section id="mml-ab-discovery" className="pt-48 pb-32 px-12 relative overflow-hidden bg-neutral mml-ab-discovery">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center relative z-10">
+        <section id="mml-ab-discovery" className="pt-24 md:pt-48 pb-24 md:pb-32 px-6 md:px-12 relative overflow-hidden bg-neutral">
+          <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10 mml-res-container">
 
             {/* Left Column: Complex Overflow Headshot - Cross-Browser Precision Fix */}
-            <div className="relative flex justify-center lg:justify-start mml-ab-discovery__image-col h-[600px]">
+            <div className="relative flex justify-center lg:justify-start mml-ab-discovery__image-col h-[400px] md:h-[600px] mml-res-stack--mobile">
+
               {/* Outer Wrapper with overflow-visible to show the head popping out */}
               <Reveal
                 className="relative w-full h-full flex items-end justify-center lg:justify-start mml-ab-discovery__headshot-container"
@@ -63,14 +65,16 @@ export default function AboutPage() {
               >
                 {/* 1. Circular Background Layer */}
                 <div
-                  className="absolute bottom-0 w-[340px] h-[340px] md:w-[480px] md:h-[480px] rounded-full bg-[#E2E8F0] mml-ab-discovery__circle-bg shadow-inner"
+                  className="absolute bottom-0 w-[280px] h-[280px] md:w-[480px] md:h-[480px] rounded-full bg-[#E2E8F0] shadow-inner aspect-square"
                 />
+
 
                 {/* 2. Image Layer - Integrated Bounding Box Clipping */}
                 <div
-                  className="relative w-[340px] h-[425px] md:w-[480px] md:h-[600px] mml-ab-discovery__image-clipper pointer-events-none"
+                  className="relative w-[280px] h-[350px] md:w-[480px] md:h-[600px] pointer-events-none"
                   style={{ clipPath: 'url(#popout-clip-js)' }}
                 >
+
                   {/* Container height is 600px (1.25x circle height of 480px) */}
                   <div className="absolute inset-0 w-full h-full flex items-end justify-center scale-110">
                     <Image
@@ -86,16 +90,17 @@ export default function AboutPage() {
             </div>
 
             {/* Right Column: Text Bio */}
-            <RevealStagger className="space-y-8 mml-ab-discovery__bio-col">
+            <RevealStagger className="space-y-8 mml-res-stack--mobile">
               <div className="space-y-4">
-                <h2 className="text-5xl md:text-7xl font-serif text-primary leading-tight mml-ab-discovery__bio-title italic">Discover</h2>
+                <h2 className="text-4xl md:text-7xl font-serif text-primary leading-tight mml-res-text--fluid-lg italic">Discover</h2>
                 <div className="space-y-1">
-                  <span className="text-secondary uppercase tracking-[0.4em] font-bold text-sm block mml-ab-discovery__bio-name">M.M. LAZARO</span>
+                  <span className="text-secondary uppercase tracking-[0.4em] font-bold text-xs md:text-sm block">M.M. LAZARO</span>
                   <div className="w-12 h-0.5 bg-tertiary/30" />
                 </div>
               </div>
 
-              <div className="space-y-6 text-primary/70 font-sans leading-relaxed text-lg mml-ab-discovery__bio-text">
+              <div className="space-y-6 text-primary/70 font-sans leading-relaxed text-base md:text-lg mml-res-text--fluid">
+
                 <p>
                   An innovative law firm building long-term relationships with clients based on reciprocity,
                   trust and highest standards of professional ethics. By adopting new models for the
@@ -113,9 +118,10 @@ export default function AboutPage() {
         </section>
 
         {/* 3. MISSION & VISION OVERLAY SECTION */}
-        <div className="relative mml-ab-cards-bridge z-30">
-          <section id="mml-ab-cards-container" className="px-12 relative -translate-y-[60px] mml-ab-cards-container">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="relative z-30">
+          <section id="mml-ab-cards-container" className="px-6 md:px-12 relative -translate-y-[40px] md:-translate-y-[60px]">
+            <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mml-res-container">
+
 
               {/* Mission Overlay Box */}
               <Reveal className="mml-ab-card">

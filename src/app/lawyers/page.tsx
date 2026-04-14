@@ -175,24 +175,27 @@ export default function LawyersPage() {
     <div className="flex flex-col min-h-screen bg-neutral paper-texture">
       <Header />
 
-      <main id="mml-lw-directory-root" className="flex-grow pt-48 pb-32">
-        <div className="max-w-7xl mx-auto px-12 space-y-24">
+      <main id="mml-lw-directory-root" className="flex-grow pt-32 md:pt-48 pb-24 md:pb-32">
+        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 space-y-16 md:space-y-24 mml-res-container">
 
-          <RevealStagger className="space-y-8 max-w-4xl">
-            <h1 className="text-6xl md:text-8xl font-serif text-primary uppercase leading-tight font-black mml-lw-directory__title">
+
+          <RevealStagger className="space-y-8 max-w-4xl mml-res-stack--mobile">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif text-primary uppercase leading-tight font-black mml-res-text--fluid-lg">
               Our Lawyers
             </h1>
-            <div className="flex flex-col md:flex-row gap-12 items-start md:items-center">
-              <div className="w-16 h-[2px] bg-tertiary" />
-              <p className="text-primary/70 font-sans text-lg md:text-xl leading-relaxed max-w-2xl mml-lw-directory__subtitle">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center">
+              <div className="w-16 h-[2px] bg-tertiary shrink-0" />
+              <p className="text-primary/70 font-sans text-base md:text-xl leading-relaxed max-w-2xl mml-res-text--fluid">
                 Our lawyers and other professionals are recognized for their innovative approach to solving legal problems
                 and exceptional service, high ethical standards, and responsiveness.
               </p>
             </div>
           </RevealStagger>
 
-          <section className="mml-lw-grid__container relative">
-            <RevealStagger className="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16 mml-lw-grid__main lowercase">
+
+          <section className="relative">
+            <RevealStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-16 mml-res-flow--desktop">
+
               {lawyers.map((lawyer, i) => (
                 <div
                   key={lawyer.id}
