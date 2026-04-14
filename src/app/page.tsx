@@ -6,7 +6,7 @@ import { HeroGridOverlay } from "@/components/HeroGridOverlay";
 import { GridAnimation } from "@/components/GridAnimation";
 import { LawyerCarousel } from "@/components/LawyerCarousel";
 import { Reveal, RevealStagger } from "@/components/Reveal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -42,8 +42,31 @@ const practiceAreas = [
   },
 ];
 
+const HERO_SLIDES = [
+  {
+    video: "/asset/vid/hero1.mp4",
+    subtitle: "Expert Legal Solutions for the Philippines"
+  },
+  {
+    video: "/asset/vid/hero2.mp4",
+    subtitle: "Navigating Complex Corporate Challenges"
+  },
+  {
+    video: "/asset/vid/hero3.mp4",
+    subtitle: "Dedicated to Protecting Your Family’s Legacy"
+  }
+];
+
 export default function Home() {
   const [activePractice, setActivePractice] = useState<string | null>("corp");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000); // 6 seconds rotation
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -53,13 +76,30 @@ export default function Home() {
         {/* HERO SECTION 1 - CINEMATIC SQUARE GRID */}
         <section id="mml-lp-hero" className="relative h-screen flex items-center px-6 md:px-12 overflow-hidden bg-primary mml-res-container">
 
-          <Image
-            src="/asset/office/1.jpg"
-            alt="MML Hero"
-            fill
-            className="object-cover opacity-60"
-            priority
-          />
+          {/* BACKGROUND VIDEO SLIDER */}
+          <div className="mml-hero-lp__bg-slider absolute inset-0 z-0 overflow-hidden">
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 0.6, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="mml-hero-lp__bg-item absolute inset-0 w-full h-full"
+              >
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src={HERO_SLIDES[currentSlide].video} type="video/mp4" />
+                </video>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/40 to-transparent z-10" />
 
           {/* Hydration-safe Grid Overlay */}
@@ -68,11 +108,43 @@ export default function Home() {
           <div className="relative z-30 max-w-screen-2xl mx-auto w-full pt-20 mml-res-container">
 
             <RevealStagger className="space-y-10 max-w-4xl mml-lp-hero__stagger">
-              <div className="space-y-4 mml-res-stack--mobile">
+              <div className="space-y-6 mml-res-stack--mobile">
                 <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] md:text-xs inline-block">Established 1970</span>
-                <h1 className="text-4xl md:text-display-lg font-serif text-white uppercase font-black mml-res-text--fluid-lg leading-tight">
-                  Eminence in Every Case.<br className="hidden md:block" />Integrity in Every Action.
-                </h1>
+                
+                {/* GRAND LOGO & NAME IDENTITY */}
+                <div className="mml-hero-lp__brand-wrap flex items-center gap-6 md:gap-10">
+                  <div className="relative w-20 h-20 md:w-32 md:h-32 lg:w-44 lg:h-44 shrink-0 drop-shadow-2xl">
+                    <Image
+                      src="/asset/mma-logo-hq.png"
+                      alt="MML Logo"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <h1 className="mml-hero-lp__logo-text text-4xl md:text-6xl lg:text-8xl font-serif text-white uppercase font-black leading-none tracking-tighter">
+                      <span className="bg-gradient-to-b from-gold-bright via-tertiary to-gold-dark bg-clip-text text-transparent">M. M. LAZARO</span>
+                    </h1>
+                    <span className="block text-lg md:text-2xl lg:text-4xl text-white/80 tracking-[0.4em] font-serif uppercase mt-2 lg:mt-4">AND ASSOCIATES</span>
+                  </div>
+                </div>
+
+                {/* DYNAMIC SUBTITLE SYSTEM */}
+                <div className="mml-hero-lp__sub-wrap grid grid-cols-1 min-h-[1.5em] md:min-h-[2em]">
+                  <AnimatePresence mode="wait">
+                    <motion.p
+                      key={currentSlide}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.8 }}
+                      className="mml-hero-lp__sub-text col-start-1 row-start-1 text-tertiary italic font-serif text-xl md:text-3xl pr-12 leading-tight"
+                    >
+                      {HERO_SLIDES[currentSlide].subtitle}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
+
                 <p className="text-neutral/60 font-sans text-lg md:text-xl max-w-2xl leading-relaxed mml-res-text--fluid">
                   Precision legal counsel grounded in heritage and modern jurisprudence.
                   Experience the apex of legal craftsmanship.
