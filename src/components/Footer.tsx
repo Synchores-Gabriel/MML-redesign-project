@@ -24,17 +24,12 @@ export const Footer = () => {
                   className="object-contain"
                 />
               </div>
-              <div className="flex flex-col mml-global-footer__logo-text mml-res-stack--mobile">
-                <span className="font-serif text-xl md:text-2xl leading-tight tracking-[0.05em] text-white mml-res-text--fluid">
-                  M. M. LAZARO
-                </span>
-                <span className="font-serif text-[8px] md:text-[10px] leading-none tracking-[0.4em] text-neutral/40 uppercase">
-                  and ASSOCIATES
-                </span>
-              </div>
+              <span className="font-serif text-sm md:text-base leading-tight tracking-wider text-tertiary uppercase mml-global-footer__logo-text">
+                MM. LAZARO and ASSOCIATES<br />LAW OFFICES
+              </span>
             </Link>
 
-            <p className="font-sans text-sm text-neutral/40 leading-relaxed max-w-xs uppercase tracking-widest font-semibold italic">
+            <p className="font-sans text-base text-neutral/40 leading-relaxed max-w-xs uppercase tracking-widest font-medium italic">
               Heritage Modernist Architecture & Jurisprudence. Multi-Generational Legal Craftsmanship.
             </p>
           </div>

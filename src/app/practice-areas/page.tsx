@@ -3,6 +3,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { RevealStagger, Reveal } from "@/components/Reveal";
+import { ContactSection } from "@/components/ContactSection";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -48,7 +49,7 @@ export default function PracticeAreasPage() {
           <RevealStagger className="space-y-6 max-w-3xl mml-res-stack--mobile">
             <span className="text-tertiary uppercase tracking-[0.4em] font-sans font-bold text-[10px] block">Expertise</span>
             <h1 className="text-4xl md:text-6xl font-serif text-primary uppercase leading-tight font-black mml-res-text--fluid-lg">Our Practice Areas</h1>
-            <p className="text-primary/60 font-sans leading-relaxed text-base md:text-lg max-w-2xl mml-res-text--fluid">
+            <p className="text-primary/60 font-sans leading-relaxed text-base md:text-lg font-medium max-w-2xl mml-res-text--fluid">
               Precision legal counsel grounded in heritage and modern jurisprudence. 
               Our specialized departments represent the pinnacle of legal excellence in the Philippines.
             </p>
@@ -188,71 +189,8 @@ export default function PracticeAreasPage() {
             </div>
           </section>
 
-          {/* Contact Section Preview - Matched to Landing Page exactly */}
-          <section id="mml-pa-contact" className="py-48 pb-64 px-12 bg-primary font-sans text-white mt-[-100px] pt-[200px] border-t border-white/5 mml-lp-contact">
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24">
-              {/* Left Box: Info & Map Placeholder styled exactly as reference */}
-              <div className="lg:w-1/2 space-y-12">
-                <RevealStagger className="space-y-10">
-                  <div className="space-y-6">
-                    <h2 className="text-4xl font-serif text-white uppercase font-black">Contact Section</h2>
-                    <div className="space-y-4 font-sans text-sm text-white/60">
-                      <p className="font-bold text-tertiary tracking-widest text-xs uppercase">Location</p>
-                      <p className="text-lg leading-relaxed text-white">
-                        19th Floor Chatham House Building<br />Valero cor. V.A. Rufino Sts.<br />Salcedo Village, Makati City 1227
-                      </p>
-                    </div>
-                  </div>
-                  <div className="space-y-4 text-sm font-sans pt-8 border-t border-white/5">
-                    <p className="flex gap-4 items-center"><Phone size={16} className="text-tertiary" /> <span className="font-bold text-white tracking-tighter self-center">+63 987 654 321</span></p>
-                    <p className="flex gap-4 items-center"><Mail size={16} className="text-tertiary" /> <span className="font-bold text-white tracking-tighter self-center">example@example.com</span></p>
-                  </div>
-                  {/* Styled Map Asset Placeholder */}
-                  <div className="relative h-[450px] w-full overflow-hidden shadow-2xl ring-1 ring-ghost grayscale group rounded-sm">
-                    <div className="absolute inset-0 bg-primary/40 z-10 mix-blend-multiply" />
-                    <Image src="/asset/office/5.jpg" alt="Map Area" fill className="object-cover opacity-50 contrast-125 transition-transform duration-[2000ms] group-hover:scale-110" />
-                    <div className="absolute inset-0 flex items-center justify-center z-20">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-tertiary/20 blur-xl rounded-full scale-150 animate-pulse" />
-                        <MapPin size={48} className="text-tertiary relative z-10" />
-                      </div>
-                    </div>
-                  </div>
-                </RevealStagger>
-              </div>
-
-              {/* Right Box: Lead Form Container */}
-              <div className="lg:w-1/2 p-16 bg-[#001C3D] rounded-sm shadow-2xl relative overflow-hidden flex flex-col justify-center">
-                <div className="absolute inset-0 opacity-10 wood-strip pointer-events-none scale-150 rotate-3" />
-                <RevealStagger className="relative z-10 space-y-12">
-                  <div className="space-y-4">
-                    <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px]">Case Inquiry</span>
-                    <h3 className="text-5xl font-serif text-white uppercase tracking-tight font-black">Request Counsel</h3>
-                    <p className="text-white/40 font-sans text-xs">Precise legal advocacy starts with a single point of contact.</p>
-                  </div>
-                  <form className="space-y-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                      <div className="space-y-3">
-                        <label className="text-[10px] text-neutral/40 tracking-[0.3em] font-bold uppercase">NAME</label>
-                        <input type="text" className="w-full bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-tertiary transition-all font-sans text-sm focus:pl-4" placeholder="Full Name" />
-                      </div>
-                      <div className="space-y-3">
-                        <label className="text-[10px] text-neutral/40 tracking-[0.3em] font-bold uppercase">EMAIL</label>
-                        <input type="email" className="w-full bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-tertiary transition-all font-sans text-sm focus:pl-4" placeholder="email@address.com" />
-                      </div>
-                    </div>
-                    <div className="space-y-3">
-                      <label className="text-[10px] text-neutral/40 tracking-[0.3em] font-bold uppercase">MESSAGE</label>
-                      <textarea rows={5} className="w-full bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-tertiary transition-all font-sans text-sm resize-none focus:pl-4" placeholder="Describe your case or inquiry..." />
-                    </div>
-                    <button type="submit" className="glow-gold w-full py-6 rounded-sm text-primary font-sans font-bold tracking-[0.4em] text-[12px] uppercase">
-                      SEND MESSAGE
-                    </button>
-                  </form>
-                </RevealStagger>
-              </div>
-            </div>
-          </section>
+          {/* Contact Section — Uses shared component */}
+          <ContactSection />
         </div>
       </main>
       <Footer />

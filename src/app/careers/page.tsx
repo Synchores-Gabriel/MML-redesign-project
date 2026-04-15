@@ -64,8 +64,8 @@ export default function CareersPage() {
           {/* Hero Content */}
           <div className="relative z-30 text-center px-6 md:px-12 max-w-screen-2xl mx-auto mml-res-container">
             <RevealStagger className="space-y-6 flex flex-col items-center">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white italic leading-tight mml-res-text--fluid-lg">
-                Career opportunities
+              <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif text-white uppercase leading-tight font-black mml-res-text--fluid-lg">
+                Career Opportunities
               </h1>
               <p className="text-white/60 font-sans text-base md:text-lg max-w-2xl mx-auto leading-relaxed mml-res-text--fluid">
                 Get in touch in today — we look forward to hearing from you.
@@ -113,7 +113,7 @@ export default function CareersPage() {
                       </div>
 
                       {/* Requirements */}
-                      <ul className="space-y-3 font-sans text-white/70 text-sm md:text-base leading-relaxed mml-res-text--fluid">
+                      <ul className="space-y-3 font-sans text-white/70 text-base leading-relaxed font-medium mml-res-text--fluid">
                         {job.requirements.map((req, j) => (
                           <li key={j} className="flex gap-3 items-start">
                             <span className="text-tertiary mt-1.5 shrink-0">

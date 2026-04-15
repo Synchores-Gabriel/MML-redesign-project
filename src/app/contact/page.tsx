@@ -39,7 +39,7 @@ export default function ContactPage() {
           {/* Hero Content */}
           <div className="relative z-30 text-center px-6 md:px-12 max-w-screen-2xl mx-auto mml-res-container">
             <RevealStagger className="space-y-4 flex flex-col items-center">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white italic leading-tight mml-res-text--fluid-lg">
+              <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif text-white uppercase leading-tight font-black mml-res-text--fluid-lg">
                 True Passion
               </h1>
             </RevealStagger>
@@ -66,7 +66,7 @@ export default function ContactPage() {
                     Contact Us
                   </h2>
                 </div>
-                <p className="text-primary/60 font-sans text-base md:text-lg leading-relaxed mml-res-text--fluid">
+                <p className="text-primary/60 font-sans text-base md:text-lg leading-relaxed font-medium mml-res-text--fluid">
                   Our firm provides a full range of services for corporate accounts.
                   We help clients establish and maintain corporate entities suitable
                   to their commercial personal or commercial activities.
@@ -81,7 +81,7 @@ export default function ContactPage() {
                     Discover
                   </h2>
                 </div>
-                <p className="text-primary/60 font-sans text-base md:text-lg leading-relaxed mml-res-text--fluid">
+                <p className="text-primary/60 font-sans text-base md:text-lg leading-relaxed font-medium mml-res-text--fluid">
                   A vision to create a true corporate meritocracy dedicated to
                   excellence in the practice of law. The sole measures of our
                   success are concrete results and client satisfaction.
@@ -135,7 +135,7 @@ export default function ContactPage() {
           ═══════════════════════════════════════════════════════════ */}
           <section
             id="mml-contact-form-section"
-            className="py-24 md:py-48 pb-32 md:pb-64 px-6 md:px-12 bg-primary font-sans mt-[-100px] pt-[200px] text-white overflow-hidden"
+            className="py-32 md:py-40 pb-32 md:pb-48 px-6 md:px-12 bg-primary font-sans mt-[-100px] pt-[200px] text-white overflow-hidden"
           >
             <div className="max-w-screen-2xl mx-auto mml-res-container">
               {/* Section Header */}
@@ -245,7 +245,7 @@ export default function ContactPage() {
                       <h3 className="text-3xl md:text-5xl font-serif text-white uppercase tracking-tight font-black mml-res-text--fluid-lg">
                         Request Counsel
                       </h3>
-                      <p className="text-white/40 font-sans text-[10px] md:text-xs mml-res-text--fluid">
+                      <p className="text-white/40 font-sans text-sm mml-res-text--fluid">
                         A designated representative will respond to your inquiry
                         within 24 hours.
                       </p>

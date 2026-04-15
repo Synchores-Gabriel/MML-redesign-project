@@ -46,7 +46,7 @@ export const LawyerCarousel = () => {
 
         <div className="text-center mb-16 space-y-4 mml-res-stack--mobile">
           <h2 className="text-3xl md:text-5xl font-serif text-white uppercase tracking-tight font-medium mml-res-text--fluid-lg">Meet our Lawyers</h2>
-          <p className="max-w-4xl mx-auto text-white/80 font-sans text-xs md:text-sm leading-relaxed mml-res-text--fluid">
+          <p className="max-w-4xl mx-auto text-white/80 font-sans text-sm md:text-base leading-relaxed mml-res-text--fluid">
             Our lawyers and other professionals are recognized for their innovative approach to solving
             complex legal problems and exceptional service, high ethical standards, attention to detail, and responsiveness.
           </p>
@@ -77,9 +77,9 @@ export const LawyerCarousel = () => {
                 <div className="w-full md:w-[55%] p-12 flex flex-col justify-center space-y-6">
                   <div className="space-y-1">
                     <h3 className="text-2xl font-serif text-primary uppercase font-bold">{lawyers[index].name}</h3>
-                    <p className="text-primary/60 font-sans text-xs uppercase tracking-[0.2em] font-bold">{lawyers[index].title}</p>
+                    <p className="text-primary/60 font-sans text-sm uppercase tracking-[0.2em] font-bold">{lawyers[index].title}</p>
                   </div>
-                  <p className="text-primary/70 font-sans text-[13px] leading-relaxed">
+                  <p className="text-primary/70 font-sans text-base leading-relaxed font-medium">
                     {lawyers[index].bio}
                   </p>
                   <div className="pt-4 border-t border-primary/10">

@@ -185,7 +185,7 @@ export default function LawyersPage() {
             </h1>
             <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center">
               <div className="w-16 h-[2px] bg-tertiary shrink-0" />
-              <p className="text-primary/70 font-sans text-base md:text-xl leading-relaxed max-w-2xl mml-res-text--fluid">
+              <p className="text-primary/70 font-sans text-base md:text-xl leading-relaxed font-medium max-w-2xl mml-res-text--fluid">
                 Our lawyers and other professionals are recognized for their innovative approach to solving legal problems
                 and exceptional service, high ethical standards, and responsiveness.
               </p>
@@ -240,7 +240,7 @@ export default function LawyersPage() {
                 </button>
               </div>
               <div className="max-h-[30vh] overflow-y-auto pr-2 mml-scrollbar">
-                <p className="text-white/70 font-sans text-sm leading-loose italic lowercase first-letter:uppercase">
+                <p className="text-white/70 font-sans text-base leading-loose italic lowercase first-letter:uppercase">
                   {selectedLawyer.bio}
                 </p>
               </div>

@@ -6,6 +6,7 @@ import { HeroGridOverlay } from "@/components/HeroGridOverlay";
 import { GridAnimation } from "@/components/GridAnimation";
 import { LawyerCarousel } from "@/components/LawyerCarousel";
 import { Reveal, RevealStagger } from "@/components/Reveal";
+import { ContactSection } from "@/components/ContactSection";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -74,7 +75,7 @@ export default function Home() {
 
       <main className="flex-grow scroll-smooth bg-neutral">
         {/* HERO SECTION 1 - CINEMATIC SQUARE GRID */}
-        <section id="mml-lp-hero" className="relative h-screen flex items-center px-6 md:px-12 overflow-hidden bg-primary mml-res-container">
+        <section id="mml-lp-hero" className="relative min-h-screen flex flex-col justify-end px-6 md:px-12 pb-12 md:pb-16 overflow-hidden bg-primary mml-res-container">
 
           {/* BACKGROUND VIDEO SLIDER */}
           <div className="mml-hero-lp__bg-slider absolute inset-0 z-0 overflow-hidden">
@@ -105,15 +106,16 @@ export default function Home() {
           {/* Hydration-safe Grid Overlay */}
           <HeroGridOverlay />
 
-          <div className="relative z-30 max-w-screen-2xl mx-auto w-full pt-20 mml-res-container">
+          {/* Content container — constrained to bottom 50% of viewport */}
+          <div className="relative z-30 max-w-screen-2xl mx-auto w-full max-h-[50vh] flex flex-col justify-end mml-res-container">
 
-            <RevealStagger className="space-y-10 max-w-4xl mml-lp-hero__stagger">
-              <div className="space-y-6 mml-res-stack--mobile">
+            <RevealStagger className="space-y-5 max-w-3xl mml-lp-hero__stagger">
+              <div className="space-y-4 mml-res-stack--mobile">
                 <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] md:text-xs inline-block">Established 1970</span>
                 
                 {/* GRAND LOGO & NAME IDENTITY */}
-                <div className="mml-hero-lp__brand-wrap flex items-center gap-6 md:gap-10">
-                  <div className="relative w-20 h-20 md:w-32 md:h-32 lg:w-44 lg:h-44 shrink-0 drop-shadow-2xl">
+                <div className="mml-hero-lp__brand-wrap flex items-center gap-4 md:gap-6">
+                  <div className="relative w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24 shrink-0 drop-shadow-2xl">
                     <Image
                       src="/asset/mma-logo-hq.png"
                       alt="MML Logo"
@@ -121,16 +123,18 @@ export default function Home() {
                       className="object-contain"
                     />
                   </div>
-                  <div className="flex flex-col justify-center">
-                    <h1 className="mml-hero-lp__logo-text text-4xl md:text-6xl lg:text-8xl font-serif text-white uppercase font-black leading-none tracking-tighter">
-                      <span className="bg-gradient-to-b from-gold-bright via-tertiary to-gold-dark bg-clip-text text-transparent">M. M. LAZARO</span>
-                    </h1>
-                    <span className="block text-lg md:text-2xl lg:text-4xl text-white/80 tracking-[0.4em] font-serif uppercase mt-2 lg:mt-4">AND ASSOCIATES</span>
-                  </div>
+                  <h1
+                    className="mml-hero-lp__logo-text font-serif uppercase tracking-wider leading-snug text-tertiary font-semibold"
+                    style={{ textShadow: '0 2px 16px rgba(0,0,0,0.5), 0 4px 32px rgba(179,142,62,0.2)' }}
+                  >
+                    <span className="block text-2xl md:text-4xl lg:text-5xl">MM. LAZARO</span>
+                    <span className="block text-2xl md:text-4xl lg:text-5xl">and ASSOCIATES</span>
+                    <span className="block text-2xl md:text-4xl lg:text-5xl">LAW OFFICES</span>
+                  </h1>
                 </div>
 
                 {/* DYNAMIC SUBTITLE SYSTEM */}
-                <div className="mml-hero-lp__sub-wrap grid grid-cols-1 min-h-[1.5em] md:min-h-[2em]">
+                <div className="mml-hero-lp__sub-wrap grid grid-cols-1 min-h-[1.5em] md:min-h-[1.8em]">
                   <AnimatePresence mode="wait">
                     <motion.p
                       key={currentSlide}
@@ -138,25 +142,24 @@ export default function Home() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.8 }}
-                      className="mml-hero-lp__sub-text col-start-1 row-start-1 text-tertiary italic font-serif text-xl md:text-3xl pr-12 leading-tight"
+                      className="mml-hero-lp__sub-text col-start-1 row-start-1 text-white/70 italic font-serif text-base md:text-xl pr-12 leading-tight"
                     >
                       {HERO_SLIDES[currentSlide].subtitle}
                     </motion.p>
                   </AnimatePresence>
                 </div>
 
-                <p className="text-neutral/60 font-sans text-lg md:text-xl max-w-2xl leading-relaxed mml-res-text--fluid">
+                <p className="text-neutral/60 font-sans text-sm md:text-base font-medium max-w-xl leading-relaxed mml-res-text--fluid">
                   Precision legal counsel grounded in heritage and modern jurisprudence.
-                  Experience the apex of legal craftsmanship.
                 </p>
               </div>
 
-              <div className="flex gap-6 mml-lp-hero__actions">
-                <button className="glow-gold px-12 py-5 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-xs uppercase mml-lp-hero__btn-more">
+              <div className="flex gap-5 mml-lp-hero__actions">
+                <Link href="#mml-lp-about" className="glow-gold px-8 py-3 md:px-10 md:py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-xs uppercase mml-lp-hero__btn-more inline-block">
                   MORE ABOUT US
-                </button>
-                <div className="w-px h-12 bg-white/10 hidden md:block mml-lp-hero__divider" />
-                <button className="group flex items-center gap-4 text-white font-sans font-bold tracking-[0.2em] text-xs uppercase hover:text-tertiary transition-colors duration-400 mml-lp-hero__btn-consult">
+                </Link>
+                <div className="w-px h-10 bg-white/10 hidden md:block mml-lp-hero__divider" />
+                <button className="group flex items-center gap-3 text-white font-sans font-bold tracking-[0.2em] text-xs uppercase hover:text-tertiary transition-colors duration-400 mml-lp-hero__btn-consult">
                   CONSULT NOW <span className="bg-white/10 p-2 rounded-full group-hover:bg-tertiary/20 group-hover:pl-4 transition-all duration-400 mml-lp-hero__btn-icon"><ArrowRight size={14} /></span>
                 </button>
               </div>
@@ -190,7 +193,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-serif text-white uppercase tracking-tighter mml-lp-strip__title">
               A heritage of authority.
             </h2>
-            <p className="text-neutral/40 font-sans max-w-2xl ml-auto leading-relaxed mml-lp-strip__desc">
+            <p className="text-neutral/40 font-sans text-base font-medium max-w-2xl ml-auto leading-relaxed mml-lp-strip__desc">
               We provide a full range of legal services for corporate clients, establishing strategies grounded in thorough preparation and business sensitivity.
             </p>
             <div className="pt-2 mml-lp-strip__actions">
@@ -279,7 +282,7 @@ export default function Home() {
               <RevealStagger className="space-y-6">
                 <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] inline-block">Expertise Dashboard</span>
                 <h2 className="text-4xl md:text-5xl font-serif text-primary uppercase leading-tight font-black mml-res-text--fluid-lg">Our Practice Areas</h2>
-                <p className="text-primary/60 font-sans max-w-xl leading-relaxed mml-res-text--fluid">
+                <p className="text-primary/60 font-sans text-base font-medium max-w-xl leading-relaxed mml-res-text--fluid">
                   A vision to create a true corporate meritocracy dedicated to excellence in the practice of law.
                 </p>
               </RevealStagger>
@@ -312,7 +315,7 @@ export default function Home() {
                             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                             className="absolute inset-0 z-20 glass-overlay p-12 flex flex-col justify-center mml-lp-practice__card-overlay"
                           >
-                            <p className="font-sans text-[13px] text-white leading-relaxed mml-lp-practice__card-desc">
+                            <p className="font-sans text-sm text-white leading-relaxed mml-lp-practice__card-desc">
                               {area.desc}
                             </p>
                             <div className="mt-8 pt-4 border-t border-white/20">
@@ -357,76 +360,8 @@ export default function Home() {
             </div>
           </section>
 
-          {/* CONTACT SECTION */}
-          <section id="mml-lp-contact" className="py-48 pb-64 px-12 bg-primary font-sans mt-[-100px] pt-[200px] text-white mml-lp-contact">
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24">
-              {/* Left: Info & Map */}
-              <div className="lg:w-1/2 space-y-12">
-                <RevealStagger className="space-y-10">
-                  <div className="space-y-6">
-                    <h2 className="text-4xl font-serif text-white uppercase font-black">Contact Section</h2>
-                    <div className="space-y-4 font-sans text-sm text-white/60">
-                      <p className="font-bold text-tertiary tracking-widest text-xs uppercase">Location</p>
-                      <p className="text-lg leading-relaxed text-white">
-                        19th Floor Chatham House Building<br />Valero cor. V.A. Rufino Sts.<br />Salcedo Village, Makati City 1227
-                      </p>
-                    </div>
-                  </div>
-                  <div className="space-y-4 text-sm font-sans pt-8 border-t border-white/5">
-                    <p className="flex gap-4 items-center"><Phone size={16} className="text-tertiary" /> <span className="font-bold text-white tracking-tighter self-center">+63 987 654 321</span></p>
-                    <p className="flex gap-4 items-center"><Mail size={16} className="text-tertiary" /> <span className="font-bold text-white tracking-tighter self-center">example@example.com</span></p>
-                  </div>
-                  {/* Styled Map Placeholder */}
-                  <div className="relative h-[450px] w-full overflow-hidden shadow-ambient ring-1 ring-ghost grayscale group rounded-sm">
-                    <div className="absolute inset-0 bg-primary/40 z-10 mix-blend-multiply" />
-                    <Image src="/asset/office/5.jpg" alt="Map" fill className="object-cover opacity-50 contrast-125 transition-transform duration-[2000ms] group-hover:scale-110" />
-                    <div className="absolute inset-0 flex items-center justify-center z-20">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-tertiary/20 blur-xl rounded-full scale-150 animate-pulse" />
-                        <MapPin size={48} className="text-tertiary relative z-10" />
-                      </div>
-                    </div>
-                    <div className="absolute inset-0 pointer-events-none z-10 opacity-30">
-                      <div className="grid grid-cols-10 w-full h-full">
-                        {Array.from({ length: 100 }).map((_, i) => <div key={i} className="border-[0.5px] border-white/5" />)}
-                      </div>
-                    </div>
-                  </div>
-                </RevealStagger>
-              </div>
-
-              {/* Right: Form */}
-              <div className="lg:w-1/2 p-16 bg-primary rounded-sm shadow-2xl relative overflow-hidden flex flex-col justify-center">
-                <div className="absolute inset-0 opacity-10 wood-strip pointer-events-none scale-150 rotate-3" />
-                <RevealStagger className="relative z-10 space-y-12">
-                  <div className="space-y-4">
-                    <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px]">Case Inquiry</span>
-                    <h3 className="text-5xl font-serif text-white uppercase tracking-tight font-black">Request Counsel</h3>
-                    <p className="text-white/40 font-sans text-xs">A designated representative will respond to your inquiry within 24 hours.</p>
-                  </div>
-                  <form className="space-y-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                      <div className="space-y-3">
-                        <label className="text-[10px] text-neutral/40 tracking-[0.3em] font-bold uppercase">NAME</label>
-                        <input type="text" className="w-full bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-tertiary transition-all font-sans text-sm focus:pl-4" placeholder="Full Name" />
-                      </div>
-                      <div className="space-y-3">
-                        <label className="text-[10px] text-neutral/40 tracking-[0.3em] font-bold uppercase">EMAIL</label>
-                        <input type="email" className="w-full bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-tertiary transition-all font-sans text-sm focus:pl-4" placeholder="email@address.com" />
-                      </div>
-                    </div>
-                    <div className="space-y-3">
-                      <label className="text-[10px] text-neutral/40 tracking-[0.3em] font-bold uppercase">MESSAGE</label>
-                      <textarea rows={5} className="w-full bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-tertiary transition-all font-sans text-sm resize-none focus:pl-4" placeholder="Describe your case or inquiry..." />
-                    </div>
-                    <button type="submit" className="glow-gold w-full py-6 rounded-sm text-primary font-sans font-bold tracking-[0.4em] text-[12px] uppercase">
-                      SEND MESSAGE
-                    </button>
-                  </form>
-                </RevealStagger>
-              </div>
-            </div>
-          </section>
+          {/* CONTACT SECTION — Uses shared component */}
+          <ContactSection />
         </div>
       </main>
 

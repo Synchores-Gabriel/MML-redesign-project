@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal, RevealStagger } from "@/components/Reveal";
 import { ContactSection } from "@/components/ContactSection";
+import { HeroGridOverlay } from "@/components/HeroGridOverlay";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -30,10 +31,12 @@ export default function AboutPage() {
         </svg>
 
         {/* 1. HERO SECTION - DARK WITH QUOTE BLOCK */}
-        <section id="mml-ab-hero" className="relative pt-32 md:pt-40 pb-24 md:pb-32 px-6 md:px-12 bg-[#4A4A4A] text-white flex flex-col items-center">
+        <section id="mml-ab-hero" className="relative pt-32 md:pt-40 pb-24 md:pb-32 px-6 md:px-12 bg-[#4A4A4A] text-white flex flex-col items-center overflow-hidden">
+          {/* Grid Overlay */}
+          <HeroGridOverlay />
           <RevealStagger className="w-full max-w-screen-2xl mx-auto flex flex-col items-center space-y-16 mml-res-container">
 
-            <h1 className="text-5xl md:text-7xl font-serif text-white text-center leading-tight mml-ab-hero__title">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif text-white uppercase leading-tight font-black mml-ab-hero__title mml-res-text--fluid-lg">
               About the Firm
             </h1>
 
@@ -99,7 +102,7 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="space-y-6 text-primary/70 font-sans leading-relaxed text-base md:text-lg mml-res-text--fluid">
+              <div className="space-y-6 text-primary/70 font-sans leading-relaxed text-base md:text-lg font-medium mml-res-text--fluid">
 
                 <p>
                   An innovative law firm building long-term relationships with clients based on reciprocity,
