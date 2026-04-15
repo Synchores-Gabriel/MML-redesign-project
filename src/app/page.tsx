@@ -60,6 +60,14 @@ const HERO_SLIDES = [
   }
 ];
 
+type SubtitleShot = 0 | 1 | 2;
+
+function getSubtitleShot(slideIndex: number): SubtitleShot {
+  if (slideIndex === 1) return 1;
+  if (slideIndex === 2) return 2;
+  return 0;
+}
+
 export default function Home() {
   const [activePractice, setActivePractice] = useState<string | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -145,6 +153,103 @@ export default function Home() {
           {/* Hydration-safe Grid Overlay */}
           <HeroGridOverlay />
 
+          {/* Subtitle layer — absolute, behind logo/CTAs */}
+          <div className="absolute inset-0 z-[25] pointer-events-none flex items-center justify-center px-6 md:px-12">
+            <AnimatePresence mode="wait" initial={false}>
+              {(() => {
+                const shot = getSubtitleShot(currentSlide);
+                const isShot1 = shot === 0;
+                const isShot2 = shot === 1;
+                const isShot3 = shot === 2;
+
+                const maskCommon = {
+                  maskRepeat: "no-repeat",
+                  WebkitMaskRepeat: "no-repeat",
+                } as const;
+
+                const maskLR = {
+                  maskImage:
+                    "linear-gradient(90deg, transparent 0%, transparent 42%, #000 58%, #000 100%)",
+                  WebkitMaskImage:
+                    "linear-gradient(90deg, transparent 0%, transparent 42%, #000 58%, #000 100%)",
+                  maskSize: "220% 100%",
+                  WebkitMaskSize: "220% 100%",
+                } as const;
+
+                const maskTB = {
+                  maskImage:
+                    "linear-gradient(180deg, transparent 0%, transparent 42%, #000 58%, #000 100%)",
+                  WebkitMaskImage:
+                    "linear-gradient(180deg, transparent 0%, transparent 42%, #000 58%, #000 100%)",
+                  maskSize: "100% 220%",
+                  WebkitMaskSize: "100% 220%",
+                } as const;
+
+                const revealStart =
+                  isShot1
+                    ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" } // L→R
+                    : isShot2
+                      ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" } // R→L
+                      : { maskPosition: "0% 100%", WebkitMaskPosition: "0% 100%" }; // T→B
+
+                const revealEnd =
+                  isShot1
+                    ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" }
+                    : isShot2
+                      ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" }
+                      : { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" };
+
+                const clipStart = isShot1
+                  ? { clipPath: "inset(0 100% 0 0)", WebkitClipPath: "inset(0 100% 0 0)" }
+                  : isShot2
+                    ? { clipPath: "inset(0 0 0 100%)", WebkitClipPath: "inset(0 0 0 100%)" }
+                    : { clipPath: "inset(100% 0 0 0)", WebkitClipPath: "inset(100% 0 0 0)" };
+
+                const clipEnd = { clipPath: "inset(0 0 0 0)", WebkitClipPath: "inset(0 0 0 0)" };
+
+                const motionInitial = isShot1
+                  ? { x: "0%", y: "0%", scale: 1, ...revealStart, ...clipStart }
+                  : isShot2
+                    ? { x: "0%", y: "10%", scale: 1, ...revealStart, ...clipStart }
+                    : { x: "0%", y: "0%", scale: 1.4, ...revealStart, ...clipStart };
+
+                const motionAnimate = isShot1
+                  ? { x: "-15%", y: "0%", scale: 1, ...revealEnd, ...clipEnd }
+                  : isShot2
+                    ? { x: "15%", y: "15%", scale: 1, ...revealEnd, ...clipEnd }
+                    : { x: "0%", y: "0%", scale: 1.0, ...revealEnd, ...clipEnd };
+
+                const duration = isShot3 ? 0.8 : 1.2;
+
+                return (
+                  <motion.p
+                    key={currentSlide}
+                    initial={motionInitial}
+                    animate={motionAnimate}
+                    exit={{}}
+                    transition={{ duration, ease: "easeOut" }}
+                    className={[
+                      "select-none",
+                      "font-sans font-semibold",
+                      "text-white/25",
+                      "text-center",
+                      "leading-[1.05]",
+                      "max-w-[min(86vw,72rem)] md:max-w-[min(92vw,72rem)]",
+                      "px-2",
+                      "text-[clamp(1.75rem,4.2vw,4.25rem)]",
+                    ].join(" ")}
+                    style={{
+                      ...maskCommon,
+                      ...(isShot3 ? maskTB : maskLR),
+                    }}
+                  >
+                    {HERO_SLIDES[currentSlide].subtitle}
+                  </motion.p>
+                );
+              })()}
+            </AnimatePresence>
+          </div>
+
           {/* Content container — anchored to bottom-left, occupying bottom 50% of hero */}
           <div className="absolute bottom-0 left-0 right-0 z-30 h-[50vh] flex flex-col justify-end px-6 md:px-12 pb-12 md:pb-16">
             <div className="max-w-screen-2xl mx-auto w-full">
@@ -169,22 +274,6 @@ export default function Home() {
                       <span className="block text-2xl md:text-4xl lg:text-5xl">MM. LAZARO and ASSOCIATES</span>
                       <span className="block text-2xl md:text-4xl lg:text-5xl">LAW OFFICES</span>
                     </h1>
-                  </div>
-
-                  {/* DYNAMIC SUBTITLE SYSTEM */}
-                  <div className="mml-hero-lp__sub-wrap grid grid-cols-1 min-h-[1.5em] md:min-h-[1.8em]">
-                    <AnimatePresence mode="wait">
-                      <motion.p
-                        key={currentSlide}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.8 }}
-                        className="mml-hero-lp__sub-text col-start-1 row-start-1 text-white/70 italic font-serif text-base md:text-xl pr-12 leading-tight"
-                      >
-                        {HERO_SLIDES[currentSlide].subtitle}
-                      </motion.p>
-                    </AnimatePresence>
                   </div>
 
                   <p className="text-neutral/60 font-sans text-sm md:text-base font-medium max-w-xl leading-relaxed">
