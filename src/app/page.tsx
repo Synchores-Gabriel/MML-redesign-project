@@ -8,6 +8,7 @@ import { LawyerCarousel } from "@/components/LawyerCarousel";
 import { Reveal, RevealStagger } from "@/components/Reveal";
 import { ContactSection } from "@/components/ContactSection";
 import { QuickLinks } from "@/components/QuickLinks";
+import { LogoMarquee } from "@/components/LogoMarquee";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -63,6 +64,8 @@ export default function Home() {
   const [activePractice, setActivePractice] = useState<string | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [orbitAngle, setOrbitAngle] = useState(0);
+  const [radius, setRadius] = useState('180px');
 
   useEffect(() => {
     const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
@@ -77,6 +80,32 @@ export default function Home() {
     }, 6000); // 6 seconds rotation
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    const updateRadius = () => {
+      if (window.innerWidth >= 1024) setRadius('240px');
+      else if (window.innerWidth >= 768) setRadius('200px');
+      else setRadius('180px');
+    };
+    updateRadius();
+    window.addEventListener('resize', updateRadius);
+    return () => window.removeEventListener('resize', updateRadius);
+  }, []);
+
+  useEffect(() => {
+    if (activePractice) {
+      const iconAngles: Record<string, number> = {
+        corp: 0,
+        lit: 90,
+        real: 180,
+        tax: 270,
+      };
+      const targetAngle = 90 - iconAngles[activePractice];
+      setOrbitAngle(targetAngle);
+    } else {
+      setOrbitAngle(0);
+    }
+  }, [activePractice]);
 
   return (
     <>
@@ -264,7 +293,11 @@ export default function Home() {
               className="col-start-1 row-start-1 lg:relative h-64 md:h-full lg:h-auto flex items-center justify-center lg:justify-start z-0"
             >
               {/* CORE GRAPHIC - Icon Hub (Green in diagram) with overflow visible for bleeding icons */}
-              <div className="w-64 h-64 md:w-[500px] md:h-[500px] lg:w-[480px] lg:h-[480px] rounded-full border border-primary/20 flex items-center justify-center relative bg-white/40 backdrop-blur-xl shadow-2xl transition-all duration-1000">
+              <motion.div
+                animate={{ rotate: orbitAngle }}
+                transition={{ ease: "easeOut", duration: 0.6 }}
+                className="w-64 h-64 md:w-[500px] md:h-[500px] lg:w-[480px] lg:h-[480px] rounded-full border border-primary/20 flex items-center justify-center relative bg-white/40 backdrop-blur-xl shadow-2xl transition-all duration-1000"
+              >
 
 
                 {/* Inner hub ring */}
@@ -275,16 +308,19 @@ export default function Home() {
                 </div>
 
                 {/* Floating icons with shadows - Now fully visible due to overflow override */}
-                <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-1">
+                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-1" style={{ transform: `translate(-50%, -50%) rotate(0deg) translate(${radius}) rotate(0deg)` }}>
                   <Building2 size={36} className="text-secondary" />
                 </div>
-                <div className="absolute top-1/2 -left-10 -translate-y-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-2">
-                  <Award size={36} className="text-tertiary" />
+                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-2" style={{ transform: `translate(-50%, -50%) rotate(270deg) translate(${radius}) rotate(-270deg)` }}>
+                  <Calculator size={36} className="text-tertiary" />
                 </div>
-                <div className="absolute bottom-1/2 -right-10 translate-y-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-3">
+                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-3" style={{ transform: `translate(-50%, -50%) rotate(90deg) translate(${radius}) rotate(-90deg)` }}>
                   <Gavel size={36} className="text-primary/40" />
                 </div>
-              </div>
+                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-4" style={{ transform: `translate(-50%, -50%) rotate(180deg) translate(${radius}) rotate(-180deg)` }}>
+                  <Landmark size={36} className="text-primary/40" />
+                </div>
+              </motion.div>
             </Reveal>
 
             <div className="col-start-1 row-start-1 lg:col-start-2 lg:row-start-auto z-10 space-y-12 md:space-y-16 mml-res-stack--mobile">
@@ -345,9 +381,11 @@ export default function Home() {
           </div>
         </section>
 
+        <LogoMarquee />
+
         <div className="relative">
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
-          <QuickLinks translateClass="-translate-y-[5%] md:-translate-y-[20%]" links={[
+          <QuickLinks translateClass="-translate-y-[10%] md:-translate-y-[25%]" links={[
             { name: "About the Firm", href: "/about" },
             { name: "Our Lawyers", href: "/lawyers" },
             { name: "Practice Areas", href: "/practice-areas" },
