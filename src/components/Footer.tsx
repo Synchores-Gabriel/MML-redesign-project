@@ -60,10 +60,15 @@ export const Footer = () => {
               Firm
             </h4>
             <ul className="space-y-4 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60 mml-global-footer__link-col">
-              {["ABOUT THE FIRM", "OUR LAWYERS", "OUR PRACTICE AREAS", "CONTACT US"].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="hover:text-white transition-colors duration-400 mml-global-footer__link">
-                    {item}
+              {[
+                { name: "ABOUT THE FIRM", href: "/about" },
+                { name: "OUR LAWYERS", href: "/lawyers" },
+                { name: "OUR PRACTICE AREAS", href: "/practice-areas" },
+                { name: "CONTACT US", href: "/contact" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="hover:text-white transition-colors duration-400 mml-global-footer__link">
+                    {item.name}
                   </Link>
                 </li>
               ))}

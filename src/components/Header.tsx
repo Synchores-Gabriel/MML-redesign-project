@@ -15,7 +15,7 @@ const navLinks = [
   { name: "ABOUT THE FIRM", href: "/about" },
   { name: "OUR LAWYERS", href: "/lawyers" },
   { name: "OUR PRACTICE AREAS", href: "/practice-areas" },
-  { name: "CONTACT US", href: "/#contact" },
+  { name: "CONTACT US", href: "/contact" },
 ];
 
 export const Header = () => {
