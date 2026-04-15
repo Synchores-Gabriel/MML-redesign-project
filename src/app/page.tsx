@@ -9,7 +9,7 @@ import { Reveal, RevealStagger } from "@/components/Reveal";
 import { ContactSection } from "@/components/ContactSection";
 import { QuickLinks } from "@/components/QuickLinks";
 import { LogoMarquee } from "@/components/LogoMarquee";
-import { useState, useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -66,6 +66,143 @@ function getSubtitleShot(slideIndex: number): SubtitleShot {
   if (slideIndex === 1) return 1;
   if (slideIndex === 2) return 2;
   return 0;
+}
+
+function HeroSubtitleLayer({
+  currentSlide,
+  isDesktop,
+}: {
+  currentSlide: number;
+  isDesktop: boolean;
+}) {
+  const shot = getSubtitleShot(currentSlide);
+  const isShot1 = shot === 0;
+  const isShot2 = shot === 1;
+  const isShot3 = shot === 2;
+
+  const [revealDone, setRevealDone] = useState(false);
+
+  useEffect(() => {
+    setRevealDone(false);
+  }, [currentSlide]);
+
+  const maskCommon = useMemo(
+    () =>
+      ({
+        maskRepeat: "no-repeat",
+        WebkitMaskRepeat: "no-repeat",
+      }) as const,
+    [],
+  );
+
+  const maskLR = useMemo(
+    () =>
+      ({
+        maskImage:
+          "linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
+        maskSize: "220% 100%",
+        WebkitMaskSize: "220% 100%",
+      }) as const,
+    [],
+  );
+
+  const maskTB = useMemo(
+    () =>
+      ({
+        maskImage:
+          "linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
+        maskSize: "100% 220%",
+        WebkitMaskSize: "100% 220%",
+      }) as const,
+    [],
+  );
+
+  const solidMask = useMemo(
+    () =>
+      ({
+        maskImage: "linear-gradient(#000, #000)",
+        WebkitMaskImage: "linear-gradient(#000, #000)",
+        maskSize: "100% 100%",
+        WebkitMaskSize: "100% 100%",
+        maskPosition: "0% 0%",
+        WebkitMaskPosition: "0% 0%",
+      }) as const,
+    [],
+  );
+
+  const revealStart = isShot1
+    ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" } // L→R
+    : isShot2
+      ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" } // R→L
+      : { maskPosition: "0% 100%", WebkitMaskPosition: "0% 100%" }; // T→B
+
+  const revealEnd = isShot1
+    ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" }
+    : isShot2
+      ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" }
+      : { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" };
+
+  const clipStart = isShot1
+    ? { clipPath: "inset(0 100% 0 0)", WebkitClipPath: "inset(0 100% 0 0)" }
+    : isShot2
+      ? { clipPath: "inset(0 0 0 100%)", WebkitClipPath: "inset(0 0 0 100%)" }
+      : { clipPath: "inset(100% 0 0 0)", WebkitClipPath: "inset(100% 0 0 0)" };
+
+  const clipEnd = { clipPath: "inset(0 0 0 0)", WebkitClipPath: "inset(0 0 0 0)" };
+
+  const endX = isDesktop ? "15%" : "8%";
+
+  const motionInitial = isShot1
+    ? { x: "0%", y: "0%", scale: 1, ...revealStart, ...clipStart }
+    : isShot2
+      ? { x: "0%", y: "6%", scale: 1, ...revealStart, ...clipStart }
+      : { x: "0%", y: "0%", scale: 1.4, ...revealStart, ...clipStart };
+
+  const motionAnimate = isShot1
+    ? { x: `-${endX}`, y: "0%", scale: 1, ...revealEnd, ...clipEnd }
+    : isShot2
+      ? { x: endX, y: "10%", scale: 1, ...revealEnd, ...clipEnd }
+      : { x: "0%", y: "0%", scale: 1.0, ...revealEnd, ...clipEnd };
+
+  const duration = isShot3 ? 0.8 : 1.2;
+
+  return (
+    <div className="absolute inset-0 z-[35] pointer-events-none">
+      <div className="absolute left-1/2 top-[38%] md:top-[40%] -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12 flex justify-center">
+        <motion.p
+          key={currentSlide}
+          initial={motionInitial}
+          animate={motionAnimate}
+          transition={{ duration, ease: "easeOut" }}
+          onAnimationComplete={() => setRevealDone(true)}
+          className={[
+            "select-none",
+            "font-sans font-bold",
+            "text-white/35",
+            isShot1 ? "text-left" : isShot2 ? "text-right" : "text-center",
+            "leading-[1.12]",
+            "whitespace-normal",
+            "break-words",
+            "mx-auto",
+            "max-w-[min(86vw,44rem)] md:max-w-[min(78vw,52rem)]",
+            "text-[clamp(1.45rem,3.6vw,3.5rem)]",
+          ].join(" ")}
+          style={{
+            ...maskCommon,
+            ...(revealDone ? solidMask : isShot3 ? maskTB : maskLR),
+            ...(revealDone ? {} : revealEnd),
+            textShadow: "0 12px 40px rgba(0,0,0,0.35)",
+          }}
+        >
+          {HERO_SLIDES[currentSlide].subtitle}
+        </motion.p>
+      </div>
+    </div>
+  );
 }
 
 export default function Home() {
@@ -153,110 +290,7 @@ export default function Home() {
           {/* Hydration-safe Grid Overlay */}
           <HeroGridOverlay />
 
-          {/* Subtitle layer — absolute, above foreground content */}
-          <div className="absolute inset-0 z-[35] pointer-events-none">
-            {(() => {
-              const shot = getSubtitleShot(currentSlide);
-              const isShot1 = shot === 0;
-              const isShot2 = shot === 1;
-              const isShot3 = shot === 2;
-
-              const maskCommon = {
-                maskRepeat: "no-repeat",
-                WebkitMaskRepeat: "no-repeat",
-              } as const;
-
-              const maskLR = {
-                maskImage:
-                  "linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
-                WebkitMaskImage:
-                  "linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
-                maskSize: "220% 100%",
-                WebkitMaskSize: "220% 100%",
-              } as const;
-
-              const maskTB = {
-                maskImage:
-                  "linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
-                WebkitMaskImage:
-                  "linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
-                maskSize: "100% 220%",
-                WebkitMaskSize: "100% 220%",
-              } as const;
-
-              const revealStart =
-                isShot1
-                  ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" } // L→R
-                  : isShot2
-                    ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" } // R→L
-                    : { maskPosition: "0% 100%", WebkitMaskPosition: "0% 100%" }; // T→B
-
-              const revealEnd =
-                isShot1
-                  ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" }
-                  : isShot2
-                    ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" }
-                    : { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" };
-
-              const clipStart = isShot1
-                ? { clipPath: "inset(0 100% 0 0)", WebkitClipPath: "inset(0 100% 0 0)" }
-                : isShot2
-                  ? { clipPath: "inset(0 0 0 100%)", WebkitClipPath: "inset(0 0 0 100%)" }
-                  : { clipPath: "inset(100% 0 0 0)", WebkitClipPath: "inset(100% 0 0 0)" };
-
-              const clipEnd = { clipPath: "inset(0 0 0 0)", WebkitClipPath: "inset(0 0 0 0)" };
-
-              const endX = isDesktop ? "15%" : "8%";
-              const motionInitial = isShot1
-                ? { x: "0%", y: "0%", scale: 1, ...revealStart, ...clipStart }
-                : isShot2
-                  ? { x: "0%", y: "6%", scale: 1, ...revealStart, ...clipStart }
-                  : { x: "0%", y: "0%", scale: 1.4, ...revealStart, ...clipStart };
-
-              const motionAnimate = isShot1
-                ? { x: `-${endX}`, y: "0%", scale: 1, ...revealEnd, ...clipEnd }
-                : isShot2
-                  ? { x: endX, y: "10%", scale: 1, ...revealEnd, ...clipEnd }
-                  : { x: "0%", y: "0%", scale: 1.0, ...revealEnd, ...clipEnd };
-
-              const duration = isShot3 ? 0.8 : 1.2;
-
-              return (
-                <div
-                  className={[
-                    "absolute left-1/2 top-[38%] md:top-[40%] -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12",
-                    "flex justify-center",
-                  ].join(" ")}
-                >
-                  <motion.p
-                    key={currentSlide}
-                    initial={motionInitial}
-                    animate={motionAnimate}
-                    transition={{ duration, ease: "easeOut" }}
-                    className={[
-                      "select-none",
-                      "font-sans font-bold",
-                      "text-white/35",
-                      isShot1 ? "text-left" : isShot2 ? "text-right" : "text-center",
-                      "leading-[1.12]",
-                      "whitespace-normal",
-                      "break-words",
-                      "mx-auto",
-                      "max-w-[min(86vw,44rem)] md:max-w-[min(78vw,52rem)]",
-                      "text-[clamp(1.45rem,3.6vw,3.5rem)]",
-                    ].join(" ")}
-                    style={{
-                      ...maskCommon,
-                      ...(isShot3 ? maskTB : maskLR),
-                      textShadow: "0 12px 40px rgba(0,0,0,0.35)",
-                    }}
-                  >
-                    {HERO_SLIDES[currentSlide].subtitle}
-                  </motion.p>
-                </div>
-              );
-            })()}
-          </div>
+          <HeroSubtitleLayer currentSlide={currentSlide} isDesktop={isDesktop} />
 
           {/* Content container — anchored to bottom-left, occupying bottom 50% of hero */}
           <div className="absolute bottom-0 left-0 right-0 z-30 h-[50vh] flex flex-col justify-end px-6 md:px-12 pb-12 md:pb-16">
