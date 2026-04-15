@@ -44,7 +44,7 @@ export default function AboutPage() {
             {/* Quote Block - Replicated from Landing Page Style */}
             <div className="relative pt-20 max-w-4xl mx-auto mml-ab-hero__quote-container">
               {/* Large Quote Symbol */}
-              <span className="absolute top-20 left-10 md:left-10 text-[200px] md:text-[280px] z-20 text-tertiary font-serif leading-none italic pointer-events-none select-none mml-ab-hero__quote-symbol">
+              <span className="absolute top-10 left-10 md:left-10 text-[200px] md:text-[280px] z-20 text-tertiary font-serif leading-none italic pointer-events-none select-none mml-ab-hero__quote-symbol">
                 &ldquo;
               </span>
 

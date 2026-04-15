@@ -81,7 +81,7 @@ export default function PracticeAreasPage() {
 
                       
                       {/* Left Column (Text) */}
-                      <div className="relative p-12 lg:p-16 flex flex-col justify-center min-h-[300px] md:min-h-[400px] mml-pa-row__desc">
+                      <div className="relative p-6 lg:p-16 flex flex-col justify-center min-h-[300px] md:min-h-[400px] mml-pa-row__desc">
                         <div className="space-y-8 relative z-10">
                           {/* Title & Number */}
                           <div className="space-y-4">
@@ -137,7 +137,7 @@ export default function PracticeAreasPage() {
                       </div>
 
                       {/* Right Column (Continuous Image) */}
-                      <div className="relative h-[250px] md:h-auto">
+                      <div className="relative w-90 h-[250px] md:h-auto">
                         {/* Breakout container: only expands on active and md screen upwards */}
                         <div className={`absolute inset-0 transition-all duration-1000 ease-[0.16,1,0.3,1] z-10 ${isActive ? 'md:-mr-[calc(50vw-50%)]' : ''}`}>
 

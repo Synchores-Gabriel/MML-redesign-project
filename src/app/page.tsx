@@ -118,7 +118,7 @@ export default function Home() {
           {/* Content container — anchored to bottom-left, occupying bottom 50% of hero */}
           <div className="absolute bottom-0 left-0 right-0 z-30 h-[50vh] flex flex-col justify-end px-6 md:px-12 pb-12 md:pb-16">
             <div className="max-w-screen-2xl mx-auto w-full">
-              <RevealStagger className="space-y-5 max-w-3xl mml-lp-hero__stagger">
+              <RevealStagger className="space-y-5 max-w-6xl md:max-w-3xl mml-lp-hero__stagger">
                 <div className="space-y-4 mml-res-stack--mobile">
                   <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] md:text-xs inline-block">Established 1970</span>
 
@@ -136,8 +136,7 @@ export default function Home() {
                       className="mml-hero-lp__logo-text font-serif uppercase tracking-wider leading-snug text-tertiary font-semibold"
                       style={{ textShadow: '0 2px 16px rgba(0,0,0,0.5), 0 4px 32px rgba(179,142,62,0.2)' }}
                     >
-                      <span className="block text-2xl md:text-4xl lg:text-5xl">MM. LAZARO</span>
-                      <span className="block text-2xl md:text-4xl lg:text-5xl">and ASSOCIATES</span>
+                      <span className="block text-2xl md:text-4xl lg:text-5xl">MM. LAZARO and ASSOCIATES</span>
                       <span className="block text-2xl md:text-4xl lg:text-5xl">LAW OFFICES</span>
                     </h1>
                   </div>
