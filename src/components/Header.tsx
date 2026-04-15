@@ -102,7 +102,7 @@ export const Header = () => {
               key={link.name}
               href={link.href}
               className={cn(
-                "text-sm font-sans font-bold tracking-[0.12em] transition-all duration-400 py-2 border-b-[3px] border-transparent mml-global-header__nav-link",
+                "text-base font-sans font-bold tracking-[0.08em] transition-all duration-400 py-2 border-b-[3px] border-transparent mml-global-header__nav-link",
                 navColor
               )}
             >

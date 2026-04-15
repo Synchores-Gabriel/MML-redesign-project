@@ -75,7 +75,7 @@ export default function Home() {
 
       <main className="flex-grow scroll-smooth bg-neutral">
         {/* HERO SECTION 1 - CINEMATIC SQUARE GRID */}
-        <section id="mml-lp-hero" className="relative min-h-screen flex flex-col justify-end px-6 md:px-12 pb-12 md:pb-16 overflow-hidden bg-primary mml-res-container">
+        <section id="mml-lp-hero" className="relative min-h-screen overflow-hidden bg-primary">
 
           {/* BACKGROUND VIDEO SLIDER */}
           <div className="mml-hero-lp__bg-slider absolute inset-0 z-0 overflow-hidden">
@@ -106,64 +106,65 @@ export default function Home() {
           {/* Hydration-safe Grid Overlay */}
           <HeroGridOverlay />
 
-          {/* Content container — constrained to bottom 50% of viewport */}
-          <div className="relative z-30 max-w-screen-2xl mx-auto w-full max-h-[50vh] flex flex-col justify-end mml-res-container">
+          {/* Content container — anchored to bottom-left, occupying bottom 50% of hero */}
+          <div className="absolute bottom-0 left-0 right-0 z-30 h-[50vh] flex flex-col justify-end px-6 md:px-12 pb-12 md:pb-16">
+            <div className="max-w-screen-2xl mx-auto w-full">
+              <RevealStagger className="space-y-5 max-w-3xl mml-lp-hero__stagger">
+                <div className="space-y-4 mml-res-stack--mobile">
+                  <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] md:text-xs inline-block">Established 1970</span>
 
-            <RevealStagger className="space-y-5 max-w-3xl mml-lp-hero__stagger">
-              <div className="space-y-4 mml-res-stack--mobile">
-                <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] md:text-xs inline-block">Established 1970</span>
-                
-                {/* GRAND LOGO & NAME IDENTITY */}
-                <div className="mml-hero-lp__brand-wrap flex items-center gap-4 md:gap-6">
-                  <div className="relative w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24 shrink-0 drop-shadow-2xl">
-                    <Image
-                      src="/asset/mma-logo-hq.png"
-                      alt="MML Logo"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <h1
-                    className="mml-hero-lp__logo-text font-serif uppercase tracking-wider leading-snug text-tertiary font-semibold"
-                    style={{ textShadow: '0 2px 16px rgba(0,0,0,0.5), 0 4px 32px rgba(179,142,62,0.2)' }}
-                  >
-                    <span className="block text-2xl md:text-4xl lg:text-5xl">MM. LAZARO</span>
-                    <span className="block text-2xl md:text-4xl lg:text-5xl">and ASSOCIATES</span>
-                    <span className="block text-2xl md:text-4xl lg:text-5xl">LAW OFFICES</span>
-                  </h1>
-                </div>
-
-                {/* DYNAMIC SUBTITLE SYSTEM */}
-                <div className="mml-hero-lp__sub-wrap grid grid-cols-1 min-h-[1.5em] md:min-h-[1.8em]">
-                  <AnimatePresence mode="wait">
-                    <motion.p
-                      key={currentSlide}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.8 }}
-                      className="mml-hero-lp__sub-text col-start-1 row-start-1 text-white/70 italic font-serif text-base md:text-xl pr-12 leading-tight"
+                  {/* GRAND LOGO & NAME IDENTITY */}
+                  <div className="mml-hero-lp__brand-wrap flex items-center gap-4 md:gap-6">
+                    <div className="relative w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24 shrink-0 drop-shadow-2xl">
+                      <Image
+                        src="/asset/mma-logo-hq.png"
+                        alt="MML Logo"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <h1
+                      className="mml-hero-lp__logo-text font-serif uppercase tracking-wider leading-snug text-tertiary font-semibold"
+                      style={{ textShadow: '0 2px 16px rgba(0,0,0,0.5), 0 4px 32px rgba(179,142,62,0.2)' }}
                     >
-                      {HERO_SLIDES[currentSlide].subtitle}
-                    </motion.p>
-                  </AnimatePresence>
+                      <span className="block text-2xl md:text-4xl lg:text-5xl">MM. LAZARO</span>
+                      <span className="block text-2xl md:text-4xl lg:text-5xl">and ASSOCIATES</span>
+                      <span className="block text-2xl md:text-4xl lg:text-5xl">LAW OFFICES</span>
+                    </h1>
+                  </div>
+
+                  {/* DYNAMIC SUBTITLE SYSTEM */}
+                  <div className="mml-hero-lp__sub-wrap grid grid-cols-1 min-h-[1.5em] md:min-h-[1.8em]">
+                    <AnimatePresence mode="wait">
+                      <motion.p
+                        key={currentSlide}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.8 }}
+                        className="mml-hero-lp__sub-text col-start-1 row-start-1 text-white/70 italic font-serif text-base md:text-xl pr-12 leading-tight"
+                      >
+                        {HERO_SLIDES[currentSlide].subtitle}
+                      </motion.p>
+                    </AnimatePresence>
+                  </div>
+
+                  <p className="text-neutral/60 font-sans text-sm md:text-base font-medium max-w-xl leading-relaxed">
+                    Precision legal counsel grounded in heritage and modern jurisprudence.
+                  </p>
                 </div>
 
-                <p className="text-neutral/60 font-sans text-sm md:text-base font-medium max-w-xl leading-relaxed mml-res-text--fluid">
-                  Precision legal counsel grounded in heritage and modern jurisprudence.
-                </p>
-              </div>
-
-              <div className="flex gap-5 mml-lp-hero__actions">
-                <Link href="#mml-lp-about" className="glow-gold px-8 py-3 md:px-10 md:py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-xs uppercase mml-lp-hero__btn-more inline-block">
-                  MORE ABOUT US
-                </Link>
-                <div className="w-px h-10 bg-white/10 hidden md:block mml-lp-hero__divider" />
-                <button className="group flex items-center gap-3 text-white font-sans font-bold tracking-[0.2em] text-xs uppercase hover:text-tertiary transition-colors duration-400 mml-lp-hero__btn-consult">
-                  CONSULT NOW <span className="bg-white/10 p-2 rounded-full group-hover:bg-tertiary/20 group-hover:pl-4 transition-all duration-400 mml-lp-hero__btn-icon"><ArrowRight size={14} /></span>
-                </button>
-              </div>
-            </RevealStagger>
+                <div className="flex gap-5 mml-lp-hero__actions">
+                  <Link href="#mml-lp-about" className="glow-gold px-8 py-3 md:px-10 md:py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-xs uppercase mml-lp-hero__btn-more inline-block">
+                    MORE ABOUT US
+                  </Link>
+                  <div className="w-px h-10 bg-white/10 hidden md:block mml-lp-hero__divider" />
+                  <button className="group flex items-center gap-3 text-white font-sans font-bold tracking-[0.2em] text-xs uppercase hover:text-tertiary transition-colors duration-400 mml-lp-hero__btn-consult">
+                    CONSULT NOW <span className="bg-white/10 p-2 rounded-full group-hover:bg-tertiary/20 group-hover:pl-4 transition-all duration-400 mml-lp-hero__btn-icon"><ArrowRight size={14} /></span>
+                  </button>
+                </div>
+              </RevealStagger>
+            </div>
           </div>
         </section>
 
@@ -206,14 +207,14 @@ export default function Home() {
 
         {/* ABOUT THE FIRM SECTION */}
         <section id="mml-lp-about" className="py-24 md:py-40 px-6 md:px-12 wood-dark relative overflow-hidden">
-          <div className="max-w-screen-2xl mx-auto text-center space-y-16 relative z-10 mml-res-container">
-            <Reveal className="space-y-12">
-              <div className="space-y-6 mml-res-stack--mobile">
-                <span className="text-tertiary uppercase tracking-[0.6em] font-sans font-bold text-[10px] md:text-xs">The Legacy</span>
-                <h2 className="text-4xl md:text-6xl font-serif text-white uppercase leading-tight font-black mml-res-text--fluid-lg">Authority of Experience.</h2>
+          <div className="flex justify-center max-w-screen-2xl mx-auto text-center space-y-16 relative z-10 mml-res-container">
+            <Reveal className="space-y-12 flex flex-col items-center">
+              <div className="space-y-6 flex flex-col items-center">
+                <span className="text-tertiary uppercase tracking-[0.6em] font-sans font-bold text-[10px] md:text-xs text-center">The Legacy</span>
+                <h2 className="text-4xl md:text-6xl font-serif text-white uppercase leading-tight font-black mml-res-text--fluid-lg text-center">Authority of Experience.</h2>
               </div>
 
-              <div className="space-y-8 text-neutral/60 font-sans leading-relaxed text-lg max-w-3xl mx-auto mml-lp-about__desc">
+              <div className="space-y-8 text-neutral/60 font-sans leading-relaxed text-lg max-w-3xl mx-auto text-center mml-lp-about__desc">
                 <p>
                   M. M. Lazaro and Associates is an established, full-service law firm with an impeccable record in its more than four (4) decades of providing premier legal service.
                 </p>
@@ -221,8 +222,8 @@ export default function Home() {
                   Leveraging its collective expertise, the Firm is committed to advocating its clients&apos; legal and business interests with the highest degree of competence and integrity.
                 </p>
               </div>
-              <div className="relative pt-20 max-w-4xl mx-auto mml-lp-about__quote-container">
-                <span className="absolute -top-10 -left-20 text-[280px] z-20 text-tertiary/20 font-serif leading-none italic mml-lp-about__quote-symbol pointer-events-none select-none">&ldquo;</span>
+              <div className="relative max-w-4xl mx-auto w-full mml-lp-about__quote-container">
+                <span className="absolute top-0 left-0 -translate-y-[20%] translate-x-[40%] text-[220px] z-20 text-tertiary font-serif leading-none italic mml-lp-about__quote-symbol pointer-events-none select-none">&ldquo;</span>
                 <blockquote className="relative z-10 bg-white p-12 md:p-16 border-l-8 border-tertiary italic font-sans text-primary text-xl md:text-2xl shadow-2xl mml-lp-about__quote leading-relaxed text-left">
                   An innovative law firm by building long-term relationships with clients based on reciprocity, trust and highest standards of professional ethics. By adopting new models for the delivery of legal services, we strive to redefine the role that a law firm plays in an emerging regional market, in order to produce truly exceptional results for our clients.
                 </blockquote>

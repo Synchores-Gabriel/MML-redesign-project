@@ -73,7 +73,7 @@ function LawyerCard({
     const checkPosition = () => {
       if (!cardRef.current) return;
       const width = window.innerWidth;
-      const cols = width >= 1024 ? 3 : width >= 768 ? 2 : 1;
+      const cols = width >= 1024 ? 3 : 2; // 2 columns on mobile/tablet, 3 on desktop
       const column = index % cols;
       const isRightMost = column === (cols - 1);
       setExpandDirection(isRightMost ? "left" : "right");
@@ -86,12 +86,12 @@ function LawyerCard({
   return (
     <div
       ref={cardRef}
-      className="relative mml-lw-card"
+      className="relative w-full mml-lw-card"
       onClick={() => onMobileClick(lawyer)}
     >
-      <div className={`relative flex flex-col md:block md:aspect-square glass-card shadow-2xl rounded-[12px] overflow-hidden border border-white/20 transition-all duration-700 cursor-pointer ${isHovered ? 'shadow-ambient ring-1 ring-tertiary/20' : ''}`}>
+      <div className={`relative w-full flex flex-col md:block md:aspect-square glass-card shadow-2xl rounded-[12px] overflow-hidden border border-white/20 transition-all duration-700 cursor-pointer ${isHovered ? 'shadow-ambient ring-1 ring-tertiary/20' : ''}`}>
 
-        {/* Person Image: Always square (relative/aspect-square on mobile, absolute/fill on desktop) */}
+        {/* Person Image: Always square */}
         <div className="relative aspect-square md:absolute md:inset-0 mml-lw-card__image-container">
           <Image
             src={lawyer.img}
@@ -102,9 +102,9 @@ function LawyerCard({
           <div className={`absolute inset-0 bg-primary/20 transition-opacity duration-700 ${isHovered ? 'opacity-0' : 'opacity-10'}`} />
         </div>
 
-        {/* Info Block: Relative below on mobile, Absolute overlay on desktop */}
+        {/* Info Block: Below image on mobile, overlay on desktop */}
         <div className={`
-          relative md:absolute md:inset-x-0 md:bottom-0 p-6 space-y-2 bg-white/95 md:bg-white/90 backdrop-blur-md mml-lw-card__content transition-all duration-500
+          relative md:absolute md:inset-x-0 md:bottom-0 p-4 md:p-6 space-y-2 bg-white/95 md:bg-white/90 backdrop-blur-md mml-lw-card__content transition-all duration-500
           ${isHovered ? 'md:translate-y-0' : 'md:translate-y-1 md:opacity-90'}
         `}>
           <div className="space-y-1">
@@ -144,7 +144,7 @@ function LawyerCard({
               damping: 20,
               mass: 1
             }}
-            className={`hidden md:flex absolute top-2 bottom-2 w-full ${expandDirection === "right" ? 'left-[-8px]' : 'right-[-8px]'} z-[-1] pointer-events-none origin-${expandDirection === "right" ? 'left' : 'right'}`}
+            className={`hidden md:flex absolute top-2 bottom-2 w-full ${expandDirection === "right" ? 'left-[-8px]' : 'right-[-8px]'} z-[-1] pointer-events-none ${expandDirection === "right" ? 'origin-left' : 'origin-right'}`}
           >
             <div className="w-full h-full glass-overlay p-8 flex flex-col justify-center border border-white/20 shadow-2xl overflow-hidden mml-lw-card__bio-overlay rounded-[12px]">
               <div className="relative z-10 space-y-4">
@@ -194,7 +194,7 @@ export default function LawyersPage() {
 
 
           <section className="relative">
-            <RevealStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-16 mml-res-flow--desktop">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
 
               {lawyers.map((lawyer, i) => (
                 <div
@@ -213,7 +213,7 @@ export default function LawyersPage() {
                   />
                 </div>
               ))}
-            </RevealStagger>
+            </div>
           </section>
 
         </div>

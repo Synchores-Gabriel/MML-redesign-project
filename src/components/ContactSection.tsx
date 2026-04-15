@@ -68,7 +68,7 @@ export const ContactSection = () => {
           <RevealStagger className="relative z-10 space-y-12">
             <div className="space-y-4 mml-res-stack--mobile">
               <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px]">Case Inquiry</span>
-              <h3 className="text-2xl md:text-3xl font-serif text-white uppercase tracking-tight font-black mml-res-text--fluid-lg">Request Counsel</h3>
+              <h3 className="text-xl md:text-2xl font-serif text-white uppercase tracking-tight font-black">Request Counsel</h3>
               <p className="text-white/40 font-sans text-sm mml-res-text--fluid">A designated representative will respond to your inquiry within 24 hours.</p>
             </div>
 
