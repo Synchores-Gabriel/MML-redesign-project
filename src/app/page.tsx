@@ -95,26 +95,35 @@ function HeroSubtitleLayer({
     [],
   );
 
-  const maskLR = useMemo(
+  const maskLtoR = useMemo(
     () =>
       ({
-        maskImage:
-          "linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
-        WebkitMaskImage:
-          "linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
+        // One-sided feather: only the leading edge is transparent.
+        // This prevents any trailing-edge “fade-out” while drifting.
+        maskImage: "linear-gradient(90deg, transparent 0%, #000 16%, #000 100%)",
+        WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 16%, #000 100%)",
         maskSize: "220% 100%",
         WebkitMaskSize: "220% 100%",
       }) as const,
     [],
   );
 
-  const maskTB = useMemo(
+  const maskRtoL = useMemo(
     () =>
       ({
-        maskImage:
-          "linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
-        WebkitMaskImage:
-          "linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%)",
+        maskImage: "linear-gradient(90deg, #000 0%, #000 84%, transparent 100%)",
+        WebkitMaskImage: "linear-gradient(90deg, #000 0%, #000 84%, transparent 100%)",
+        maskSize: "220% 100%",
+        WebkitMaskSize: "220% 100%",
+      }) as const,
+    [],
+  );
+
+  const maskTtoB = useMemo(
+    () =>
+      ({
+        maskImage: "linear-gradient(180deg, transparent 0%, #000 16%, #000 100%)",
+        WebkitMaskImage: "linear-gradient(180deg, transparent 0%, #000 16%, #000 100%)",
         maskSize: "100% 220%",
         WebkitMaskSize: "100% 220%",
       }) as const,
@@ -193,7 +202,7 @@ function HeroSubtitleLayer({
           ].join(" ")}
           style={{
             ...maskCommon,
-            ...(revealDone ? solidMask : isShot3 ? maskTB : maskLR),
+            ...(revealDone ? solidMask : isShot3 ? maskTtoB : isShot2 ? maskRtoL : maskLtoR),
             ...(revealDone ? {} : revealEnd),
             textShadow: "0 12px 40px rgba(0,0,0,0.35)",
           }}
