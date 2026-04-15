@@ -95,10 +95,10 @@ export default function Home() {
   useEffect(() => {
     if (activePractice) {
       const iconAngles: Record<string, number> = {
-        corp: 0,
-        lit: 90,
-        real: 180,
-        tax: 270,
+        corp: 90,
+        lit: 180,
+        real: 270,
+        tax: 0,
       };
       const targetAngle = 90 - iconAngles[activePractice];
       setOrbitAngle(targetAngle);
@@ -295,7 +295,7 @@ export default function Home() {
               {/* CORE GRAPHIC - Icon Hub (Green in diagram) with overflow visible for bleeding icons */}
               <motion.div
                 animate={{ rotate: orbitAngle }}
-                transition={{ ease: "easeOut", duration: 0.6 }}
+                transition={{ ease: "easeOut", duration: 0.3 }}
                 className="w-64 h-64 md:w-[500px] md:h-[500px] lg:w-[480px] lg:h-[480px] rounded-full border border-primary/20 flex items-center justify-center relative bg-white/40 backdrop-blur-xl shadow-2xl transition-all duration-1000"
               >
 
@@ -308,17 +308,17 @@ export default function Home() {
                 </div>
 
                 {/* Floating icons with shadows - Now fully visible due to overflow override */}
-                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-1" style={{ transform: `translate(-50%, -50%) rotate(0deg) translate(${radius}) rotate(0deg)` }}>
+                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-1" style={{ transform: `translate(-50%, -50%) rotate(90deg) translate(${radius}) rotate(-90deg)` }}>
                   <Building2 size={36} className="text-secondary" />
                 </div>
-                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-2" style={{ transform: `translate(-50%, -50%) rotate(270deg) translate(${radius}) rotate(-270deg)` }}>
-                  <Calculator size={36} className="text-tertiary" />
-                </div>
-                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-3" style={{ transform: `translate(-50%, -50%) rotate(90deg) translate(${radius}) rotate(-90deg)` }}>
+                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-2" style={{ transform: `translate(-50%, -50%) rotate(180deg) translate(${radius}) rotate(-180deg)` }}>
                   <Gavel size={36} className="text-primary/40" />
                 </div>
-                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-4" style={{ transform: `translate(-50%, -50%) rotate(180deg) translate(${radius}) rotate(-180deg)` }}>
+                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-3" style={{ transform: `translate(-50%, -50%) rotate(270deg) translate(${radius}) rotate(-270deg)` }}>
                   <Landmark size={36} className="text-primary/40" />
+                </div>
+                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-4" style={{ transform: `translate(-50%, -50%) rotate(0deg) translate(${radius}) rotate(0deg)` }}>
+                  <Calculator size={36} className="text-tertiary" />
                 </div>
               </motion.div>
             </Reveal>

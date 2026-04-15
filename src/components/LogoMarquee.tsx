@@ -39,8 +39,8 @@ export function LogoMarquee() {
     if (e.shiftKey) {
       e.preventDefault();
       const scrollAmount = e.deltaY * 0.5;
-      controls.set((prev: any) => ({
-        x: prev.x - scrollAmount,
+      controls.set((prev) => ({
+        x: (prev?.x || 0) - scrollAmount,
       }));
     }
   };
@@ -50,15 +50,12 @@ export function LogoMarquee() {
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
         <div
           ref={containerRef}
-          className="relative overflow-hidden cursor-grab active:cursor-grabbing"
+          className="relative overflow-hidden h-[100px]"
           onWheel={handleWheel}
         >
           <motion.div
             className="flex gap-12 items-center"
             animate={controls}
-            drag="x"
-            dragConstraints={{ left: -1000, right: 1000 }}
-            dragElastic={0.1}
             style={{ width: "200%" }}
           >
             {/* First set of logos */}
