@@ -47,6 +47,7 @@ export function LogoMarquee() {
 
   return (
     <section className="py-16 bg-neutral/50 relative overflow-hidden">
+      <h1 className="text-2xl font-bold text-center font-serif uppercase tracking-wider leading-snug text-tertiary font-semibold">Our Clients</h1>
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
         <div
           ref={containerRef}

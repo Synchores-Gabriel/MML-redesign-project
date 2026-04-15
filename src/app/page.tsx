@@ -66,6 +66,7 @@ export default function Home() {
   const [isDesktop, setIsDesktop] = useState(false);
   const [orbitAngle, setOrbitAngle] = useState(0);
   const [radius, setRadius] = useState('180px');
+  const orbitTransition = { ease: "easeOut", duration: 0.3 } as const;
 
   useEffect(() => {
     const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
@@ -147,7 +148,7 @@ export default function Home() {
           {/* Content container — anchored to bottom-left, occupying bottom 50% of hero */}
           <div className="absolute bottom-0 left-0 right-0 z-30 h-[50vh] flex flex-col justify-end px-6 md:px-12 pb-12 md:pb-16">
             <div className="max-w-screen-2xl mx-auto w-full">
-              <RevealStagger className="space-y-5 max-w-6xl md:max-w-3xl mml-lp-hero__stagger">
+              <RevealStagger className="space-y-5 max-w-6xl md:max-w-6xl mml-lp-hero__stagger">
                 <div className="space-y-4 mml-res-stack--mobile">
                   <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] md:text-xs inline-block">Established 1970</span>
 
@@ -295,7 +296,7 @@ export default function Home() {
               {/* CORE GRAPHIC - Icon Hub (Green in diagram) with overflow visible for bleeding icons */}
               <motion.div
                 animate={{ rotate: orbitAngle }}
-                transition={{ ease: "easeOut", duration: 0.3 }}
+                transition={orbitTransition}
                 className="w-64 h-64 md:w-[500px] md:h-[500px] lg:w-[480px] lg:h-[480px] rounded-full border border-primary/20 flex items-center justify-center relative bg-white/40 backdrop-blur-xl shadow-2xl transition-all duration-1000"
               >
 
@@ -303,22 +304,48 @@ export default function Home() {
                 {/* Inner hub ring */}
                 <div className="w-[85%] h-[85%] rounded-full border border-primary/10 flex items-center justify-center relative mml-lp-practice__core-inner lg:bg-white/10">
                   <div className="w-full h-full rounded-full bg-primary/5 ring-[15px] ring-primary/5 flex items-center justify-center ml-lp-practice__core-hub">
-                    <Scale size={160} className="text-tertiary/20" />
+                    {/* Counter-rotate icon so it stays upright while orbit rotates */}
+                    <motion.div
+                      animate={{ rotate: -orbitAngle }}
+                      transition={orbitTransition}
+                    >
+                      <Scale size={160} className="text-tertiary/20" />
+                    </motion.div>
                   </div>
                 </div>
 
                 {/* Floating icons with shadows - Now fully visible due to overflow override */}
                 <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-1" style={{ transform: `translate(-50%, -50%) rotate(90deg) translate(${radius}) rotate(-90deg)` }}>
-                  <Building2 size={36} className="text-secondary" />
+                  <motion.div
+                    animate={{ rotate: -orbitAngle }}
+                    transition={orbitTransition}
+                  >
+                    <Building2 size={36} className="text-secondary" />
+                  </motion.div>
                 </div>
                 <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-2" style={{ transform: `translate(-50%, -50%) rotate(180deg) translate(${radius}) rotate(-180deg)` }}>
-                  <Gavel size={36} className="text-primary/40" />
+                  <motion.div
+                    animate={{ rotate: -orbitAngle }}
+                    transition={orbitTransition}
+                  >
+                    <Gavel size={36} className="text-primary/40" />
+                  </motion.div>
                 </div>
                 <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-3" style={{ transform: `translate(-50%, -50%) rotate(270deg) translate(${radius}) rotate(-270deg)` }}>
-                  <Landmark size={36} className="text-primary/40" />
+                  <motion.div
+                    animate={{ rotate: -orbitAngle }}
+                    transition={orbitTransition}
+                  >
+                    <Landmark size={36} className="text-primary/40" />
+                  </motion.div>
                 </div>
                 <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-4" style={{ transform: `translate(-50%, -50%) rotate(0deg) translate(${radius}) rotate(0deg)` }}>
-                  <Calculator size={36} className="text-tertiary" />
+                  <motion.div
+                    animate={{ rotate: -orbitAngle }}
+                    transition={orbitTransition}
+                  >
+                    <Calculator size={36} className="text-tertiary" />
+                  </motion.div>
                 </div>
               </motion.div>
             </Reveal>
