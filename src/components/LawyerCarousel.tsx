@@ -39,7 +39,7 @@ export const LawyerCarousel = () => {
   const prev = () => setIndex((i) => (i - 1 + lawyers.length) % lawyers.length);
 
   return (
-    <div id="mml-comp-lawyers-carousel" className="relative w-full overflow-hidden min-h-[500px] md:min-h-[700px] flex items-center justify-center bg-[#4D4D4D] mml-comp-lawyers-carousel">
+    <div id="mml-comp-lawyers-carousel" className="relative w-full overflow-hidden h-auto flex items-center justify-center bg-[#4D4D4D] mml-comp-lawyers-carousel">
       <div className="absolute inset-0 bg-gradient-to-b from-[#4A4A4A] to-[#333333] mml-comp-lawyers-carousel__bg" />
 
       <div className="max-w-screen-2xl mx-auto w-full px-6 md:px-12 relative z-10 py-12 md:py-20 mml-res-container">
@@ -53,7 +53,7 @@ export const LawyerCarousel = () => {
         </div>
 
 
-        <div className="relative h-[500px] mml-comp-lawyers-carousel__track">
+        <div className="relative h-auto mml-comp-lawyers-carousel__track">
           <AnimatePresence mode="wait">
             {lawyers[index].type === "partner" ? (
               <motion.div
@@ -62,7 +62,7 @@ export const LawyerCarousel = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col md:flex-row bg-white rounded-sm overflow-hidden shadow-2xl min-h-[400px] max-w-5xl mx-auto mml-comp-lawyers-carousel__slide mml-comp-lawyers-carousel__slide--partner"
+                className="flex flex-col md:flex-row bg-white rounded-sm overflow-hidden shadow-2xl min-h-[400px] max-w-5xl mx-auto mml-comp-lawyers-carousel__slide mml-comp-lawyers-carousel__slide--partner scale-90 lg:scale-100"
               >
 
                 <div className="relative w-full md:w-[45%] aspect-[4/5] md:aspect-auto">

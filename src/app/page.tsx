@@ -7,6 +7,7 @@ import { GridAnimation } from "@/components/GridAnimation";
 import { LawyerCarousel } from "@/components/LawyerCarousel";
 import { Reveal, RevealStagger } from "@/components/Reveal";
 import { ContactSection } from "@/components/ContactSection";
+import { QuickLinks } from "@/components/QuickLinks";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -59,8 +60,16 @@ const HERO_SLIDES = [
 ];
 
 export default function Home() {
-  const [activePractice, setActivePractice] = useState<string | null>("corp");
+  const [activePractice, setActivePractice] = useState<string | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -294,6 +303,10 @@ export default function Home() {
                   <Reveal key={area.id} width="100%" className="h-full">
                     <button
                       onClick={() => setActivePractice(activePractice === area.id ? null : area.id)}
+                      {...(isDesktop && {
+                        onMouseEnter: () => setActivePractice(area.id),
+                        onMouseLeave: () => setActivePractice(null)
+                      })}
                       className={`text-left p-12 transition-all duration-500 border border-tertiary/10 w-full h-[320px] relative group flex flex-col overflow-hidden mml-lp-practice__card ${activePractice === area.id
                         ? 'bg-neutral ring-1 ring-tertiary/20 shadow-2xl'
                         : 'bg-white text-primary hover:bg-neutral'
@@ -335,31 +348,11 @@ export default function Home() {
 
         <div className="relative">
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
-          <section id="mml-lp-quick-links" className="px-6 md:px-12 relative z-30 -translate-y-[10%] md:-translate-y-[20%]">
-            <div className="max-w-screen-2xl mx-auto mml-res-container">
-              <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                {[
-                  { name: "About the Firm", href: "/about" },
-                  { name: "Our Lawyers", href: "/lawyers" },
-                  { name: "Practice Areas", href: "/practice-areas" },
-                ].map((link, i) => (
-                  <Link key={i} href={link.href} className="group relative block aspect-[16/7] overflow-hidden bg-primary shadow-2xl rounded-sm mml-lp-quick-links__link">
-                    {/* Gold Frame Effect literal look-a-like */}
-                    <div className="absolute inset-4 border-[0.5px] border-tertiary/20 z-20 group-hover:border-tertiary group-hover:inset-3 transition-all duration-500 mml-lp-quick-links__frame" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#1A243F] via-[#232D4B] to-[#0A0E1A] z-10 mml-lp-quick-links__gradient" />
-                    <div className="relative z-30 h-full w-full p-8 lg:p-10 flex flex-col justify-end mml-lp-quick-links__content">
-                      <span className="text-tertiary uppercase tracking-[0.4em] font-sans font-bold text-[8px] mb-2 opacity-60 group-hover:opacity-100 transition-opacity mml-lp-quick-links__tag">Explore</span>
-                      <h3 className="text-xl lg:text-2xl font-serif text-white uppercase tracking-tight mml-lp-quick-links__title leading-tight">{link.name}</h3>
-                    </div>
-                    <div className="absolute top-0 right-0 p-8 z-30 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-2 group-hover:-translate-y-2 mml-lp-quick-links__icon">
-                      <ArrowRight size={20} className="text-tertiary" />
-                    </div>
-                  </Link>
-                ))}
-              </RevealStagger>
-            </div>
-          </section>
+          <QuickLinks translateClass="-translate-y-[5%] md:-translate-y-[20%]" links={[
+            { name: "About the Firm", href: "/about" },
+            { name: "Our Lawyers", href: "/lawyers" },
+            { name: "Practice Areas", href: "/practice-areas" },
+          ]} />
 
           {/* CONTACT SECTION — Uses shared component */}
           <ContactSection />

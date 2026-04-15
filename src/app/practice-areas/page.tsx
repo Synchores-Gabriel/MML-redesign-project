@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { RevealStagger, Reveal } from "@/components/Reveal";
 import { ContactSection } from "@/components/ContactSection";
+import { QuickLinks } from "@/components/QuickLinks";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,7 +39,7 @@ const practices = [
 ];
 
 export default function PracticeAreasPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <>
@@ -164,30 +165,11 @@ export default function PracticeAreasPage() {
 
         <div className="relative">
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
-          <section id="mml-pa-quick-links" className="px-12 relative z-30 -translate-y-[20%] mml-pa-quick-links">
-            <div className="max-w-7xl mx-auto">
-              <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                  { name: "About the Firm", href: "/about" },
-                  { name: "Our Lawyers", href: "/lawyers" },
-                  { name: "Practice Areas", href: "/practice-areas" },
-                ].map((link, i) => (
-                  <Link key={i} href={link.href} className="group relative block aspect-[16/7] overflow-hidden bg-primary shadow-2xl rounded-sm mml-lp-quick-links__link">
-                    {/* Gold Frame Effect literal look-a-like */}
-                    <div className="absolute inset-4 border-[0.5px] border-tertiary/20 z-20 group-hover:border-tertiary group-hover:inset-3 transition-all duration-500 mml-lp-quick-links__frame" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#1A243F] via-[#232D4B] to-[#0A0E1A] z-10 mml-lp-quick-links__gradient" />
-                    <div className="relative z-30 h-full w-full p-8 lg:p-10 flex flex-col justify-end mml-lp-quick-links__content">
-                      <span className="text-tertiary uppercase tracking-[0.4em] font-sans font-bold text-[8px] mb-2 opacity-60 group-hover:opacity-100 transition-opacity mml-lp-quick-links__tag">Explore</span>
-                      <h3 className="text-xl lg:text-2xl font-serif text-white uppercase tracking-tight mml-lp-quick-links__title leading-tight">{link.name}</h3>
-                    </div>
-                    <div className="absolute top-0 right-0 p-8 z-30 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-2 group-hover:-translate-y-2 mml-lp-quick-links__icon">
-                      <ArrowRight size={20} className="text-tertiary" />
-                    </div>
-                  </Link>
-                ))}
-              </RevealStagger>
-            </div>
-          </section>
+          <QuickLinks id="mml-pa-quick-links" links={[
+            { name: "About the Firm", href: "/about" },
+            { name: "Our Lawyers", href: "/lawyers" },
+            { name: "Practice Areas", href: "/practice-areas" },
+          ]} />
 
           {/* Contact Section — Uses shared component */}
           <ContactSection />

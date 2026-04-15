@@ -251,7 +251,7 @@ export default function LawyersPage() {
           )}
         </AnimatePresence>
 
-        <section id="mml-lp-quick-links" className="px-12 relative z-50 translate-y-[40%] mt-32 md:mt-48 mml-lp-quick-links">
+        <section id="mml-lp-quick-links" className="px-12 relative z-50 translate-y-[20%] mt-32 md:mt-48 mml-lp-quick-links">
           <div className="max-w-7xl mx-auto">
             <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
