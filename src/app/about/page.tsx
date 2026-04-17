@@ -96,11 +96,7 @@ export default function AboutPage() {
             {/* Right Column: Text Bio */}
             <RevealStagger className="space-y-8 mml-res-stack--mobile">
               <div className="space-y-4">
-                <h2 className="text-4xl md:text-7xl font-serif text-primary leading-tight mml-res-text--fluid-lg italic">Discover</h2>
-                <div className="space-y-1">
-                  <span className="text-secondary uppercase tracking-[0.4em] font-bold text-xs md:text-sm block">M.M. LAZARO</span>
-                  <div className="w-12 h-0.5 bg-tertiary/30" />
-                </div>
+                <h2 className="text-4xl md:text-7xl font-serif text-primary leading-tight mml-res-text--fluid-lg italic">MM LAZARO</h2>
               </div>
 
               <div className="space-y-6 text-primary/70 font-sans leading-relaxed text-base md:text-lg font-medium mml-res-text--fluid">
@@ -131,7 +127,7 @@ export default function AboutPage() {
               <Reveal className="mml-ab-card">
                 <div className="bg-white p-12 md:p-16 shadow-2xl border-t-8 border-tertiary flex flex-col space-y-6 mml-ab-card__glass-wrap">
                   <h3 className="text-3xl font-serif text-primary uppercase font-black mml-ab-card__title">Mission</h3>
-                  <p className="font-sans text-base text-primary/60 leading-relaxed mml-ab-card__text">
+                  <p className="font-sans text-base text-primary/60 mml-res-text--fluid leading-relaxed mml-ab-card__text">
                     Curabitur quas nets lacus et nulat iaculis lorems etis nisle varius vitae seditum
                     fugiatur ligula aliquam qui sequi. Lorem ipsum dolor sit amet, consectetur
                     adipiscing elit rutrum eleif arcu sit aspernatur nets fugit, sed quia.
@@ -143,7 +139,7 @@ export default function AboutPage() {
               <Reveal className="mml-ab-card" delay={0.2}>
                 <div className="bg-white p-12 md:p-16 shadow-2xl border-t-8 border-secondary flex flex-col space-y-6 mml-ab-card__glass-wrap">
                   <h3 className="text-3xl font-serif text-primary uppercase font-black mml-ab-card__title">Vision</h3>
-                  <p className="font-sans text-base text-primary/60 leading-relaxed mml-ab-card__text">
+                  <p className="font-sans text-base text-primary/60 mml-res-text--fluid leading-relaxed mml-ab-card__text">
                     Curabitur quas nets lacus et nulat iaculis lorems etis nisle varius vitae seditum
                     fugiatur ligula aliquam qui sequi. Lorem ipsum dolor sit amet, consectetur
                     adipiscing elit rutrum eleif arcu sit aspernatur nets fugit, sed quia.

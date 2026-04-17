@@ -144,16 +144,16 @@ function HeroSubtitleLayer({
   );
 
   const revealStart = isShot1
-    ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" } // L→R
+    ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" } // L→R (starts at transp side)
     : isShot2
-      ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" } // R→L
-      : { maskPosition: "0% 100%", WebkitMaskPosition: "0% 100%" }; // T→B
+      ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" } // R→L
+      : { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" }; // T→B
 
   const revealEnd = isShot1
-    ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" }
+    ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" }
     : isShot2
-      ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" }
-      : { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" };
+      ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" }
+      : { maskPosition: "0% 100%", WebkitMaskPosition: "0% 100%" };
 
   const clipStart = isShot1
     ? { clipPath: "inset(0 100% 0 0)", WebkitClipPath: "inset(0 100% 0 0)" }
@@ -180,8 +180,8 @@ function HeroSubtitleLayer({
   const duration = isShot3 ? 0.8 : 1.2;
 
   return (
-    <div className="absolute inset-0 z-[35] pointer-events-none">
-      <div className="absolute left-1/2 top-[38%] md:top-[40%] -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12 flex justify-center">
+    <div className="absolute inset-0 z-[35] pointer-events-none overflow-visible">
+      <div className="absolute left-1/2 top-[38%] md:top-[40%] -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12 flex justify-center overflow-visible">
         <motion.p
           key={currentSlide}
           initial={motionInitial}
@@ -199,12 +199,17 @@ function HeroSubtitleLayer({
             "mx-auto",
             "max-w-[min(86vw,44rem)] md:max-w-[min(78vw,52rem)]",
             "text-[clamp(1.45rem,3.6vw,3.5rem)]",
+            "overflow-visible",
           ].join(" ")}
           style={{
-            ...maskCommon,
-            ...(revealDone ? solidMask : isShot3 ? maskTtoB : isShot2 ? maskRtoL : maskLtoR),
-            ...(revealDone ? {} : revealEnd),
             textShadow: "0 12px 40px rgba(0,0,0,0.35)",
+            ...(revealDone
+              ? { maskImage: "none", WebkitMaskImage: "none", clipPath: "none", WebkitClipPath: "none" }
+              : {
+                ...maskCommon,
+                ...(isShot3 ? maskTtoB : isShot2 ? maskRtoL : maskLtoR),
+                ...revealEnd,
+              }),
           }}
         >
           {HERO_SLIDES[currentSlide].subtitle}
@@ -306,8 +311,6 @@ export default function Home() {
             <div className="max-w-screen-2xl mx-auto w-full">
               <RevealStagger className="space-y-5 max-w-6xl md:max-w-6xl mml-lp-hero__stagger">
                 <div className="space-y-4 mml-res-stack--mobile">
-                  <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] md:text-xs inline-block">Established 1970</span>
-
                   {/* GRAND LOGO & NAME IDENTITY */}
                   <div className="mml-hero-lp__brand-wrap flex items-center gap-4 md:gap-6">
                     <div className="relative w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24 shrink-0 drop-shadow-2xl">
@@ -322,24 +325,16 @@ export default function Home() {
                       className="mml-hero-lp__logo-text font-serif uppercase tracking-wider leading-snug text-tertiary font-semibold"
                       style={{ textShadow: '0 2px 16px rgba(0,0,0,0.5), 0 4px 32px rgba(179,142,62,0.2)' }}
                     >
-                      <span className="block text-2xl md:text-4xl lg:text-5xl">MM. LAZARO and ASSOCIATES</span>
-                      <span className="block text-2xl md:text-4xl lg:text-5xl">LAW OFFICES</span>
+                      <span className="block text-2xl md:text-4xl lg:text-5xl">MM LAZARO </span>
+                      <span className="block text-2xl md:text-4xl lg:text-5xl">and ASSOCIATES</span>
                     </h1>
                   </div>
-
-                  <p className="text-neutral/60 font-sans text-sm md:text-base font-medium max-w-xl leading-relaxed">
-                    Precision legal counsel grounded in heritage and modern jurisprudence.
-                  </p>
                 </div>
 
                 <div className="flex gap-5 mml-lp-hero__actions">
                   <Link href="#mml-lp-about" className="glow-gold px-8 py-3 md:px-10 md:py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-xs uppercase mml-lp-hero__btn-more inline-block">
                     MORE ABOUT US
                   </Link>
-                  <div className="w-px h-10 bg-white/10 hidden md:block mml-lp-hero__divider" />
-                  <button className="group flex items-center gap-3 text-white font-sans font-bold tracking-[0.2em] text-xs uppercase hover:text-tertiary transition-colors duration-400 mml-lp-hero__btn-consult">
-                    CONSULT NOW <span className="bg-white/10 p-2 rounded-full group-hover:bg-tertiary/20 group-hover:pl-4 transition-all duration-400 mml-lp-hero__btn-icon"><ArrowRight size={14} /></span>
-                  </button>
                 </div>
               </RevealStagger>
             </div>

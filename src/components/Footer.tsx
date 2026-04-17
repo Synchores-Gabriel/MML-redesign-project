@@ -24,9 +24,14 @@ export const Footer = () => {
                   className="object-contain"
                 />
               </div>
-              <span className="font-serif text-sm md:text-base leading-tight tracking-wider text-tertiary uppercase mml-global-footer__logo-text">
-                MM. LAZARO and ASSOCIATES<br />LAW OFFICES
-              </span>
+              <div
+                className={
+                  "flex flex-col font-serif text-sm md:text-base leading-tight tracking-wider text-tertiary uppercase mml-global-footer__logo-text"
+                }
+              >
+                <span>MM LAZARO</span>
+                <span>and ASSOCIATES</span>
+              </div>
             </Link>
 
             <p className="font-sans text-base text-neutral/40 leading-relaxed max-w-xs uppercase tracking-widest font-medium italic">
@@ -51,23 +56,23 @@ export const Footer = () => {
           </div>
 
           {/* Column 3: Navigation */}
-            <h4 className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral/30 border-b border-white/5 pb-4 mml-global-footer__link-col-title">
-              Firm
-            </h4>
-            <ul className="space-y-4 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60 mml-global-footer__link-col">
-              {[
-                { name: "ABOUT THE FIRM", href: "/about" },
-                { name: "OUR LAWYERS", href: "/lawyers" },
-                { name: "OUR PRACTICE AREAS", href: "/practice-areas" },
-                { name: "CONTACT US", href: "/contact" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link href={item.href} className="hover:text-white transition-colors duration-400 mml-global-footer__link">
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <h4 className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral/30 border-b border-white/5 pb-4 mml-global-footer__link-col-title">
+            Firm
+          </h4>
+          <ul className="space-y-4 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60 mml-global-footer__link-col">
+            {[
+              { name: "ABOUT THE FIRM", href: "/about" },
+              { name: "OUR LAWYERS", href: "/lawyers" },
+              { name: "OUR PRACTICE AREAS", href: "/practice-areas" },
+              { name: "CONTACT US", href: "/contact" },
+            ].map((item) => (
+              <li key={item.name}>
+                <Link href={item.href} className="hover:text-white transition-colors duration-400 mml-global-footer__link">
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
           {/* Column 4: Direct Entry */}
           <div className="space-y-8">
