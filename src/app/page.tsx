@@ -402,18 +402,23 @@ export default function Home() {
         </section>
 
         {/* PRACTICE DASHBOARD - MASSIVE SCALE FIG */}
-        <section id="mml-lp-practice" className="pt-20 md:pt-32 pb-0 px-6 md:px-12 bg-[#F5F5F3] relative overflow-hidden flex items-center min-h-[500px] md:min-h-[750px] mml-res-container">
-          {/* Practice Area massive graphic: Off-screen left logic for mobile/desktop */}
-          <div className="absolute -left-[300px] lg:-left-[200px] top-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none z-0">
-            <div className="w-[800px] h-[800px] md:w-[1200px] md:h-[1200px] rounded-full border-[30px] md:border-[60px] border-primary/20 flex items-center justify-center">
-              <div className="w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] rounded-full border-[20px] md:border-[40px] border-primary/10 flex items-center justify-center">
-                <Scale size={300} className="text-primary/5 translate-x-[100px] md:translate-x-[150px]" />
+        <section id="mml-lp-practice" className="pt-20 md:pt-32 pb-0 bg-[#F5F5F3] relative overflow-hidden">
+          {/* CONTENT CONTAINER - LOCKS TO THEME WIDTH */}
+          <div className="mml-res-container px-6 md:px-12 w-full flex items-center min-h-[500px] md:min-h-[750px] relative z-20">
+            {/* Practice Area massive decorative background scale */}
+            <div className="absolute -left-[300px] lg:-left-[200px] top-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none z-0">
+              <div className="w-[800px] h-[800px] md:w-[1200px] md:h-[1200px] rounded-full border-[30px] md:border-[60px] border-primary/20 flex items-center justify-center">
+                <div className="w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] rounded-full border-[20px] md:border-[40px] border-primary/10 flex items-center justify-center">
+                  <Scale size={300} className="text-primary/5 translate-x-[100px] md:translate-x-[150px]" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-24 relative z-10 w-full mml-res-container">
-            <PracticeAreasLeftColumn activePractice={activePractice} />
+            <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-24 relative z-10 w-full mml-res-container">
+              <PracticeAreasLeftColumn 
+                activePractice={activePractice} 
+                isDesktop={isDesktop}
+              />
 
             <div className="col-start-1 row-start-1 lg:col-start-2 lg:row-start-auto z-10 space-y-12 md:space-y-16 mml-res-stack--mobile">
               <RevealStagger className="space-y-6">
@@ -471,7 +476,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         <LogoMarquee />
 

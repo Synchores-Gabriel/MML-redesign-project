@@ -1,11 +1,12 @@
 "use client";
 
 import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Building2, Gavel, Landmark, Calculator, Scale } from "lucide-react";
 
 interface PracticeAreasLeftColumnProps {
   activePractice: string | null;
+  isDesktop: boolean;
 }
 
 const practiceData = [
@@ -15,22 +16,45 @@ const practiceData = [
   { id: "tax", icon: Calculator, initialAngle: 0, color: "text-tertiary" },
 ];
 
-export function PracticeAreasLeftColumn({ activePractice }: PracticeAreasLeftColumnProps) {
+export function PracticeAreasLeftColumn({ activePractice, isDesktop }: PracticeAreasLeftColumnProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [radius, setRadius] = useState(240); 
   const rotationMv = useMotionValue(0);
 
-  // Handle responsive radius
+  // Dynamic Radius Calculation based on section height
   useEffect(() => {
-    const updateRadius = () => {
-      if (window.innerWidth >= 1280) setRadius(240);
-      else if (window.innerWidth >= 1024) setRadius(200);
-      else if (window.innerWidth >= 768) setRadius(220); 
-      else setRadius(120);
+    if (!containerRef.current) return;
+    
+    const updateSize = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const height = rect.height || 500;
+      const width = rect.width || 500;
+      
+      // Calculate radius to be ~35-40% of the minor dimension, clamped
+      const side = Math.min(height, width);
+      let newRadius = isDesktop ? side * 0.38 : side * 0.45;
+      
+      // Safety clamps
+      if (isDesktop) {
+          newRadius = Math.max(180, Math.min(newRadius, 280));
+      } else {
+          newRadius = Math.max(110, Math.min(newRadius, 180));
+      }
+      
+      setRadius(newRadius);
     };
-    updateRadius();
-    window.addEventListener("resize", updateRadius);
-    return () => window.removeEventListener("resize", updateRadius);
-  }, []);
+
+    updateSize();
+    const ro = new ResizeObserver(updateSize);
+    ro.observe(containerRef.current);
+    window.addEventListener("resize", updateSize);
+    
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", updateSize);
+    };
+  }, [isDesktop]);
 
   const orbitTransition = { type: "spring", stiffness: 45, damping: 20, mass: 1 } as const;
 
@@ -38,13 +62,15 @@ export function PracticeAreasLeftColumn({ activePractice }: PracticeAreasLeftCol
     if (activePractice) {
       const activeItem = practiceData.find((p) => p.id === activePractice);
       if (activeItem) {
-        const targetAngle = -activeItem.initialAngle; 
+        // Desktop: 3 o'clock (0°). Mobile: 12 o'clock (-90°)
+        const landingAngle = isDesktop ? 0 : -90;
+        const targetOffset = landingAngle - activeItem.initialAngle; 
         
         let currentRotation = rotationMv.get();
         let currentNormalized = currentRotation % 360;
         if (currentNormalized < 0) currentNormalized += 360;
         
-        let delta = (targetAngle - currentNormalized) % 360;
+        let delta = (targetOffset - currentNormalized) % 360;
         if (delta > 180) delta -= 360;
         if (delta < -180) delta += 360;
         
@@ -54,27 +80,27 @@ export function PracticeAreasLeftColumn({ activePractice }: PracticeAreasLeftCol
     } else {
       animate(rotationMv, 0, orbitTransition);
     }
-  }, [activePractice, rotationMv]);
+  }, [activePractice, rotationMv, isDesktop]);
 
   return (
-    <div className="relative w-full h-[400px] md:h-full flex items-center justify-center lg:justify-start overflow-visible">
-      
-      {/* 
-          CONCENTRIC WRAPPER 
-          This container ensures ALL shared-center elements (rings, hub, atoms) 
-          are perfectly aligned.
-      */}
+    <div 
+        ref={containerRef}
+        className="relative w-full h-[450px] md:h-full flex items-center justify-center lg:justify-start overflow-visible mb-24 md:mb-0"
+    >
       <div className="relative w-0 h-0 flex items-center justify-center overflow-visible">
         
-        {/* Background Decoration Rings */}
-        <div className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full border border-primary/5 pointer-events-none" />
-        <div className="absolute w-[400px] h-[400px] md:w-[680px] md:h-[680px] rounded-full border border-primary/5 pointer-events-none" />
+        {/* Adaptive Background Rings */}
+        <div className="absolute rounded-full border border-primary/5 pointer-events-none" style={{ width: radius * 2.1, height: radius * 2.1 }} />
+        <div className="absolute rounded-full border border-primary/5 pointer-events-none" style={{ width: radius * 2.8, height: radius * 2.8 }} />
         <div className="absolute rounded-full border border-dashed border-primary/10 pointer-events-none" style={{ width: radius * 2, height: radius * 2 }} />
 
-        {/* CORE HUB */}
-        <div className="w-56 h-56 md:w-[420px] md:h-[420px] rounded-full border border-primary/5 flex items-center justify-center absolute bg-white/30 backdrop-blur-xl shadow-inner z-10">
+        {/* CORE HUB - Dynamically scales with radius to maintain proportions */}
+        <div 
+            className="rounded-full border border-primary/5 flex items-center justify-center absolute bg-white/30 backdrop-blur-xl shadow-inner z-10"
+            style={{ width: radius * 1.7, height: radius * 1.7 }}
+        >
           <div className="w-[85%] h-[85%] rounded-full border border-primary/5 flex items-center justify-center relative bg-primary/5">
-               <Scale size={180} className="text-secondary/10 opacity-30" />
+               <Scale size={radius * 0.75} className="text-secondary/10 opacity-30" />
           </div>
         </div>
 
@@ -121,7 +147,7 @@ function AtomIcon({ item, rotationMv, radius, isActive }: {
         ${isActive ? "ring-1 ring-tertiary scale-110 z-40" : "opacity-30 scale-90"}
       `}>
         <item.icon 
-          size={32} 
+          size={isActive ? 36 : 30} 
           className={item.color} 
         />
         
