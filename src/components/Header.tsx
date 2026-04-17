@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { BrandLogo } from "./BrandLogo";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -76,25 +77,12 @@ export const Header = () => {
         <div className="w-full max-w-screen-2xl mx-auto flex items-center justify-between mml-res-container">
 
           {/* ═══════ Logo — Unified "Editorial Juris" Identity ═══════ */}
-          <Link href="/" className="flex items-center gap-3 md:gap-4 group mml-global-header__logo shrink-0">
-            <div className="relative w-9 h-9 md:w-11 md:h-11 shrink-0">
-              <Image
-                src="/asset/mma-logo-hq.png"
-                alt="MML Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <div
-              className={cn(
-                "flex flex-col font-serif text-[11px] md:text-sm leading-snug tracking-wider transition-colors duration-400 uppercase font-semibold mml-global-header__logo-text",
-                logoColor
-              )}
-              style={{ textShadow: isScrolled ? 'none' : '0 1px 8px rgba(0,0,0,0.25)' }}
-            >
-              <span>MM LAZARO</span>
-              <span>and ASSOCIATES</span>
-            </div>
+          <Link href="/" className="group mml-global-header__logo shrink-0">
+            <BrandLogo
+              textClassName={logoColor}
+              size="md"
+              withShadow={!isScrolled}
+            />
           </Link>
 
           {/* ═══════ Navigation — Right Aligned ═══════ */}

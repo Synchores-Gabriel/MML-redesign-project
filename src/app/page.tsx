@@ -9,6 +9,7 @@ import { Reveal, RevealStagger } from "@/components/Reveal";
 import { ContactSection } from "@/components/ContactSection";
 import { QuickLinks } from "@/components/QuickLinks";
 import { LogoMarquee } from "@/components/LogoMarquee";
+import { BrandLogo } from "@/components/BrandLogo";
 import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -312,22 +313,12 @@ export default function Home() {
               <RevealStagger className="space-y-5 max-w-6xl md:max-w-6xl mml-lp-hero__stagger">
                 <div className="space-y-4 mml-res-stack--mobile">
                   {/* GRAND LOGO & NAME IDENTITY */}
-                  <div className="mml-hero-lp__brand-wrap flex items-center gap-4 md:gap-6">
-                    <div className="relative w-14 h-14 md:w-20 md:h-20 lg:w-24 lg:h-24 shrink-0 drop-shadow-2xl">
-                      <Image
-                        src="/asset/mma-logo-hq.png"
-                        alt="MML Logo"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                    <h1
-                      className="mml-hero-lp__logo-text font-serif uppercase tracking-wider leading-snug text-tertiary font-semibold"
-                      style={{ textShadow: '0 2px 16px rgba(0,0,0,0.5), 0 4px 32px rgba(179,142,62,0.2)' }}
-                    >
-                      <span className="block text-2xl md:text-4xl lg:text-5xl">MM LAZARO </span>
-                      <span className="block text-2xl md:text-4xl lg:text-5xl">and ASSOCIATES</span>
-                    </h1>
+                  <div className="mml-hero-lp__brand-wrap">
+                    <BrandLogo 
+                      textClassName="text-tertiary"
+                      size="lg"
+                      withShadow={true}
+                    />
                   </div>
                 </div>
 
@@ -342,7 +333,21 @@ export default function Home() {
         </section>
 
         {/* HERO SECTION 2 - BRANDED STRIP 1 */}
-        <section id="mml-lp-strip-1" className="relative min-h-[300px] md:h-[400px] flex items-center justify-start text-left px-6 md:px-24 wood-strip">
+        <section id="mml-lp-strip-1" className="relative min-h-[300px] md:h-[400px] flex items-center justify-start text-left px-6 md:px-24 overflow-hidden">
+          {/* Ken Burns Background */}
+          <div className="absolute inset-0 z-0">
+            <motion.div
+              initial={{ scale: 1, x: 0 }}
+              animate={{ scale: 1.1, x: "2%" }}
+              transition={{
+                duration: 15,
+                ease: "linear",
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+              className="absolute inset-x-[-5%] inset-y-[-5%] wood-strip opacity-100"
+            />
+          </div>
           <div className="absolute inset-0 bg-primary/40 z-10" />
           <Reveal style={{ overflow: "visible" }} className="relative z-20 space-y-6 max-w-3xl mml-res-stack--mobile">
             <h2 className="text-3xl md:text-5xl font-serif text-white uppercase italic tracking-tight mml-res-text--fluid-lg">
@@ -360,9 +365,21 @@ export default function Home() {
         </section>
 
         {/* HERO SECTION 3 - BRANDED STRIP 2 */}
-        <section id="mml-lp-strip-2" className="relative min-h-[300px] md:h-[400px] flex items-center justify-end text-right px-6 md:px-24 bg-[#1A243F]">
-
-          <div className="absolute inset-x-0 bottom-0 top-0 opacity-10 wood-strip pointer-events-none" />
+        <section id="mml-lp-strip-2" className="relative min-h-[300px] md:h-[400px] flex items-center justify-end text-right px-6 md:px-24 bg-[#1A243F] overflow-hidden">
+          {/* Ken Burns Background Overlay */}
+          <div className="absolute inset-0 z-0 opacity-10">
+            <motion.div
+              initial={{ scale: 1.1, y: 0 }}
+              animate={{ scale: 1.2, y: "-2%" }}
+              transition={{
+                duration: 12,
+                ease: "linear",
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+              className="absolute inset-x-[-10%] inset-y-[-10%] wood-strip"
+            />
+          </div>
           <Reveal style={{ overflow: "visible" }} className="relative z-20 space-y-8 max-w-4xl mml-lp-strip__content">
             <h2 className="text-4xl md:text-5xl font-serif text-white uppercase tracking-tighter mml-lp-strip__title">
               A heritage of authority.
@@ -379,7 +396,7 @@ export default function Home() {
         </section>
 
         {/* ABOUT THE FIRM SECTION */}
-        <section id="mml-lp-about" className="py-24 md:py-40 px-6 md:px-12 wood-dark relative overflow-hidden">
+        <section id="mml-lp-about" className="py-20 md:py-32 px-6 md:px-12 wood-dark relative overflow-hidden">
           <div className="flex justify-center max-w-screen-2xl mx-auto text-center space-y-16 relative z-10 mml-res-container">
             <Reveal className="space-y-12 flex flex-col items-center">
               <div className="space-y-6 flex flex-col items-center">
@@ -413,7 +430,7 @@ export default function Home() {
         </section>
 
         {/* PRACTICE DASHBOARD - MASSIVE SCALE FIG */}
-        <section id="mml-lp-practice" className="py-24 md:py-48 px-6 md:px-12 bg-[#F5F5F3] relative overflow-hidden flex items-center min-h-[600px] md:min-h-[900px] mml-res-container">
+        <section id="mml-lp-practice" className="py-20 md:py-32 px-6 md:px-12 bg-[#F5F5F3] relative overflow-hidden flex items-center min-h-[500px] md:min-h-[750px] mml-res-container">
           {/* Practice Area massive graphic: Off-screen left logic for mobile/desktop */}
           <div className="absolute -left-[300px] lg:-left-[200px] top-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none z-0">
             <div className="w-[800px] h-[800px] md:w-[1200px] md:h-[1200px] rounded-full border-[30px] md:border-[60px] border-primary/20 flex items-center justify-center">

@@ -8,27 +8,22 @@ export const HeroGridOverlay = () => {
   useEffect(() => {
     const cols = 15;
     const rows = 15;
-    // Total 225 squares
 
     const interval = setInterval(() => {
-      // Pick random squares with a preference for the right side (cols 8-15)
-      // We want ~30-40 squares active at any time for visibility
-      const count = Math.floor(Math.random() * 20) + 30;
-      const newIndices = Array.from({ length: count }, () => {
-        const row = Math.floor(Math.random() * rows);
-        let col;
-        const rand = Math.random();
-
-        // 70% chance to be on the right side (col 8-14)
-        if (rand > 0.3) {
-          col = Math.floor(Math.random() * 7) + 8;
-        } else {
-          col = Math.floor(Math.random() * 8);
+      const newIndices: number[] = [];
+      
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const normalizedX = c / (cols - 1);
+          const spawnProbability = 0.1 + (normalizedX * 0.8);
+          
+          if (Math.random() < spawnProbability * 0.15) { // 0.15 is a scale to control total active count
+            newIndices.push(r * cols + c);
+          }
         }
-        return row * cols + col;
-      });
+      }
       setActiveIndices(newIndices);
-    }, 3000); // More frequent update
+    }, 2500);
 
     return () => clearInterval(interval);
   }, []);

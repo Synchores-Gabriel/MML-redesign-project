@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin, Facebook, Linkedin, Twitter } from "lucide-react";
+import { BrandLogo } from "./BrandLogo";
 
 export const Footer = () => {
   return (
@@ -15,23 +16,8 @@ export const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 mb-24 mml-global-footer__grid">
           {/* Column 1: Branding */}
           <div className="space-y-8">
-            <Link href="/" className="flex items-center gap-4 group mml-global-footer__logo mml-res-flow--desktop items-center">
-              <div className="relative w-12 h-12 md:w-14 md:h-14 mml-global-footer__logo-icon shrink-0">
-                <Image
-                  src="/asset/mma-logo-hq.png"
-                  alt="MML Logo"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div
-                className={
-                  "flex flex-col font-serif text-sm md:text-base leading-tight tracking-wider text-tertiary uppercase mml-global-footer__logo-text"
-                }
-              >
-                <span>MM LAZARO</span>
-                <span>and ASSOCIATES</span>
-              </div>
+            <Link href="/" className="group mml-global-footer__logo mml-res-flow--desktop items-center">
+              <BrandLogo textClassName="text-tertiary" size="md" />
             </Link>
 
             <p className="font-sans text-base text-neutral/40 leading-relaxed max-w-xs uppercase tracking-widest font-medium italic">
