@@ -16,98 +16,98 @@ const lawyers = [
     name: "Manuel M. Lazaro",
     title: "Founding Partner",
     img: "/asset/avatar/JusticeManuelLazaro-3679.jpg",
-    bio: "Atty. Lazaro is the Founder and Senior Partner of M.M. Lazaro and Associates and is one of the incorporators of TDF. He previously served the government in the following positions: Government Corporate Counsel with the rank of Presiding Justice of the Court of Appeals, Presidential Assistant for Legal Affairs of the Office of the President, and Executive Vice President and General Counsel of GSIS. He is presently the Chairman and CEO of Philippine Constitution Association (Philconsa), and Member of the Board of Advisors (Ateneo Law School)."
+    bio: "Atty. Lazaro is the Founder and Senior Partner of M.M. Lazaro and Associates and is one of the incorporators of TDF. He previously served the government in the following positions: Government Corporate Counsel with the rank of Presiding Justice of the Court of Appeals, Presidential Assistant for Legal Affairs of the Office of the President, and Executive Vice-President and General Counsel of the GSIS. He is presently the Chairman and CEO of Philippine Constitution Association (Philconsa), and Member of the Board of Advisors (Ateneo Law School)."
   },
   {
     id: 2,
     name: "Michelle B. Lazaro",
     title: "Managing Partner",
     img: "/asset/avatar/AttyMichelleLazaro-3744.jpg",
-    bio: "Atty. Michelle Lazaro specializes in Corporate Law, Litigation, and Estate Planning. With over two decades of experience, she handles complex legal frameworks for multi-generational wealth and corporate governance. Her leadership has been instrumental in modernizing the firm's approach to emerging market realities while maintaining the highest standards of professional ethics."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 3,
     name: "Abel M. Almario",
     title: "Senior Lawyer",
     img: "/asset/avatar/3.png",
-    bio: "Specializing in Intellectual Property and Information Technology law, Atty. Lazaro Jr. bridges the gap between traditional legal practice and the digital age. He serves as counsel for various tech startups and established media conglomerates."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 4,
     name: "Rafael P. Garcia Jr.",
     title: "Senior Lawyer",
     img: "/asset/avatar/4.png",
-    bio: "Focusing on International Trade and Investment Law, she assists foreign investors in navigating the Philippine legal landscape. Her expertise includes cross-border transactions and regulatory compliance."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 5,
     name: "Edwin M. Espejo",
     title: "Senior Lawyer",
     img: "/asset/avatar/5.png",
-    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 6,
     name: "Irish Marie V. Cabrera",
     title: "Senior Lawyer",
     img: "/asset/avatar/6.png",
-    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 7,
     name: "Rommel M. Santiago",
     title: "Senior Lawyer",
     img: "/asset/avatar/7.png",
-    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 8,
     name: "Philipe T. Aquino",
     title: "Senior Lawyer",
     img: "/asset/avatar/8.png",
-    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 9,
     name: "Ma. Florence R. Fuerte",
     title: "Junior Lawyer",
     img: "/asset/avatar/9.png",
-    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 10,
     name: "Loisse Danielle D. Vitug",
     title: "Junior Lawyer",
     img: "/asset/avatar/10.png",
-    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 11,
     name: "Gerald	H. Caraan",
     title: "Junior Lawyer",
     img: "/asset/avatar/11.png",
-    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 12,
     name: "Princess Khaila D. Palabrica",
     title: "Junior Lawyer",
     img: "/asset/avatar/12.png",
-    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 13,
     name: "Robert Saimon D. Sison",
     title: "Junior Lawyer",
     img: "/asset/avatar/13.png",
-    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     id: 14,
     name: "Joseph Cornelius R. Lazaro",
     title: "Junior Lawyer",
     img: "/asset/avatar/14.png",
-    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   }
 ];
 

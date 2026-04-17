@@ -24,25 +24,25 @@ const practiceAreas = [
   {
     id: "corp",
     title: "CORPORATE SERVICES & BUSINESS TRANSACTIONS",
-    desc: "Our firm provides a full range of legal support for corporate accounts. We help clients establish and maintain corporate entities...",
+    desc: "Our firm provides a full range of services for corporate accounts. We help clients establish and maintain corporate entities suitable for their commercial or personal activities. We also help clients manage changes in laws and regulations, or as their business plans and objectives evolve.",
     icon: Building2
   },
   {
     id: "lit",
     title: "LITIGATION AND ARBITRATION",
-    desc: "We provide our clients with expert services and advocacy, establishing litigation strategies grounded in thorough preparation...",
+    desc: "We provide our clients with expert advice and advocacy, establishing litigation strategies grounded on thorough preparation, sensitivity to the client’s business goals and awareness of the practical concerns that affect most litigation.",
     icon: Gavel
   },
   {
     id: "real",
     title: "REAL ESTATE",
-    desc: "Our experience in real estate practice covers the simplest portfolio purchase to more complex deals and developments.",
+    desc: "Our experience in real estate practice covers the simplest portfolio purchase to more complex deals and transactions, with expertise in land titling, industrial parks, and multi-use projects.",
     icon: Landmark
   },
   {
     id: "tax",
     title: "TAXATION LAW",
-    desc: "Our tax lawyers advise on the tax aspects of, and provide thorough efficiency in effecting corporate work.",
+    desc: "Our tax lawyers advise on the tax aspects of, and provide efficient structuring solutions for all types of transactions, including tax audits, assessments, and estate planning.",
     icon: Calculator
   },
 ];
@@ -50,15 +50,15 @@ const practiceAreas = [
 const HERO_SLIDES = [
   {
     video: "/asset/vid/hero1.mp4",
-    subtitle: "Expert Legal Solutions for the Philippines"
+    subtitle: "All our clients make the right choices!"
   },
   {
     video: "/asset/vid/hero2.mp4",
-    subtitle: "Navigating Complex Corporate Challenges"
+    subtitle: "Get in touch with us today"
   },
   {
     video: "/asset/vid/hero3.mp4",
-    subtitle: "Dedicated to Protecting Your Family’s Legacy"
+    subtitle: "We look forward hearing from you"
   }
 ];
 
@@ -193,7 +193,7 @@ function HeroSubtitleLayer({
           className={[
             "select-none",
             "font-sans font-bold",
-            "text-white/50",
+            "text-white",
             isShot1 ? "text-left" : isShot2 ? "text-right" : "text-center",
             "leading-[1.12]",
             "whitespace-normal",
@@ -334,7 +334,7 @@ export default function Home() {
                   &quot;All our clients make the right choices!&quot;
                 </h2>
                 <p className="text-tertiary/80 font-sans font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mml-res-text--fluid">
-                  Get in touch today we look forward to hearing from you.
+                  Get in touch with us today we look forward hearing from you
                 </p>
                 <div className="pt-4">
                   <button className="glow-gold px-10 py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-[10px] uppercase">
@@ -401,7 +401,7 @@ export default function Home() {
 
                 <div className="space-y-8 text-primary/70 font-sans leading-relaxed text-lg max-w-3xl mx-auto text-center mml-lp-about__desc">
                   <p>
-                    M. M. Lazaro and Associates is an established, full-service law firm with an impeccable record in its more than four (4) decades of providing premier legal service.
+                    A vision to create a true corporate meritocracy dedicated to excellence in the practice of law. The sole measures of our success are concrete results and client satisfaction.
                   </p>
                   <p>
                     Leveraging its collective expertise, the Firm is committed to advocating its clients&apos; legal and business interests with the highest degree of competence and integrity.
@@ -449,7 +449,7 @@ export default function Home() {
                   <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] inline-block">Expertise Dashboard</span>
                   <h2 className="text-4xl md:text-5xl font-serif text-primary uppercase leading-tight font-black mml-res-text--fluid-lg">Our Practice Areas</h2>
                   <p className="text-primary/60 font-sans text-base font-medium max-w-xl leading-relaxed mml-res-text--fluid">
-                    A vision to create a true corporate meritocracy dedicated to excellence in the practice of law.
+                    A vision to create a true corporate meritocracy dedicated to excellence in the practice of law. The sole measures of our success are concrete results and client satisfaction.
                   </p>
                 </RevealStagger>
 

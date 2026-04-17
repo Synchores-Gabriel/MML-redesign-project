@@ -102,15 +102,10 @@ export default function AboutPage() {
               <div className="space-y-6 text-primary/70 font-sans leading-relaxed text-base md:text-lg font-medium mml-res-text--fluid">
 
                 <p>
-                  An innovative law firm building long-term relationships with clients based on reciprocity,
-                  trust and highest standards of professional ethics. By adopting new models for the
-                  delivery of legal services, we strive to redefine the role that a law firm plays in
-                  an emerging regional market, in order to produce truly exceptional results for our clients.
+                  An innovative law firm by building long-term relationships with clients based on reciprocity, trust and highest standards of professional ethics. By adopting new models for the delivery of legal services, we strive to redefine the role that a law firm plays in an emerging regional market, in order to produce truly exceptional results for our clients.
                 </p>
                 <p>
-                  Precision legal counsel grounded in heritage and modern jurisprudence. Experience
-                  the apex of legal craftsmanship through our multi-generational expertise.
-                  A heritage of authority, multi-generational legal craftsmanship.
+                  A vision to create a true corporate meritocracy dedicated to excellence in the practice of law. The sole measures of our success are concrete results and client satisfaction.
                 </p>
               </div>
             </RevealStagger>
@@ -140,9 +135,7 @@ export default function AboutPage() {
                 <div className="bg-white p-12 md:p-16 shadow-2xl border-t-8 border-secondary flex flex-col space-y-6 mml-ab-card__glass-wrap">
                   <h3 className="text-3xl font-serif text-primary uppercase font-black mml-ab-card__title">Vision</h3>
                   <p className="font-sans text-base text-primary/60 mml-res-text--fluid leading-relaxed mml-ab-card__text">
-                    Curabitur quas nets lacus et nulat iaculis lorems etis nisle varius vitae seditum
-                    fugiatur ligula aliquam qui sequi. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit rutrum eleif arcu sit aspernatur nets fugit, sed quia.
+                    A vision to create a true corporate meritocracy dedicated to excellence in the practice of law. The sole measures of our success are concrete results and client satisfaction.
                   </p>
                 </div>
               </Reveal>

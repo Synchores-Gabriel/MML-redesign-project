@@ -11,14 +11,14 @@ const lawyers = [
     name: "Atty. Manuel M. Lazaro",
     title: "Founding Partner",
     img: "/asset/avatar/JusticeManuelLazaro-3679.jpg",
-    bio: "Atty. Lazaro is the Founder and Senior Partner of M.M. Lazaro and Associates and is one of the incorporators of TDF. He previously served the government in several positions..."
+    bio: "Atty. Lazaro is the Founder and Senior Partner of M.M. Lazaro and Associates and is one of the incorporators of TDF. He previously served the government in the following positions: Government Corporate Counsel with the rank of Presiding Justice of the Court of Appeals, Presidential Assistant for Legal Affairs of the Office of the President, and Executive Vice-President and General Counsel of the GSIS. He is presently the Chairman and CEO of Philippine Constitution Association (Philconsa), and Member of the Board of Advisors (Ateneo Law School)."
   },
   {
     type: "partner",
     name: "Atty. Michelle Lazaro",
     title: "Managing Partner",
     img: "/asset/avatar/AttyMichelleLazaro-3744.jpg",
-    bio: "Atty. Michelle Lazaro leads the firm's major corporate transactions and strategic advisory services, maintaining the legacy of excellence..."
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     type: "grid",

@@ -30,11 +30,11 @@ export const ContactSection = () => {
             <div className="space-y-4 text-base font-sans pt-8 border-t border-white/5 mml-ab-contact__info-items">
               <p className="flex gap-4 items-center mml-ab-contact__info-item">
                 <Phone size={16} className="text-tertiary" /> 
-                <span className="font-bold text-white tracking-tighter self-center">+63 987 654 321</span>
+                <span className="font-bold text-white tracking-tighter self-center">+63 2 8 844 1540</span>
               </p>
               <p className="flex gap-4 items-center mml-ab-contact__info-item">
                 <Mail size={16} className="text-tertiary" /> 
-                <span className="font-bold text-white tracking-tighter self-center">example@example.com</span>
+                <span className="font-bold text-white tracking-tighter self-center">contact@mmlazarolaw.com</span>
               </p>
             </div>
 

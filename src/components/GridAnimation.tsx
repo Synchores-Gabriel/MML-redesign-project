@@ -16,7 +16,7 @@ const GridParticle = memo(({ index, cols }: { index: number; cols: number }) => 
       animate={{ opacity: [0, 0.5, 0] }}
       exit={{ opacity: 0 }}
       transition={{ duration: 3, ease: "easeInOut" }}
-      className="bg-tertiary/30 aspect-square"
+      className="bg-tertiary/90 aspect-square"
       style={{
         gridRowStart: row,
         gridColumnStart: col,
@@ -35,7 +35,7 @@ export const GridAnimation = () => {
   useEffect(() => {
     let particleId = 0;
     const interval = setInterval(() => {
-      const count = Math.floor(Math.random() * 12) + 6; 
+      const count = Math.floor(Math.random() * 12) + 6;
       const newParticles = Array.from({ length: count }, () => {
         const index = Math.floor(Math.random() * totalCells);
         return { id: particleId++, index };
@@ -52,9 +52,9 @@ export const GridAnimation = () => {
       <div className="grid grid-cols-15 w-full h-auto relative">
         {/* STATIC LINES */}
         {Array.from({ length: totalCells }).map((_, i) => (
-          <div key={i} className="border-[0.2px] border-white/5 aspect-square" />
+          <div key={i} className="aspect-square" />
         ))}
-        
+
         {/* ACTIVE PARTICLES */}
         <div className="absolute inset-0 grid grid-cols-15 w-full h-full">
           <AnimatePresence>

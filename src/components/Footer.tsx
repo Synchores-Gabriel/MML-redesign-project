@@ -68,15 +68,15 @@ export const Footer = () => {
             <ul className="space-y-6 font-sans text-[11px] font-bold tracking-[0.15em] text-neutral/60">
               <li className="flex gap-4">
                 <Phone size={14} className="text-secondary shrink-0" />
-                <span>+63 (2) 123 4567</span>
+                <span>+63 2 8 844 1540</span>
               </li>
               <li className="flex gap-4">
                 <Mail size={14} className="text-secondary shrink-0" />
-                <span>contact@mmlazaro.com</span>
+                <span>contact@mmlazarolaw.com</span>
               </li>
               <li className="flex gap-4">
                 <MapPin size={14} className="text-secondary shrink-0" />
-                <span>Metro Manila, Philippines</span>
+                <span>19th Floor Chatham House Building, Valero cor. V.A. Rufino Sts., Salcedo Village, Makati City 1227</span>
               </li>
             </ul>
             <div className="flex gap-6 pt-4 border-t border-white/5">
