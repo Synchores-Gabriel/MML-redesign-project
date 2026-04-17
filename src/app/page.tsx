@@ -182,7 +182,7 @@ function HeroSubtitleLayer({
   const duration = isShot3 ? 0.8 : 1.2;
 
   return (
-    <div className="absolute inset-0 z-[35] pointer-events-none overflow-visible">
+    <div className="absolute inset-0 z-50 pointer-events-none overflow-visible">
       <div className={`absolute left-1/2 top-[38%] md:top-[40%] -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12 flex ${isShot1 ? 'justify-start' : isShot2 ? 'justify-end' : 'justify-center'} overflow-visible`}>
         <motion.p
           key={currentSlide}
@@ -193,7 +193,7 @@ function HeroSubtitleLayer({
           className={[
             "select-none",
             "font-sans font-bold",
-            "text-white/35",
+            "text-white/50",
             isShot1 ? "text-left" : isShot2 ? "text-right" : "text-center",
             "leading-[1.12]",
             "whitespace-normal",
@@ -248,28 +248,28 @@ export default function Home() {
         {/* HERO SECTION 1 - CINEMATIC SQUARE GRID */}
         <section id="mml-lp-hero" className="relative min-h-screen overflow-hidden bg-primary">
 
-          {/* BACKGROUND VIDEO SLIDER */}
-          <div className="mml-hero-lp__bg-slider absolute inset-0 z-0 overflow-hidden">
-            <AnimatePresence mode="popLayout">
+          {/* VIDEO BACKGROUNDS */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none perspective-[1000px]">
+            {HERO_SLIDES.map((slide, index) => (
               <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 0.6, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.05 }}
+                key={index}
+                className="absolute inset-0 overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: currentSlide === index ? 1 : 0 }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                className="mml-hero-lp__bg-item absolute inset-0 w-full h-full"
+                style={{ backfaceVisibility: "hidden", transform: "translateZ(0)" }}
               >
                 <video
+                  src={slide.video}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src={HERO_SLIDES[currentSlide].video} type="video/mp4" />
-                </video>
+                  className="w-full h-full object-cover scale-105"
+                  style={{ willChange: "transform", backfaceVisibility: "hidden" }}
+                />
               </motion.div>
-            </AnimatePresence>
+            ))}
           </div>
 
           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/40 to-transparent z-10" />

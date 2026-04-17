@@ -1,16 +1,15 @@
 "use client";
 
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useMemo, useEffect, useCallback, memo } from "react";
 import Image from "next/image";
 
 /**
  * LOGO MARQUEE CONFIGURATION 
- * Edit these values to globally adjust the look and layout.
  */
-const LOGO_HEIGHT_CLASS = "h-14"; // e.g. h-12, h-16, h-20
-const GLOBAL_OPACITY = 0.7;       // Default opacity for logos
-const USE_TINT_BY_DEFAULT = true; // Set to true to preserve logo detail, false for solid silhouette
+const LOGO_HEIGHT_CLASS = "h-14"; 
+const GLOBAL_OPACITY = 0.7;       
+const USE_TINT_BY_DEFAULT = true; 
 
 const logos = [
   { src: "/asset/logo/1-bsp.png", mode: "silhouette" },
@@ -23,39 +22,74 @@ const logos = [
   { src: "/asset/logo/8-SM.png", mode: "silhouette" },
 ];
 
+/**
+ * OPTIMIZED LOGO ITEM
+ * Using React.memo to prevent re-renders during smooth sliding
+ */
+const LogoItem = memo(({ src, mode, filter, opacity }: { 
+  src: string; 
+  mode: string; 
+  filter: string; 
+  opacity: number;
+}) => (
+  <div className={`${LOGO_HEIGHT_CLASS} w-auto flex-shrink-0 relative flex items-center will-change-transform`}>
+    <Image
+      src={src}
+      alt="Client"
+      width={240}
+      height={80}
+      className="object-contain transition-all duration-500"
+      style={{
+        filter,
+        opacity
+      }}
+    />
+  </div>
+));
+LogoItem.displayName = "LogoItem";
+
 export function LogoMarquee() {
-  const duplicatedLogos = [...logos, ...logos, ...logos];
+  const duplicatedLogos = useMemo(() => [...logos, ...logos, ...logos], []);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
   const [isDragPaused, setIsDragPaused] = useState(false);
+  const [scrollWidth, setScrollWidth] = useState(0);
   const baseVelocity = -1.5;
 
+  // INITIALIZE & WATCH SCROLL WIDTH (AVOID LAYOUT THRASHING)
+  useEffect(() => {
+    const updateWidth = () => {
+      if (scrollerRef.current) {
+        setScrollWidth(scrollerRef.current.scrollWidth);
+      }
+    };
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
   useAnimationFrame((t, delta) => {
-    if (!isDragPaused && scrollerRef.current) {
-      const scrollWidth = scrollerRef.current.scrollWidth;
+    if (!isDragPaused && scrollWidth > 0) {
       const oneThird = scrollWidth / 3;
       let moveBy = baseVelocity * (delta / 16);
       let nextX = x.get() + moveBy;
+      
       if (nextX <= -oneThird) nextX += oneThird;
       else if (nextX > 0) nextX -= oneThird;
+      
       x.set(nextX);
     }
   });
 
-  const handleWheel = (e: React.WheelEvent) => {
+  const handleWheel = useCallback((e: React.WheelEvent) => {
     if (e.shiftKey) {
       const delta = e.deltaY;
       x.set(x.get() - delta * 0.8);
     }
-  };
+  }, [x]);
 
-  /**
-   * FILTER FACTORY 
-   * silhouette: Solid Deep Blue silhouette
-   * tinted: Detail-preserving Navy tint
-   */
   const filters = useMemo(() => ({
     silhouette: "brightness(0) saturate(100%) invert(9%) sepia(87%) saturate(1633%) hue-rotate(143deg) brightness(91%) contrast(106%)",
     tinted: "grayscale(1) brightness(0.6) sepia(1) hue-rotate(185deg) saturate(3) contrast(1.1)",
@@ -84,19 +118,13 @@ export function LogoMarquee() {
             dragConstraints={containerRef}
           >
             {duplicatedLogos.map((logo, index) => (
-              <div key={index} className={`${LOGO_HEIGHT_CLASS} w-auto flex-shrink-0 relative flex items-center`}>
-                <Image
-                  src={logo.src}
-                  alt="Client"
-                  width={240}
-                  height={80}
-                  className="object-contain transition-all duration-500"
-                  style={{
-                    filter: logo.mode === "tinted" || USE_TINT_BY_DEFAULT ? filters.tinted : filters.silhouette,
-                    opacity: GLOBAL_OPACITY
-                  }}
-                />
-              </div>
+              <LogoItem 
+                key={index}
+                src={logo.src}
+                mode={logo.mode}
+                filter={logo.mode === "tinted" || USE_TINT_BY_DEFAULT ? filters.tinted : filters.silhouette}
+                opacity={GLOBAL_OPACITY}
+              />
             ))}
           </motion.div>
         </div>

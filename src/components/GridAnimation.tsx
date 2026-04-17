@@ -1,47 +1,68 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+/**
+ * OPTIMIZED GRID PARTICLE
+ */
+const GridParticle = memo(({ index, cols }: { index: number; cols: number }) => {
+  const row = Math.floor(index / cols) + 1;
+  const col = (index % cols) + 1;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: [0, 0.5, 0] }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 3, ease: "easeInOut" }}
+      className="bg-tertiary/30 aspect-square"
+      style={{
+        gridRowStart: row,
+        gridColumnStart: col,
+        willChange: "opacity",
+      }}
+    />
+  );
+});
+GridParticle.displayName = "GridParticle";
 
 export const GridAnimation = () => {
-  const [activeIndices, setActiveIndices] = useState<number[]>([]);
+  const [activeParticles, setActiveParticles] = useState<{ id: number; index: number }[]>([]);
+  const cols = 15;
+  const totalCells = 750;
 
   useEffect(() => {
-    const cols = 15;
-    const rows = 15;
-    const totalSquares = cols * rows;
-    
+    let particleId = 0;
     const interval = setInterval(() => {
-      // Pick random squares with a preference for the right side (cols 8-15)
-      const count = Math.floor(Math.random() * 25) + 20;
-      const newIndices = Array.from({ length: count }, () => {
-        const row = Math.floor(Math.random() * rows);
-        // Probability weighted towards the right (higher column indices)
-        let col;
-        const rand = Math.random();
-        if (rand > 0.4) {
-          col = Math.floor(Math.random() * 7) + 8; // Right side
-        } else {
-          col = Math.floor(Math.random() * 8); // Left side
-        }
-        return row * cols + col;
+      const count = Math.floor(Math.random() * 12) + 6; 
+      const newParticles = Array.from({ length: count }, () => {
+        const index = Math.floor(Math.random() * totalCells);
+        return { id: particleId++, index };
       });
-      setActiveIndices(newIndices);
-    }, 2000);
+
+      setActiveParticles((prev) => [...prev.slice(-35), ...newParticles]);
+    }, 1200);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-      <div className="grid grid-cols-15 w-full h-auto opacity-30">
-        {Array.from({ length: 225 }).map((_, i) => (
-          <div
-            key={i}
-            className={`aspect-square border-[0.2px] border-white/5 transition-all duration-[2000ms] ease-in-out ${
-              activeIndices.includes(i) ? "bg-tertiary/30" : "bg-transparent"
-            }`}
-          />
+    <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden opacity-30">
+      <div className="grid grid-cols-15 w-full h-auto relative">
+        {/* STATIC LINES */}
+        {Array.from({ length: totalCells }).map((_, i) => (
+          <div key={i} className="border-[0.2px] border-white/5 aspect-square" />
         ))}
+        
+        {/* ACTIVE PARTICLES */}
+        <div className="absolute inset-0 grid grid-cols-15 w-full h-full">
+          <AnimatePresence>
+            {activeParticles.map((p) => (
+              <GridParticle key={p.id} index={p.index} cols={cols} />
+            ))}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );

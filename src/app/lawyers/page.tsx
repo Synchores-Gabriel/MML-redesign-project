@@ -27,32 +27,88 @@ const lawyers = [
   },
   {
     id: 3,
-    name: "Atty. Ms. Founder",
-    title: "Attorney Partner",
-    img: "/asset/avatar/AttyMichelleLazaro-3744.jpg",
-    bio: "Leading the firm's litigation department, Atty. Founder brings a wealth of experience in appellate practice and constitutional law. Her strategic approach to dispute resolution has produced exceptional results for high-net-worth clients and corporate entities alike."
-  },
-  {
-    id: 4,
     name: "Atty. M.M. Lazaro Jr.",
     title: "Partner",
-    img: "/asset/avatar/MBLpic.jpg",
+    img: "/asset/avatar/3.png",
     bio: "Specializing in Intellectual Property and Information Technology law, Atty. Lazaro Jr. bridges the gap between traditional legal practice and the digital age. He serves as counsel for various tech startups and established media conglomerates."
   },
   {
-    id: 5,
+    id: 4,
     name: "Atty. Maria Santos",
     title: "Attorney Partner",
-    img: "/asset/avatar/AttyMichelleLazaro-3744.jpg",
+    img: "/asset/avatar/4.png",
     bio: "Focusing on International Trade and Investment Law, she assists foreign investors in navigating the Philippine legal landscape. Her expertise includes cross-border transactions and regulatory compliance."
+  },
+  {
+    id: 5,
+    name: "Atty. Ricardo Reyes",
+    title: "Attorney Partner",
+    img: "/asset/avatar/5.png",
+    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
   {
     id: 6,
     name: "Atty. Ricardo Reyes",
     title: "Attorney Partner",
-    img: "/asset/avatar/AttyMichelleLazaro-3744.jpg",
+    img: "/asset/avatar/6.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
+  {
+    id: 7,
+    name: "Atty. Ricardo Reyes",
+    title: "Attorney Partner",
+    img: "/asset/avatar/7.png",
+    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+  },
+  {
+    id: 8,
+    name: "Atty. Ricardo Reyes",
+    title: "Attorney Partner",
+    img: "/asset/avatar/8.png",
+    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+  },
+  {
+    id: 9,
+    name: "Atty. Ricardo Reyes",
+    title: "Attorney Partner",
+    img: "/asset/avatar/9.png",
+    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+  },
+  {
+    id: 10,
+    name: "Atty. Ricardo Reyes",
+    title: "Attorney Partner",
+    img: "/asset/avatar/10.png",
+    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+  },
+  {
+    id: 11,
+    name: "Atty. Ricardo Reyes",
+    title: "Attorney Partner",
+    img: "/asset/avatar/11.png",
+    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+  },
+  {
+    id: 12,
+    name: "Atty. Ricardo Reyes",
+    title: "Attorney Partner",
+    img: "/asset/avatar/12.png",
+    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+  },
+  {
+    id: 13,
+    name: "Atty. Ricardo Reyes",
+    title: "Attorney Partner",
+    img: "/asset/avatar/13.png",
+    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+  },
+  {
+    id: 14,
+    name: "Atty. Ricardo Reyes",
+    title: "Attorney Partner",
+    img: "/asset/avatar/14.png",
+    bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
+  }
 ];
 
 function LawyerCard({
