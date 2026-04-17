@@ -13,99 +13,99 @@ import { ArrowRight } from "lucide-react";
 const lawyers = [
   {
     id: 1,
-    name: "Justice Manuel Lazaro",
-    title: "Chairman",
+    name: "Manuel M. Lazaro",
+    title: "Founding Partner",
     img: "/asset/avatar/JusticeManuelLazaro-3679.jpg",
     bio: "Atty. Lazaro is the Founder and Senior Partner of M.M. Lazaro and Associates and is one of the incorporators of TDF. He previously served the government in the following positions: Government Corporate Counsel with the rank of Presiding Justice of the Court of Appeals, Presidential Assistant for Legal Affairs of the Office of the President, and Executive Vice President and General Counsel of GSIS. He is presently the Chairman and CEO of Philippine Constitution Association (Philconsa), and Member of the Board of Advisors (Ateneo Law School)."
   },
   {
     id: 2,
-    name: "Atty. Michelle Lazaro",
+    name: "Michelle B. Lazaro",
     title: "Managing Partner",
     img: "/asset/avatar/AttyMichelleLazaro-3744.jpg",
     bio: "Atty. Michelle Lazaro specializes in Corporate Law, Litigation, and Estate Planning. With over two decades of experience, she handles complex legal frameworks for multi-generational wealth and corporate governance. Her leadership has been instrumental in modernizing the firm's approach to emerging market realities while maintaining the highest standards of professional ethics."
   },
   {
     id: 3,
-    name: "Atty. M.M. Lazaro Jr.",
-    title: "Partner",
+    name: "Abel M. Almario",
+    title: "Senior Lawyer",
     img: "/asset/avatar/3.png",
     bio: "Specializing in Intellectual Property and Information Technology law, Atty. Lazaro Jr. bridges the gap between traditional legal practice and the digital age. He serves as counsel for various tech startups and established media conglomerates."
   },
   {
     id: 4,
-    name: "Atty. Maria Santos",
-    title: "Attorney Partner",
+    name: "Rafael P. Garcia Jr.",
+    title: "Senior Lawyer",
     img: "/asset/avatar/4.png",
     bio: "Focusing on International Trade and Investment Law, she assists foreign investors in navigating the Philippine legal landscape. Her expertise includes cross-border transactions and regulatory compliance."
   },
   {
     id: 5,
-    name: "Atty. Ricardo Reyes",
-    title: "Attorney Partner",
+    name: "Edwin M. Espejo",
+    title: "Senior Lawyer",
     img: "/asset/avatar/5.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
   {
     id: 6,
-    name: "Atty. Ricardo Reyes",
-    title: "Attorney Partner",
+    name: "Irish Marie V. Cabrera",
+    title: "Senior Lawyer",
     img: "/asset/avatar/6.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
   {
     id: 7,
-    name: "Atty. Ricardo Reyes",
-    title: "Attorney Partner",
+    name: "Rommel M. Santiago",
+    title: "Senior Lawyer",
     img: "/asset/avatar/7.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
   {
     id: 8,
-    name: "Atty. Ricardo Reyes",
-    title: "Attorney Partner",
+    name: "Philipe T. Aquino",
+    title: "Senior Lawyer",
     img: "/asset/avatar/8.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
   {
     id: 9,
-    name: "Atty. Ricardo Reyes",
-    title: "Attorney Partner",
+    name: "Ma. Florence R. Fuerte",
+    title: "Junior Lawyer",
     img: "/asset/avatar/9.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
   {
     id: 10,
-    name: "Atty. Ricardo Reyes",
-    title: "Attorney Partner",
+    name: "Loisse Danielle D. Vitug",
+    title: "Junior Lawyer",
     img: "/asset/avatar/10.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
   {
     id: 11,
-    name: "Atty. Ricardo Reyes",
-    title: "Attorney Partner",
+    name: "Gerald	H. Caraan",
+    title: "Junior Lawyer",
     img: "/asset/avatar/11.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
   {
     id: 12,
-    name: "Atty. Ricardo Reyes",
-    title: "Attorney Partner",
+    name: "Princess Khaila D. Palabrica",
+    title: "Junior Lawyer",
     img: "/asset/avatar/12.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
   {
     id: 13,
-    name: "Atty. Ricardo Reyes",
-    title: "Attorney Partner",
+    name: "Robert Saimon D. Sison",
+    title: "Junior Lawyer",
     img: "/asset/avatar/13.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   },
   {
     id: 14,
-    name: "Atty. Ricardo Reyes",
-    title: "Attorney Partner",
+    name: "Joseph Cornelius R. Lazaro",
+    title: "Junior Lawyer",
     img: "/asset/avatar/14.png",
     bio: "An expert in Labor and Employment law, Atty. Reyes represents both management and labor in complex negotiations and litigation. He is a recognized speaker on employment standards and human rights."
   }

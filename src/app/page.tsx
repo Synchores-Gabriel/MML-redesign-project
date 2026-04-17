@@ -246,7 +246,7 @@ export default function Home() {
 
       <main className="flex-grow scroll-smooth bg-neutral">
         {/* HERO SECTION 1 - CINEMATIC SQUARE GRID */}
-        <section id="mml-lp-hero" className="relative min-h-screen overflow-hidden bg-primary">
+        <section id="mml-lp-hero" className="relative h-screen overflow-hidden bg-primary z-30">
 
           {/* VIDEO BACKGROUNDS */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none perspective-[1000px]">
@@ -305,96 +305,120 @@ export default function Home() {
         </section>
 
         {/* HERO SECTION 2 - BRANDED STRIP 1 */}
-        <section id="mml-lp-strip-1" className="relative min-h-[300px] md:h-[400px] flex items-center justify-start text-left px-6 md:px-24 overflow-hidden">
-          {/* Ken Burns Background */}
-          <div className="absolute inset-0 z-0">
-            <motion.div
-              initial={{ scale: 1, x: 0 }}
-              animate={{ scale: 1.1, x: "2%" }}
-              transition={{
-                duration: 15,
-                ease: "linear",
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-              className="absolute inset-x-[-5%] inset-y-[-5%] wood-strip opacity-100"
-            />
-          </div>
-          <div className="absolute inset-0 bg-primary/40 z-10" />
-          <Reveal style={{ overflow: "visible" }} className="relative z-20 space-y-6 max-w-3xl mml-res-stack--mobile">
-            <h2 className="text-3xl md:text-5xl font-serif text-white uppercase italic tracking-tight mml-res-text--fluid-lg">
-              &quot;All our clients make the right choices!&quot;
-            </h2>
-            <p className="text-tertiary/80 font-sans font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mml-res-text--fluid">
-              Get in touch today we look forward to hearing from you.
-            </p>
-            <div className="pt-4">
-              <button className="glow-gold px-10 py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-[10px] uppercase">
-                OUR LAWYERS
-              </button>
+        <section id="mml-lp-strip-1" className="relative min-h-[400px] md:h-[500px] overflow-hidden z-20">
+          <motion.div
+            initial={{ y: "-30%" }}
+            whileInView={{ y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full h-full flex items-center justify-start text-left px-6 md:px-12 relative"
+          >
+            {/* Ken Burns Background */}
+            <div className="absolute inset-0 z-0">
+              <motion.div
+                initial={{ scale: 1, x: 0 }}
+                animate={{ scale: 1.1, x: "2%" }}
+                transition={{
+                  duration: 15,
+                  ease: "linear",
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+                className="absolute inset-x-[-5%] inset-y-[-5%] wood-strip opacity-100"
+              />
             </div>
-          </Reveal>
-        </section>
-
-        {/* HERO SECTION 3 - BRANDED STRIP 2 */}
-        <section id="mml-lp-strip-2" className="relative min-h-[300px] md:h-[400px] flex items-center justify-end text-right px-6 md:px-24 bg-[#1A243F] overflow-hidden">
-          {/* Ken Burns Background Overlay */}
-          <div className="absolute inset-0 z-0 opacity-10">
-            <motion.div
-              initial={{ scale: 1.1, y: 0 }}
-              animate={{ scale: 1.2, y: "-2%" }}
-              transition={{
-                duration: 12,
-                ease: "linear",
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-              className="absolute inset-x-[-10%] inset-y-[-10%] wood-strip"
-            />
-          </div>
-          <Reveal style={{ overflow: "visible" }} className="relative z-20 space-y-8 max-w-4xl mml-lp-strip__content">
-            <h2 className="text-4xl md:text-5xl font-serif text-white uppercase tracking-tighter mml-lp-strip__title">
-              A heritage of authority.
-            </h2>
-            <p className="text-neutral/40 font-sans text-base font-medium max-w-2xl ml-auto leading-relaxed mml-lp-strip__desc">
-              We provide a full range of legal services for corporate clients, establishing strategies grounded in thorough preparation and business sensitivity.
-            </p>
-            <div className="pt-2 mml-lp-strip__actions">
-              <button className="border border-white/20 text-white px-10 py-4 rounded-[0.25rem] font-sans font-bold tracking-[0.2em] text-[10px] uppercase hover:bg-white hover:text-primary transition-all duration-500 mml-lp-strip__btn mml-lp-strip__btn--outline">
-                OUR PRACTICE AREAS
-              </button>
+            <div className="absolute inset-0 bg-primary/40 z-10" />
+            <div className="relative z-20 w-full max-w-screen-2xl mx-auto">
+              <Reveal style={{ overflow: "visible" }} className="space-y-6 max-w-3xl mml-res-stack--mobile">
+                <h2 className="text-3xl md:text-5xl font-serif text-white uppercase italic tracking-tight mml-res-text--fluid-lg">
+                  &quot;All our clients make the right choices!&quot;
+                </h2>
+                <p className="text-tertiary/80 font-sans font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mml-res-text--fluid">
+                  Get in touch today we look forward to hearing from you.
+                </p>
+                <div className="pt-4">
+                  <button className="glow-gold px-10 py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-[10px] uppercase">
+                    OUR LAWYERS
+                  </button>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
+          </motion.div>
         </section>
 
-        {/* ABOUT THE FIRM SECTION */}
-        <section id="mml-lp-about" className="py-20 md:py-32 px-6 md:px-12 wood-dark relative overflow-hidden">
-          <div className="flex justify-center max-w-screen-2xl mx-auto text-center space-y-16 relative z-10 mml-res-container">
-            <Reveal className="space-y-12 flex flex-col items-center">
-              <div className="space-y-6 flex flex-col items-center">
-                <span className="text-tertiary uppercase tracking-[0.6em] font-sans font-bold text-[10px] md:text-xs text-center">The Legacy</span>
-                <h2 className="text-4xl md:text-6xl font-serif text-white uppercase leading-tight font-black mml-res-text--fluid-lg text-center">Authority of Experience.</h2>
+        {/* STICKY STACK CONTAINER - Groups Hero 3 and Quote Section */}
+        <div id="mml-lp-sticky-pusher" className="relative">
+          {/* HERO SECTION 3 - BRANDED STRIP 2 */}
+          <section id="mml-lp-strip-2" className="relative min-h-[400px] md:h-[500px] overflow-hidden z-10 md:sticky top-0">
+            <motion.div
+              initial={{ y: "-40%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="w-full h-full flex items-center justify-end text-right px-6 md:px-12 bg-[#1A243F] relative"
+            >
+              {/* Ken Burns Background Overlay */}
+              <div className="absolute inset-0 z-0 opacity-10">
+                <motion.div
+                  initial={{ scale: 1.1, x: "-2%", y: "0%" }}
+                  animate={{ scale: 1.3, x: "2%", y: "2%" }}
+                  transition={{
+                    duration: 20,
+                    ease: "linear",
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                  className="absolute inset-x-[-15%] inset-y-[-15%] wood-strip"
+                />
               </div>
+              <div className="absolute inset-0 bg-primary/60 z-10" />
+              <div className="relative z-20 w-full max-w-screen-2xl mx-auto flex justify-end">
+                <Reveal style={{ overflow: "visible" }} className="space-y-8 max-w-4xl mml-lp-strip__content">
+                  <h2 className="text-4xl md:text-5xl font-serif text-white uppercase tracking-tighter mml-lp-strip__title">
+                    A heritage of authority.
+                  </h2>
+                  <p className="text-neutral/40 font-sans text-base font-medium max-w-2xl ml-auto leading-relaxed mml-lp-strip__desc">
+                    We provide a full range of legal services for corporate clients, establishing strategies grounded in thorough preparation and business sensitivity.
+                  </p>
+                  <div className="pt-2 mml-lp-strip__actions">
+                    <button className="border border-white/20 text-white px-10 py-4 rounded-[0.25rem] font-sans font-bold tracking-[0.2em] text-[10px] uppercase hover:bg-white hover:text-primary transition-all duration-500 mml-lp-strip__btn mml-lp-strip__btn--outline">
+                      OUR PRACTICE AREAS
+                    </button>
+                  </div>
+                </Reveal>
+              </div>
+            </motion.div>
+          </section>
 
-              <div className="space-y-8 text-neutral/60 font-sans leading-relaxed text-lg max-w-3xl mx-auto text-center mml-lp-about__desc">
-                <p>
-                  M. M. Lazaro and Associates is an established, full-service law firm with an impeccable record in its more than four (4) decades of providing premier legal service.
-                </p>
-                <p>
-                  Leveraging its collective expertise, the Firm is committed to advocating its clients&apos; legal and business interests with the highest degree of competence and integrity.
-                </p>
-              </div>
-              <div className="relative max-w-4xl mx-auto w-full mml-lp-about__quote-container">
-                <span className="absolute top-0 left-0 -translate-y-[20%] translate-x-[40%] text-[220px] z-20 text-tertiary font-serif leading-none italic mml-lp-about__quote-symbol pointer-events-none select-none">&ldquo;</span>
-                <blockquote className="relative z-10 bg-white p-12 md:p-16 border-l-8 border-tertiary italic font-sans text-primary text-xl md:text-2xl shadow-2xl mml-lp-about__quote leading-relaxed text-left">
-                  An innovative law firm by building long-term relationships with clients based on reciprocity, trust and highest standards of professional ethics. By adopting new models for the delivery of legal services, we strive to redefine the role that a law firm plays in an emerging regional market, in order to produce truly exceptional results for our clients.
-                </blockquote>
-              </div>
-            </Reveal>
-          </div>
-          {/* Subtle Decorative element */}
-          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 border border-white/5 rounded-full -translate-x-1/2 pointer-events-none" />
-        </section>
+          {/* ABOUT THE FIRM SECTION / QUOTE SECTION */}
+          <section id="mml-lp-about" className="py-20 md:py-32 px-6 md:px-12 bg-[#fcf9f2] relative overflow-hidden z-40 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+            <div className="flex justify-center max-w-screen-2xl mx-auto text-center space-y-16 relative z-10 mml-res-container">
+              <Reveal className="space-y-12 flex flex-col items-center">
+                <div className="space-y-6 flex flex-col items-center">
+                  <span className="text-tertiary uppercase tracking-[0.6em] font-sans font-bold text-[10px] md:text-xs text-center">The Legacy</span>
+                  <h2 className="text-4xl md:text-6xl font-serif text-primary uppercase leading-tight font-black mml-res-text--fluid-lg text-center tracking-tight">Authority of Experience.</h2>
+                </div>
+
+                <div className="space-y-8 text-primary/70 font-sans leading-relaxed text-lg max-w-3xl mx-auto text-center mml-lp-about__desc">
+                  <p>
+                    M. M. Lazaro and Associates is an established, full-service law firm with an impeccable record in its more than four (4) decades of providing premier legal service.
+                  </p>
+                  <p>
+                    Leveraging its collective expertise, the Firm is committed to advocating its clients&apos; legal and business interests with the highest degree of competence and integrity.
+                  </p>
+                </div>
+                <div className="relative max-w-4xl mx-auto w-full mml-lp-about__quote-container">
+                  <span className="absolute top-0 left-0 -translate-y-[20%] translate-x-[40%] text-[220px] z-20 text-tertiary font-serif leading-none italic mml-lp-about__quote-symbol pointer-events-none select-none">&ldquo;</span>
+                  <blockquote className="relative z-10 bg-white p-12 md:p-16 border-l-8 border-tertiary italic font-sans text-primary text-xl md:text-2xl shadow-2xl mml-lp-about__quote leading-relaxed text-left">
+                    An innovative law firm by building long-term relationships with clients based on reciprocity, trust and highest standards of professional ethics. By adopting new models for the delivery of legal services, we strive to redefine the role that a law firm plays in an emerging regional market, in order to produce truly exceptional results for our clients.
+                  </blockquote>
+                </div>
+              </Reveal>
+            </div>
+            {/* Subtle Decorative element */}
+            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 border border-white/5 rounded-full -translate-x-1/2 pointer-events-none" />
+          </section>
+        </div>
 
         {/* LAWYER CAROUSEL SECTION */}
         <section id="mml-lp-lawyers" className="mml-lp-lawyers">
