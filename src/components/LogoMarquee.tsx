@@ -10,14 +10,14 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-const logoScale = "h-14"; 
+const logoScale = "h-14";
 
 const logos = [
   "/asset/logo/1-bsp.png",
-  "/asset/logo/2-bank-of-commerce.png",
+  "/asset/logo/2-bank-of-commerce-transparent.png",
   "/asset/logo/3-sterling.png",
-  "/asset/logo/4-Planters.png",
-  "/asset/logo/5-afpslai.png",
+  "/asset/logo/4-Planters-removebg-transparent.png",
+  "/asset/logo/5-afpslai-removebg-transparent.png",
   "/asset/logo/6-mercator.png",
   "/asset/logo/7-ictsi.png",
   "/asset/logo/8-SM.png",
@@ -28,7 +28,7 @@ export function LogoMarquee() {
   const duplicatedLogos = [...logos, ...logos, ...logos];
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
-  
+
   const x = useMotionValue(0);
   const [isDragPaused, setIsDragPaused] = useState(false);
   const baseVelocity = -1.5; // Baseline speed (pixels per frame)
@@ -37,9 +37,9 @@ export function LogoMarquee() {
     if (!isDragPaused && scrollerRef.current) {
       const scrollWidth = scrollerRef.current.scrollWidth;
       const oneThird = scrollWidth / 3;
-      
+
       // Calculate next position
-      let moveBy = baseVelocity * (delta / 16); 
+      let moveBy = baseVelocity * (delta / 16);
       let nextX = x.get() + moveBy;
 
       // Wrap-around logic
@@ -68,12 +68,12 @@ export function LogoMarquee() {
     <section id="mml-lp-marquee" className="pt-24 pb-48 md:pt-32 md:pb-64 bg-neutral/80 relative z-20 overflow-hidden border-y border-primary/5">
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
         <h2 className="text-[10px] md:text-xs font-sans font-bold uppercase tracking-[0.4em] text-primary/30 mb-16 text-center">
-            EMINENT CLIENTS & INSTITUTIONAL PARTNERS
+          EMINENT CLIENTS & INSTITUTIONAL PARTNERS
         </h2>
-        
+
         <div
           ref={containerRef}
-          className="relative overflow-hidden cursor-grab active:cursor-grabbing py-8"
+          className="relative overflow-hidden cursor-grab active:cursor-grabbing py-20"
           onWheel={handleWheel}
         >
           <motion.div
