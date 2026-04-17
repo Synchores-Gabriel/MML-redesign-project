@@ -156,32 +156,32 @@ function HeroSubtitleLayer({
       : { maskPosition: "0% 100%", WebkitMaskPosition: "0% 100%" };
 
   const clipStart = isShot1
-    ? { clipPath: "inset(0 100% 0 0)", WebkitClipPath: "inset(0 100% 0 0)" }
+    ? { clipPath: "inset(-120px 100% -120px -120px)", WebkitClipPath: "inset(-120px 100% -120px -120px)" }
     : isShot2
-      ? { clipPath: "inset(0 0 0 100%)", WebkitClipPath: "inset(0 0 0 100%)" }
-      : { clipPath: "inset(100% 0 0 0)", WebkitClipPath: "inset(100% 0 0 0)" };
+      ? { clipPath: "inset(-120px -120px -120px 100%)", WebkitClipPath: "inset(-120px -120px -120px 100%)" }
+      : { clipPath: "inset(100% -120px -120px -120px)", WebkitClipPath: "inset(100% -120px -120px -120px)" };
 
-  const clipEnd = { clipPath: "inset(0 0 0 0)", WebkitClipPath: "inset(0 0 0 0)" };
+  const clipEnd = { clipPath: "inset(-120px -120px -120px -120px)", WebkitClipPath: "inset(-120px -120px -120px -120px)" };
 
-  const endX = isDesktop ? "15%" : "8%";
+  const endX = isDesktop ? "4%" : "2%";
 
   const motionInitial = isShot1
-    ? { x: "0%", y: "0%", scale: 1, ...revealStart, ...clipStart }
+    ? { x: "-2%", y: "0%", scale: 1, ...revealStart, ...clipStart }
     : isShot2
-      ? { x: "0%", y: "6%", scale: 1, ...revealStart, ...clipStart }
+      ? { x: "2%", y: "4%", scale: 1, ...revealStart, ...clipStart }
       : { x: "0%", y: "0%", scale: 1.4, ...revealStart, ...clipStart };
 
   const motionAnimate = isShot1
-    ? { x: `-${endX}`, y: "0%", scale: 1, ...revealEnd, ...clipEnd }
+    ? { x: "0%", y: "0%", scale: 1, ...revealEnd, ...clipEnd }
     : isShot2
-      ? { x: endX, y: "10%", scale: 1, ...revealEnd, ...clipEnd }
+      ? { x: "0%", y: "8%", scale: 1, ...revealEnd, ...clipEnd }
       : { x: "0%", y: "0%", scale: 1.0, ...revealEnd, ...clipEnd };
 
   const duration = isShot3 ? 0.8 : 1.2;
 
   return (
     <div className="absolute inset-0 z-[35] pointer-events-none overflow-visible">
-      <div className="absolute left-1/2 top-[38%] md:top-[40%] -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12 flex justify-center overflow-visible">
+      <div className={`absolute left-1/2 top-[38%] md:top-[40%] -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12 flex ${isShot1 ? 'justify-start' : isShot2 ? 'justify-end' : 'justify-center'} overflow-visible`}>
         <motion.p
           key={currentSlide}
           initial={motionInitial}
@@ -196,10 +196,11 @@ function HeroSubtitleLayer({
             "leading-[1.12]",
             "whitespace-normal",
             "break-words",
-            "mx-auto",
+            isShot3 ? "mx-auto" : "",
             "max-w-[min(86vw,44rem)] md:max-w-[min(78vw,52rem)]",
             "text-[clamp(1.45rem,3.6vw,3.5rem)]",
             "overflow-visible",
+            "py-20", // Expand bounding box for shadow safety
           ].join(" ")}
           style={{
             textShadow: "0 12px 40px rgba(0,0,0,0.35)",
@@ -208,7 +209,6 @@ function HeroSubtitleLayer({
               : {
                 ...maskCommon,
                 ...(isShot3 ? maskTtoB : isShot2 ? maskRtoL : maskLtoR),
-                ...revealEnd,
               }),
           }}
         >
