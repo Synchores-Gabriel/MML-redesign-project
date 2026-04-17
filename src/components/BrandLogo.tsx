@@ -48,12 +48,12 @@ export const BrandLogo = ({
           "flex flex-col justify-between font-serif uppercase tracking-wider font-semibold py-0.5",
           textClassName
         )}
-        style={{ 
+        style={{
           textShadow: withShadow ? "0 2px 16px rgba(0,0,0,0.5), 0 4px 32px rgba(179,142,62,0.2)" : "none",
         }}
       >
         <span className="block leading-[0.9]">MM LAZARO</span>
-        <span className={cn("block leading-[0.9]", size === "lg" ? "text-[0.75em]" : "text-[0.75em] opacity-80")}>and ASSOCIATES</span>
+        <span className={cn("block leading-[0.9]", size === "lg" ? "text-[0.9]" : "text-[0.9] opacity-80")}>and ASSOCIATES</span>
       </div>
     </div>
   );
