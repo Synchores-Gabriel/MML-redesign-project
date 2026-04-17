@@ -41,5 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # ignore aicontexnt and original_Assets
-aicontext/
 original_assets/
