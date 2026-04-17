@@ -27,7 +27,7 @@ export function LogoMarquee() {
   const duplicatedLogos = [...logos, ...logos, ...logos];
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
-  
+
   const x = useMotionValue(0);
   const [isDragPaused, setIsDragPaused] = useState(false);
   const baseVelocity = -1.5;
@@ -36,7 +36,7 @@ export function LogoMarquee() {
     if (!isDragPaused && scrollerRef.current) {
       const scrollWidth = scrollerRef.current.scrollWidth;
       const oneThird = scrollWidth / 3;
-      let moveBy = baseVelocity * (delta / 16); 
+      let moveBy = baseVelocity * (delta / 16);
       let nextX = x.get() + moveBy;
       if (nextX <= -oneThird) nextX += oneThird;
       else if (nextX > 0) nextX -= oneThird;
@@ -67,10 +67,10 @@ export function LogoMarquee() {
         <h2 className="text-[10px] md:text-xs font-sans font-bold uppercase tracking-[0.4em] text-primary/30 mb-20 text-center">
           EMINENT CLIENTS & INSTITUTIONAL PARTNERS
         </h2>
-        
+
         <div
           ref={containerRef}
-          className="relative w-full overflow-hidden cursor-grab active:cursor-grabbing"
+          className="relative w-full cursor-grab active:cursor-grabbing"
           onWheel={handleWheel}
         >
           <motion.div
@@ -91,9 +91,9 @@ export function LogoMarquee() {
                   width={240}
                   height={80}
                   className="object-contain transition-all duration-500"
-                  style={{ 
+                  style={{
                     filter: logo.mode === "tinted" || USE_TINT_BY_DEFAULT ? filters.tinted : filters.silhouette,
-                    opacity: GLOBAL_OPACITY 
+                    opacity: GLOBAL_OPACITY
                   }}
                 />
               </div>

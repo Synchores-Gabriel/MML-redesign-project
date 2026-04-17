@@ -414,70 +414,70 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-24 relative z-10 w-full mml-res-container">
-              <PracticeAreasLeftColumn 
-                activePractice={activePractice} 
+            <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 sm:pb-[0px] md:pb-[200px] xl:pb-[0px] items-center gap-12 lg:gap-24 relative z-10 w-full mml-res-container">
+              <PracticeAreasLeftColumn
+                activePractice={activePractice}
                 isDesktop={isDesktop}
               />
 
-            <div className="col-start-1 row-start-1 lg:col-start-2 lg:row-start-auto z-10 space-y-12 md:space-y-16 mml-res-stack--mobile">
-              <RevealStagger className="space-y-6">
-                <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] inline-block">Expertise Dashboard</span>
-                <h2 className="text-4xl md:text-5xl font-serif text-primary uppercase leading-tight font-black mml-res-text--fluid-lg">Our Practice Areas</h2>
-                <p className="text-primary/60 font-sans text-base font-medium max-w-xl leading-relaxed mml-res-text--fluid">
-                  A vision to create a true corporate meritocracy dedicated to excellence in the practice of law.
-                </p>
-              </RevealStagger>
+              <div className="col-start-1 row-start-1 lg:col-start-2 lg:row-start-auto z-10 space-y-12 md:space-y-16 mml-res-stack--mobile">
+                <RevealStagger className="space-y-6">
+                  <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] inline-block">Expertise Dashboard</span>
+                  <h2 className="text-4xl md:text-5xl font-serif text-primary uppercase leading-tight font-black mml-res-text--fluid-lg">Our Practice Areas</h2>
+                  <p className="text-primary/60 font-sans text-base font-medium max-w-xl leading-relaxed mml-res-text--fluid">
+                    A vision to create a true corporate meritocracy dedicated to excellence in the practice of law.
+                  </p>
+                </RevealStagger>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                <div className="grid grid-cols-1 md:grid-cols-2 md:pb-[200px] lg:pb-[0px] gap-6 items-stretch">
 
-                {practiceAreas.map((area) => (
-                  <Reveal key={area.id} width="100%" className="h-full">
-                    <button
-                      onClick={() => setActivePractice(activePractice === area.id ? null : area.id)}
-                      {...(isDesktop && {
-                        onMouseEnter: () => setActivePractice(area.id),
-                        onMouseLeave: () => setActivePractice(null)
-                      })}
-                      className={`text-left p-12 transition-all duration-500 border border-tertiary/10 w-full h-[320px] relative group flex flex-col overflow-hidden mml-lp-practice__card ${activePractice === area.id
-                        ? 'bg-neutral ring-1 ring-tertiary/20 shadow-2xl'
-                        : 'bg-white text-primary hover:bg-neutral'
-                        }`}
-                    >
-                      <div className="flex flex-col gap-8 h-full mml-lp-practice__card-base">
-                        <area.icon size={32} className={`${activePractice === area.id ? 'text-secondary' : 'text-tertiary'} transition-colors duration-500`} />
-                        <h3 className="font-serif text-xl uppercase tracking-tighter leading-tight font-black pr-8">
-                          {area.title}
-                        </h3>
-                      </div>
+                  {practiceAreas.map((area) => (
+                    <Reveal key={area.id} width="100%" className="h-full">
+                      <button
+                        onClick={() => setActivePractice(activePractice === area.id ? null : area.id)}
+                        {...(isDesktop && {
+                          onMouseEnter: () => setActivePractice(area.id),
+                          onMouseLeave: () => setActivePractice(null)
+                        })}
+                        className={`text-left p-12 transition-all duration-500 border border-tertiary/10 w-full h-[320px] relative group flex flex-col overflow-hidden mml-lp-practice__card ${activePractice === area.id
+                          ? 'bg-neutral ring-1 ring-tertiary/20 shadow-2xl'
+                          : 'bg-white text-primary hover:bg-neutral'
+                          }`}
+                      >
+                        <div className="flex flex-col gap-8 h-full mml-lp-practice__card-base">
+                          <area.icon size={32} className={`${activePractice === area.id ? 'text-secondary' : 'text-tertiary'} transition-colors duration-500`} />
+                          <h3 className="font-serif text-xl uppercase tracking-tighter leading-tight font-black pr-8">
+                            {area.title}
+                          </h3>
+                        </div>
 
-                      {/* CONSTANT HEIGHT OVERLAY LOGIC */}
-                      <AnimatePresence>
-                        {activePractice === area.id && (
-                          <motion.div
-                            initial={{ x: "100%", opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: "100%", opacity: 0 }}
-                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="absolute inset-0 z-20 glass-overlay p-12 flex flex-col justify-center mml-lp-practice__card-overlay"
-                          >
-                            <p className="font-sans text-sm text-white leading-relaxed mml-lp-practice__card-desc">
-                              {area.desc}
-                            </p>
-                            <div className="mt-8 pt-4 border-t border-white/20">
-                              <span className="text-[10px] font-sans font-bold tracking-[0.2em] text-white uppercase italic">Case Inquiry Required</span>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </button>
-                  </Reveal>
-                ))}
+                        {/* CONSTANT HEIGHT OVERLAY LOGIC */}
+                        <AnimatePresence>
+                          {activePractice === area.id && (
+                            <motion.div
+                              initial={{ x: "100%", opacity: 0 }}
+                              animate={{ x: 0, opacity: 1 }}
+                              exit={{ x: "100%", opacity: 0 }}
+                              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                              className="absolute inset-0 z-20 glass-overlay p-12 flex flex-col justify-center mml-lp-practice__card-overlay"
+                            >
+                              <p className="font-sans text-sm text-white leading-relaxed mml-lp-practice__card-desc">
+                                {area.desc}
+                              </p>
+                              <div className="mt-8 pt-4 border-t border-white/20">
+                                <span className="text-[10px] font-sans font-bold tracking-[0.2em] text-white uppercase italic">Case Inquiry Required</span>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </button>
+                    </Reveal>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
         <LogoMarquee />
 
