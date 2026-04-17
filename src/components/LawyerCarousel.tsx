@@ -115,10 +115,6 @@ export const LawyerCarousel = () => {
                         <h4 className="font-serif text-[10px] text-primary uppercase font-bold leading-tight">{m.name}</h4>
                         <p className="text-[8px] font-sans text-primary/40 uppercase tracking-widest">{m.title}</p>
                       </div>
-                      <div className="mt-4 border-t border-primary/5 pt-2">
-                        <div className="h-[1px] w-full bg-primary/10" />
-                        <div className="h-[1px] w-1/2 bg-primary/40 mt-[2px]" />
-                      </div>
                     </div>
                   ))}
                 </div>

@@ -10,6 +10,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { QuickLinks } from "@/components/QuickLinks";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { BrandLogo } from "@/components/BrandLogo";
+import { PracticeAreasLeftColumn } from "@/components/PracticeAreasLeftColumn";
 import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -224,15 +225,12 @@ export default function Home() {
   const [activePractice, setActivePractice] = useState<string | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
-  const [orbitAngle, setOrbitAngle] = useState(0);
-  const [radius, setRadius] = useState('180px');
-  const orbitTransition = { ease: "easeOut", duration: 0.3 } as const;
 
   useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
     checkDesktop();
-    window.addEventListener('resize', checkDesktop);
-    return () => window.removeEventListener('resize', checkDesktop);
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
   }, []);
 
   useEffect(() => {
@@ -241,32 +239,6 @@ export default function Home() {
     }, 6000); // 6 seconds rotation
     return () => clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    const updateRadius = () => {
-      if (window.innerWidth >= 1024) setRadius('240px');
-      else if (window.innerWidth >= 768) setRadius('200px');
-      else setRadius('180px');
-    };
-    updateRadius();
-    window.addEventListener('resize', updateRadius);
-    return () => window.removeEventListener('resize', updateRadius);
-  }, []);
-
-  useEffect(() => {
-    if (activePractice) {
-      const iconAngles: Record<string, number> = {
-        corp: 90,
-        lit: 180,
-        real: 270,
-        tax: 0,
-      };
-      const targetAngle = 90 - iconAngles[activePractice];
-      setOrbitAngle(targetAngle);
-    } else {
-      setOrbitAngle(0);
-    }
-  }, [activePractice]);
 
   return (
     <>
@@ -314,10 +286,10 @@ export default function Home() {
                 <div className="space-y-4 mml-res-stack--mobile">
                   {/* GRAND LOGO & NAME IDENTITY */}
                   <div className="mml-hero-lp__brand-wrap">
-                    <BrandLogo 
+                    <BrandLogo
                       textClassName="text-tertiary"
                       size="lg"
-                      withShadow={true}
+                      withShadow={false} //removed shadow on logo text for now
                     />
                   </div>
                 </div>
@@ -430,7 +402,7 @@ export default function Home() {
         </section>
 
         {/* PRACTICE DASHBOARD - MASSIVE SCALE FIG */}
-        <section id="mml-lp-practice" className="py-20 md:py-32 px-6 md:px-12 bg-[#F5F5F3] relative overflow-hidden flex items-center min-h-[500px] md:min-h-[750px] mml-res-container">
+        <section id="mml-lp-practice" className="pt-20 md:pt-32 pb-0 px-6 md:px-12 bg-[#F5F5F3] relative overflow-hidden flex items-center min-h-[500px] md:min-h-[750px] mml-res-container">
           {/* Practice Area massive graphic: Off-screen left logic for mobile/desktop */}
           <div className="absolute -left-[300px] lg:-left-[200px] top-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none z-0">
             <div className="w-[800px] h-[800px] md:w-[1200px] md:h-[1200px] rounded-full border-[30px] md:border-[60px] border-primary/20 flex items-center justify-center">
@@ -441,66 +413,7 @@ export default function Home() {
           </div>
 
           <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-24 relative z-10 w-full mml-res-container">
-            <Reveal
-              style={{ overflow: "visible" }}
-              className="col-start-1 row-start-1 lg:relative h-64 md:h-full lg:h-auto flex items-center justify-center lg:justify-start z-0"
-            >
-              {/* CORE GRAPHIC - Icon Hub (Green in diagram) with overflow visible for bleeding icons */}
-              <motion.div
-                animate={{ rotate: orbitAngle }}
-                transition={orbitTransition}
-                className="w-64 h-64 md:w-[500px] md:h-[500px] lg:w-[480px] lg:h-[480px] rounded-full border border-primary/20 flex items-center justify-center relative bg-white/40 backdrop-blur-xl shadow-2xl transition-all duration-1000"
-              >
-
-
-                {/* Inner hub ring */}
-                <div className="w-[85%] h-[85%] rounded-full border border-primary/10 flex items-center justify-center relative mml-lp-practice__core-inner lg:bg-white/10">
-                  <div className="w-full h-full rounded-full bg-primary/5 ring-[15px] ring-primary/5 flex items-center justify-center ml-lp-practice__core-hub">
-                    {/* Counter-rotate icon so it stays upright while orbit rotates */}
-                    <motion.div
-                      animate={{ rotate: -orbitAngle }}
-                      transition={orbitTransition}
-                    >
-                      <Scale size={160} className="text-tertiary/20" />
-                    </motion.div>
-                  </div>
-                </div>
-
-                {/* Floating icons with shadows - Now fully visible due to overflow override */}
-                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-1" style={{ transform: `translate(-50%, -50%) rotate(90deg) translate(${radius}) rotate(-90deg)` }}>
-                  <motion.div
-                    animate={{ rotate: -orbitAngle }}
-                    transition={orbitTransition}
-                  >
-                    <Building2 size={36} className="text-secondary" />
-                  </motion.div>
-                </div>
-                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-2" style={{ transform: `translate(-50%, -50%) rotate(180deg) translate(${radius}) rotate(-180deg)` }}>
-                  <motion.div
-                    animate={{ rotate: -orbitAngle }}
-                    transition={orbitTransition}
-                  >
-                    <Gavel size={36} className="text-primary/40" />
-                  </motion.div>
-                </div>
-                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-3" style={{ transform: `translate(-50%, -50%) rotate(270deg) translate(${radius}) rotate(-270deg)` }}>
-                  <motion.div
-                    animate={{ rotate: -orbitAngle }}
-                    transition={orbitTransition}
-                  >
-                    <Landmark size={36} className="text-primary/40" />
-                  </motion.div>
-                </div>
-                <div className="absolute top-1/2 left-1/2 bg-white p-6 shadow-2xl ring-1 ring-ghost rounded-sm z-20 mml-lp-practice__icon-4" style={{ transform: `translate(-50%, -50%) rotate(0deg) translate(${radius}) rotate(0deg)` }}>
-                  <motion.div
-                    animate={{ rotate: -orbitAngle }}
-                    transition={orbitTransition}
-                  >
-                    <Calculator size={36} className="text-tertiary" />
-                  </motion.div>
-                </div>
-              </motion.div>
-            </Reveal>
+            <PracticeAreasLeftColumn activePractice={activePractice} />
 
             <div className="col-start-1 row-start-1 lg:col-start-2 lg:row-start-auto z-10 space-y-12 md:space-y-16 mml-res-stack--mobile">
               <RevealStagger className="space-y-6">
@@ -564,7 +477,7 @@ export default function Home() {
 
         <div className="relative">
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
-          <QuickLinks translateClass="-translate-y-[10%] md:-translate-y-[25%]" links={[
+          <QuickLinks translateClass="-translate-y-[20%] md:-translate-y-[35%]" links={[
             { name: "About the Firm", href: "/about" },
             { name: "Our Lawyers", href: "/lawyers" },
             { name: "Practice Areas", href: "/practice-areas" },
