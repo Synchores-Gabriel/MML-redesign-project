@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { RevealStagger, Reveal } from "@/components/Reveal";
 import { ContactSection } from "@/components/ContactSection";
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, memo, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -111,7 +111,7 @@ const lawyers = [
   }
 ];
 
-function LawyerCard({
+const LawyerCard = memo(({
   lawyer,
   index,
   isHovered,
@@ -121,7 +121,7 @@ function LawyerCard({
   index: number;
   isHovered: boolean;
   onMobileClick: (lawyer: typeof lawyers[0]) => void;
-}) {
+}) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [expandDirection, setExpandDirection] = useState<"left" | "right">("right");
 
@@ -180,27 +180,27 @@ function LawyerCard({
           <motion.div
             initial={{
               opacity: 0,
-              x: expandDirection === "right" ? "-20%" : "20%",
-              scaleX: 0.8
+              x: expandDirection === "right" ? "80%" : "-80%",
+              scaleX: 0.9,
+              translateZ: 0
             }}
             animate={{
               opacity: 1,
               x: expandDirection === "right" ? "100%" : "-100%",
-              scaleX: 1
+              scaleX: 1,
+              translateZ: 0
             }}
             exit={{
               opacity: 0,
-              x: expandDirection === "right" ? "-10%" : "10%",
-              scaleX: 0.9,
-              transition: { duration: 0.3 }
+              x: expandDirection === "right" ? "90%" : "-90%",
+              scaleX: 0.95,
+              transition: { duration: 0.3, ease: "easeIn" }
             }}
             transition={{
-              type: "spring",
-              stiffness: 100,
-              damping: 20,
-              mass: 1
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1]
             }}
-            className={`hidden md:flex absolute top-2 bottom-2 w-full ${expandDirection === "right" ? 'left-[-8px]' : 'right-[-8px]'} z-[-1] pointer-events-none ${expandDirection === "right" ? 'origin-left' : 'origin-right'}`}
+            className={`hidden md:flex absolute top-2 bottom-2 w-full ${expandDirection === "right" ? 'left-[-8px]' : 'right-[-8px]'} z-[-1] pointer-events-none ${expandDirection === "right" ? 'origin-left' : 'origin-right'} will-change-transform`}
           >
             <div className="w-full h-full glass-overlay p-8 flex flex-col justify-center border border-white/20 shadow-2xl overflow-hidden mml-lw-card__bio-overlay rounded-[12px]">
               <div className="relative z-10 space-y-4">
@@ -211,7 +211,7 @@ function LawyerCard({
                 <div className="space-y-3">
                   <h4 className="text-white text-xl font-serif italic mml-lw-card__bio-heading tracking-tight">Biographical Record</h4>
                   <p className="text-white font-sans text-sm md:text-[15px] leading-relaxed overflow-y-auto max-h-[350px] scrollbar-thin scrollbar-thumb-tertiary/20 pr-4 mml-lw-card__bio-content font-medium opacity-90">
-                    {lawyer.cardBio || lawyer.bio}
+                    {lawyer.bio}
                   </p>
                 </div>
               </div>
@@ -221,7 +221,8 @@ function LawyerCard({
       </AnimatePresence>
     </div>
   );
-}
+});
+LawyerCard.displayName = "LawyerCard";
 
 export default function LawyersPage() {
   const [selectedLawyer, setSelectedLawyer] = useState<typeof lawyers[0] | null>(null);

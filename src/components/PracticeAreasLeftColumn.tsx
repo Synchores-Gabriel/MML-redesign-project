@@ -51,14 +51,22 @@ const AtomIcon = memo(({ item, rotationMv, radius, isActive }: {
       style={{ x, y }}
       className="absolute z-30 flex items-center justify-center will-change-transform"
     >
-      <div className={`
-        relative p-5 md:p-8 bg-white rounded-sm shadow-[0_8px_30px_rgb(0,0,0,0.06)] 
-        border border-ghost/10 transition-all duration-700
-        ${isActive ? "ring-1 ring-tertiary scale-110 z-40" : "opacity-30 scale-90"}
-      `}>
+      <motion.div 
+        animate={{
+            scale: isActive ? 1.1 : 0.9,
+            opacity: isActive ? 1 : 0.3,
+            borderColor: isActive ? "rgba(179, 142, 62, 0.4)" : "rgba(191, 200, 199, 0.1)",
+        }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className={`
+            relative p-5 md:p-8 bg-white rounded-sm shadow-[0_8px_30px_rgb(0,0,0,0.06)] 
+            border flex items-center justify-center
+            ${isActive ? "ring-1 ring-tertiary z-40" : ""}
+        `}
+      >
         <item.icon 
           size={isActive ? 36 : 30} 
-          className={item.color} 
+          className={`${item.color} transition-colors duration-700`}
         />
         
         <AnimatePresence>
@@ -72,7 +80,7 @@ const AtomIcon = memo(({ item, rotationMv, radius, isActive }: {
             />
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </motion.div>
   );
 });
@@ -105,7 +113,7 @@ export function PracticeAreasLeftColumn({ activePractice, isDesktop }: PracticeA
     return () => ro.disconnect();
   }, [isDesktop]);
 
-  const orbitTransition = useMemo(() => ({ type: "spring", stiffness: 45, damping: 20, mass: 1 } as const), []);
+  const orbitTransition = useMemo(() => ({ type: "spring", stiffness: 40, damping: 26, mass: 1 } as const), []);
 
   useEffect(() => {
     if (activePractice) {

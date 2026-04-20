@@ -11,14 +11,14 @@ import { QuickLinks } from "@/components/QuickLinks";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { BrandLogo } from "@/components/BrandLogo";
 import { PracticeAreasLeftColumn } from "@/components/PracticeAreasLeftColumn";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   Building2, Gavel, Landmark, Calculator, Users,
   ArrowRight, MapPin, Phone, Mail, ChevronDown, Award, Scale
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 
 const practiceAreas = [
   {
@@ -226,6 +226,10 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
 
+  // Scroll targets for momentum stacking
+  const strip1Ref = useRef<HTMLElement>(null);
+  const strip2Ref = useRef<HTMLElement>(null);
+
   useEffect(() => {
     const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
     checkDesktop();
@@ -305,12 +309,21 @@ export default function Home() {
         </section>
 
         {/* HERO SECTION 2 - BRANDED STRIP 1 */}
-        <section id="mml-lp-strip-1" className="relative min-h-[400px] md:h-[500px] overflow-hidden z-20">
+        <section 
+          ref={strip1Ref} 
+          id="mml-lp-strip-1" 
+          className="relative min-h-[400px] md:h-[500px] overflow-hidden z-20"
+        >
           <motion.div
-            initial={{ y: "-30%" }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ y: "-30%", opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ margin: "-50% 0px -50% 0px", once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            style={{ 
+              translateZ: "0px",
+              backfaceVisibility: "hidden",
+              willChange: "transform, opacity"
+            }}
             className="w-full h-full flex items-center justify-start text-left px-6 md:px-12 relative"
           >
             {/* Ken Burns Background */}
@@ -349,12 +362,21 @@ export default function Home() {
         {/* STICKY STACK CONTAINER - Groups Hero 3 and Quote Section */}
         <div id="mml-lp-sticky-pusher" className="relative">
           {/* HERO SECTION 3 - BRANDED STRIP 2 */}
-          <section id="mml-lp-strip-2" className="relative min-h-[400px] md:h-[500px] overflow-hidden z-10 md:sticky top-0">
+          <section 
+            ref={strip2Ref} 
+            id="mml-lp-strip-2" 
+            className="relative min-h-[400px] md:h-[500px] overflow-hidden z-10 md:sticky top-0"
+          >
             <motion.div
-              initial={{ y: "-40%" }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              initial={{ y: "-40%", opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ margin: "-50% 0px -50% 0px", once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              style={{ 
+                translateZ: "0px",
+                backfaceVisibility: "hidden",
+                willChange: "transform, opacity"
+              }}
               className="w-full h-full flex items-center justify-end text-right px-6 md:px-12 bg-[#1A243F] relative"
             >
               {/* Ken Burns Background Overlay */}

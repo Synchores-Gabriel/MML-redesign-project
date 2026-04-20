@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { RevealStagger, Reveal } from "@/components/Reveal";
 import { ContactSection } from "@/components/ContactSection";
 import { QuickLinks } from "@/components/QuickLinks";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, ArrowRight, Phone, Mail, MapPin } from "lucide-react";
@@ -40,6 +40,14 @@ const practices = [
 
 export default function PracticeAreasPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
 
   return (
     <>
@@ -143,8 +151,18 @@ export default function PracticeAreasPage() {
                       {/* Right Column (Continuous Image) */}
                       <div className="relative w-full h-[300px] md:h-auto">
                         {/* Breakout container: only expands on active and md screen upwards */}
-                        <div className={`absolute inset-0 transition-all duration-1000 ease-[0.16,1,0.3,1] z-10 ${isActive ? 'md:-mr-[calc(50vw-50%)]' : ''}`}>
-
+                        <motion.div 
+                          layout
+                          initial={false}
+                          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                          style={{ 
+                            width: (isActive && isDesktop) ? "calc(100% + 50vw - 50%)" : "100%",
+                            right: 0,
+                            translateZ: 0,
+                            willChange: "transform"
+                          }}
+                          className="absolute inset-y-0 left-0 z-10"
+                        >
                           <Image
                             src={practice.image}
                             alt={practice.title}
@@ -154,9 +172,15 @@ export default function PracticeAreasPage() {
                           />
 
                           {/* Interaction Overlays */}
-                          <div className={`absolute inset-0 bg-primary/20 mix-blend-multiply transition-opacity duration-700 ${isActive ? 'opacity-40' : 'opacity-0'}`} />
-                          <div className={`absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-primary/60 to-transparent transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-0'}`} />
-                        </div>
+                          <motion.div 
+                            animate={{ opacity: isActive ? 0.4 : 0 }}
+                            className="absolute inset-0 bg-primary/20 mix-blend-multiply transition-opacity duration-700" 
+                          />
+                          <motion.div 
+                            animate={{ opacity: isActive ? 1 : 0 }}
+                            className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-primary/60 to-transparent transition-opacity duration-700" 
+                          />
+                        </motion.div>
                       </div>
 
                     </div>
