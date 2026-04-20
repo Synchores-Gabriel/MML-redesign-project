@@ -168,6 +168,19 @@ body {
   will-change: transform, opacity;
 }
 
+/* HIGH-PERFORMANCE GRID ENGINE */
+@keyframes grid-pulse-css {
+  0%, 100% { opacity: 0; }
+  50% { opacity: var(--pulse-opacity, 0.9); }
+}
+
+.grid-pulse-active {
+  animation: grid-pulse-css var(--pulse-duration, 4s) ease-in-out infinite;
+  animation-delay: var(--pulse-delay, 0s);
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
 /* Grid Pulses */
 .grid-pulse-item {
   animation: grid-pulse 4s ease-in-out infinite;

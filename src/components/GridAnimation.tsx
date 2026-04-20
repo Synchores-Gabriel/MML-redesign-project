@@ -6,63 +6,63 @@ import { motion, AnimatePresence } from "framer-motion";
 /**
  * OPTIMIZED GRID PARTICLE
  */
-const GridParticle = memo(({ index, cols }: { index: number; cols: number }) => {
-  const row = Math.floor(index / cols) + 1;
-  const col = (index % cols) + 1;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: [0, 0.5, 0] }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 3, ease: "easeInOut" }}
-      className="bg-tertiary/90 aspect-square"
-      style={{
-        gridRowStart: row,
-        gridColumnStart: col,
-        willChange: "opacity",
-      }}
-    />
-  );
-});
-GridParticle.displayName = "GridParticle";
-
 export const GridAnimation = () => {
-  const [activeParticles, setActiveParticles] = useState<{ id: number; index: number }[]>([]);
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const cols = 15;
   const totalCells = 750;
 
-  useEffect(() => {
-    let particleId = 0;
-    const interval = setInterval(() => {
-      const count = Math.floor(Math.random() * 12) + 6;
-      const newParticles = Array.from({ length: count }, () => {
-        const index = Math.floor(Math.random() * totalCells);
-        return { id: particleId++, index };
-      });
+  // 1. HIGH-PERFORMANCE STATIC MAPPING (Synchronized)
+  const gridCells = useMemo(() => {
+    return Array.from({ length: totalCells }, (_, index) => {
+      const col = index % cols;
+      const normalizedX = col / (cols - 1);
+      
+      // Tiered Probability Logic
+      let probability = 0;
+      if (normalizedX >= 0.85) probability = 0.95;    // High-Density Zone (Right)
+      else if (normalizedX >= 0.50) probability = 0.65; // Transition Zone
+      else probability = (normalizedX / 0.49) * 0.12;  // Sparse Zone
 
-      setActiveParticles((prev) => [...prev.slice(-35), ...newParticles]);
-    }, 1200);
+      const isActive = Math.random() < probability;
+      
+      return {
+        id: index,
+        isActive,
+        delay: `${(Math.random() * 10).toFixed(2)}s`,
+        duration: `${(3 + Math.random() * 4).toFixed(2)}s`,
+      };
+    });
+  }, [totalCells, cols]);
 
-    return () => clearInterval(interval);
-  }, []);
+  const gridStyle = {
+    gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+  };
 
   return (
     <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden opacity-30">
-      <div className="grid grid-cols-15 w-full h-auto relative">
-        {/* STATIC LINES */}
-        {Array.from({ length: totalCells }).map((_, i) => (
-          <div key={i} className="aspect-square" />
+      <div className="grid w-full h-full relative gap-0" style={gridStyle}>
+        {gridCells.map((cell) => (
+          <div 
+            key={cell.id} 
+            className="aspect-square relative border-0"
+          >
+            {mounted && cell.isActive && (
+              <div 
+                className="absolute inset-0 bg-tertiary/90 grid-pulse-active"
+                style={{
+                  "--pulse-delay": cell.delay,
+                  "--pulse-duration": cell.duration,
+                  "--pulse-opacity": "0.5", // Optimized Peak Opacity for Tertiary Grid
+                } as any}
+              />
+            )}
+          </div>
         ))}
-
-        {/* ACTIVE PARTICLES */}
-        <div className="absolute inset-0 grid grid-cols-15 w-full h-full">
-          <AnimatePresence>
-            {activeParticles.map((p) => (
-              <GridParticle key={p.id} index={p.index} cols={cols} />
-            ))}
-          </AnimatePresence>
-        </div>
       </div>
     </div>
   );

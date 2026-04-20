@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const lawyers = [
   {
@@ -122,6 +123,7 @@ export const LawyerCarousel = () => {
                     </div>
                   ))}
                 </div>
+                <Link href="/lawyers" className="bg-secondary text-primary p-4 shadow-lg group hover:-translate-y-2 transition-transform duration-500">View All</Link>
               </motion.div>
             )}
           </AnimatePresence>

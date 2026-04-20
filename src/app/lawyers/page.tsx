@@ -301,9 +301,6 @@ export default function LawyersPage() {
                   {selectedLawyer.bio}
                 </p>
               </div>
-              <div className="mt-8 pt-4 border-t border-white/5 flex justify-center">
-                <p className="text-white/20 text-[8px] tracking-widest uppercase font-bold">Swipe down to dismiss</p>
-              </div>
             </motion.div>
           )}
         </AnimatePresence>

@@ -69,7 +69,7 @@ export const Header = () => {
       <header
         id="mml-global-header"
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 md:px-12 flex items-center min-h-[5rem] mml-global-header",
+          "fixed top-0 left-0 right-0 z-9999 transition-all duration-500 px-6 md:px-12 flex items-center min-h-[5rem] mml-global-header",
           isScrolled ? scrolledBg : transparentBg,
           isScrolled ? "mml-global-header--scrolled" : "mml-global-header--transparent"
         )}
