@@ -168,6 +168,35 @@ body {
   will-change: transform, opacity;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Footer Specific Interactions */
+.mml-footer-link {
+  position: relative;
+  transition: color 0.4s ease;
+}
+
+.mml-footer-link:hover {
+  color: #B38E3E !important; /* Gold color shift */
+}
+
+.mml-footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px; /* Fatter underline */
+  background-color: #B38E3E;
+  transition: width 0.3s ease;
+}
+
+.mml-footer-link:hover::after {
+  width: 100%;
+}
+
 /* HIGH-PERFORMANCE GRID ENGINE */
 @keyframes grid-pulse-css {
   0%, 100% { opacity: 0; }

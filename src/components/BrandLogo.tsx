@@ -53,7 +53,7 @@ export const BrandLogo = ({
         }}
       >
         <span className="block leading-[0.9]">MM LAZARO</span>
-        <span className={cn("block leading-[0.9]", size === "lg" ? "text-[0.9]" : "text-[0.9] opacity-80")}>and ASSOCIATES</span>
+        <span className={cn("block leading-[0.9]", size === "lg" ? "text-[0.9]" : "text-[0.9]")}>AND ASSOCIATES LAW OFFICES</span>
       </div>
     </div>
   );
