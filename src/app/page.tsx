@@ -231,6 +231,31 @@ export default function Home() {
   // Scroll targets for momentum stacking
   const strip1Ref = useRef<HTMLElement>(null);
   const strip2Ref = useRef<HTMLElement>(null);
+  const [isStrip1Sticky, setIsStrip1Sticky] = useState(true);
+  const [isStrip2Sticky, setIsStrip2Sticky] = useState(true);
+
+  useEffect(() => {
+    const handleStickyResilience = () => {
+      const vh = window.innerHeight;
+      
+      if (strip1Ref.current) {
+        setIsStrip1Sticky(strip1Ref.current.offsetHeight <= vh + 10);
+      }
+      if (strip2Ref.current) {
+        setIsStrip2Sticky(strip2Ref.current.offsetHeight <= vh + 10);
+      }
+    };
+
+    handleStickyResilience();
+    window.addEventListener("resize", handleStickyResilience);
+    // Also check on a timer as images might load and change height
+    const timer = setInterval(handleStickyResilience, 1000);
+    
+    return () => {
+      window.removeEventListener("resize", handleStickyResilience);
+      clearInterval(timer);
+    };
+  }, []);
 
   useEffect(() => {
     const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
@@ -311,25 +336,26 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* HERO SECTION 2 - BRANDED STRIP 1 */}
-        <section 
-          ref={strip1Ref} 
-          id="mml-lp-strip-1" 
-          className="relative min-h-[400px] md:h-[500px] overflow-hidden z-20"
-        >
-          <motion.div
-            initial={{ y: "-30%", opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ margin: "-50% 0px -50% 0px", once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            style={{ 
-              translateZ: "0px",
-              backfaceVisibility: "hidden",
-              willChange: "transform, opacity"
-            }}
-            className="w-full h-full flex items-center justify-start text-left px-6 md:px-12 relative"
+        
+        {/* DECK OF CARDS STACKING CONTAINER */}
+        <div id="mml-lp-deck-container" className="relative">
+          <section 
+            ref={strip1Ref} 
+            id="mml-lp-strip-1" 
+            className={`relative h-[42vh] min-h-[350px] overflow-hidden z-20 ${isStrip1Sticky ? 'sticky top-[5rem]' : 'relative'}`}
           >
+            <motion.div
+              initial={{ y: "10vh", opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ amount: 0.6, margin: "0px 0px -20% 0px", once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              style={{ 
+                translateZ: "0px",
+                backfaceVisibility: "hidden",
+                willChange: "transform, opacity"
+              }}
+              className="w-full h-full flex items-center justify-start text-left px-6 md:px-12 relative"
+            >
             {/* Ken Burns Background */}
             <div className="absolute inset-0 z-0">
               <motion.div
@@ -363,19 +389,17 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {/* STICKY STACK CONTAINER - Groups Hero 3 and Quote Section */}
-        <div id="mml-lp-sticky-pusher" className="relative">
           {/* HERO SECTION 3 - BRANDED STRIP 2 */}
           <section 
             ref={strip2Ref} 
             id="mml-lp-strip-2" 
-            className="relative min-h-[400px] md:h-[500px] overflow-hidden z-10 md:sticky top-0"
+            className={`relative h-[42vh] min-h-[350px] overflow-hidden z-40 bg-[#1A243F] ${isStrip2Sticky ? 'sticky top-[5rem] lg:top-[calc(5rem+42vh)]' : 'relative'}`}
           >
             <motion.div
-              initial={{ y: "-40%", opacity: 0 }}
+              initial={{ y: "10vh", opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ margin: "-50% 0px -50% 0px", once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ amount: 0.2, margin: "0px 0px -10% 0px", once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               style={{ 
                 translateZ: "0px",
                 backfaceVisibility: "hidden",
@@ -417,7 +441,7 @@ export default function Home() {
           </section>
 
           {/* ABOUT THE FIRM SECTION / QUOTE SECTION */}
-          <section id="mml-lp-about" className="py-20 md:py-32 px-6 md:px-12 bg-[#fcf9f2] relative overflow-hidden z-40 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+          <section id="mml-lp-about" className="py-20 md:py-32 px-6 md:px-12 bg-[#fcf9f2] relative overflow-hidden z-50 shadow-[0_-20px_50px_rgba(0,0,0,0.1)]" style={{ willChange: "transform" }}>
             <div className="flex justify-center max-w-screen-2xl mx-auto text-center space-y-16 relative z-10 mml-res-container">
               <Reveal className="space-y-12 flex flex-col items-center">
                 <div className="space-y-6 flex flex-col items-center">

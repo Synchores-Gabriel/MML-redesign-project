@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { QuickLinks } from "@/components/QuickLinks";
+import { getAdaptiveAsset } from "@/utils/paths";
 
 const lawyers = [
   {
@@ -356,9 +357,21 @@ export default function LawyersPage() {
         <QuickLinks
           id="mml-lw-quick-links"
           links={[
-            { name: "About the Firm", href: "/about" },
-            { name: "Our Lawyers", href: "/lawyers" },
-            { name: "Practice Areas", href: "/practice-areas" },
+            { 
+              name: "About the Firm", 
+              href: "/about",
+              asset: getAdaptiveAsset("/asset/office/1.jpg")
+            },
+            { 
+              name: "Our Lawyers", 
+              href: "/lawyers",
+              asset: getAdaptiveAsset("/asset/quick3.png")
+            },
+            { 
+              name: "Practice Areas", 
+              href: "/practice-areas",
+              asset: getAdaptiveAsset("/asset/quick2.png")
+            },
           ]}
           translateClass="translate-y-[20%] mt-32 md:mt-48"
         />
