@@ -3,7 +3,7 @@
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 import { useRef, useState, useMemo, useEffect, useCallback, memo } from "react";
 import Image from "next/image";
-import { getAssetPath } from "@/utils/paths";
+import { getAssetPath, getAdaptiveAsset } from "@/utils/paths";
 
 
 /**
@@ -14,38 +14,41 @@ const GLOBAL_OPACITY = 0.7;
 const USE_TINT_BY_DEFAULT = true; 
 
 const logos = [
-  { src: getAssetPath("/asset/logo/1-bsp.png"), mode: "silhouette" },
-  { src: getAssetPath("/asset/logo/2-bank-of-commerce-transparent.png"), mode: "tinted" },
-  { src: getAssetPath("/asset/logo/3-sterling.png"), mode: "silhouette" },
-  { src: getAssetPath("/asset/logo/4-Planters-removebg-transparent.png"), mode: "tinted" },
-  { src: getAssetPath("/asset/logo/5-afpslai-removebg-transparent.png"), mode: "tinted" },
-  { src: getAssetPath("/asset/logo/6-mercator.png"), mode: "silhouette" },
-  { src: getAssetPath("/asset/logo/7-ictsi-strip.png"), mode: "tinted" },
-  { src: getAssetPath("/asset/logo/8-SM.png"), mode: "silhouette" },
+  { asset: getAdaptiveAsset("/asset/logo/1-bsp.png"), mode: "silhouette" },
+  { asset: getAdaptiveAsset("/asset/logo/2-bank-of-commerce-transparent.png"), mode: "tinted" },
+  { asset: getAdaptiveAsset("/asset/logo/3-sterling.png"), mode: "silhouette" },
+  { asset: getAdaptiveAsset("/asset/logo/4-Planters-removebg-transparent.png"), mode: "tinted" },
+  { asset: getAdaptiveAsset("/asset/logo/5-afpslai-removebg-transparent.png"), mode: "tinted" },
+  { asset: getAdaptiveAsset("/asset/logo/6-mercator.png"), mode: "silhouette" },
+  { asset: getAdaptiveAsset("/asset/logo/7-ictsi-strip.png"), mode: "tinted" },
+  { asset: getAdaptiveAsset("/asset/logo/8-SM.png"), mode: "silhouette" },
 ];
 
 /**
  * OPTIMIZED LOGO ITEM
  * Using React.memo to prevent re-renders during smooth sliding
  */
-const LogoItem = memo(({ src, mode, filter, opacity }: { 
-  src: string; 
+const LogoItem = memo(({ asset, mode, filter, opacity }: { 
+  asset: any; 
   mode: string; 
   filter: string; 
   opacity: number;
 }) => (
   <div className={`${LOGO_HEIGHT_CLASS} w-auto flex-shrink-0 relative flex items-center will-change-transform`}>
-    <Image
-      src={src}
-      alt="Client"
-      width={240}
-      height={80}
-      className="object-contain transition-all duration-500"
-      style={{
-        filter,
-        opacity
-      }}
-    />
+    <picture>
+      <source srcSet={asset.hq} type="image/webp" />
+      <Image
+        src={asset.legacy}
+        alt="Client"
+        width={240}
+        height={80}
+        className="object-contain transition-all duration-500"
+        style={{
+          filter,
+          opacity
+        }}
+      />
+    </picture>
   </div>
 ));
 LogoItem.displayName = "LogoItem";
@@ -122,7 +125,7 @@ export function LogoMarquee() {
             {duplicatedLogos.map((logo, index) => (
               <LogoItem 
                 key={index}
-                src={logo.src}
+                asset={logo.asset}
                 mode={logo.mode}
                 filter={logo.mode === "tinted" || USE_TINT_BY_DEFAULT ? filters.tinted : filters.silhouette}
                 opacity={GLOBAL_OPACITY}

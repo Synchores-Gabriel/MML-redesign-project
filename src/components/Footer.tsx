@@ -19,8 +19,8 @@ export const Footer = () => {
             <Link href="/" className="group mml-global-footer__logo items-center">
               <BrandLogo textClassName="text-tertiary" size="md" />
             </Link>
-            <p className="font-sans text-xs md:text-sm text-neutral/40 leading-relaxed max-w-xs uppercase tracking-widest font-medium italic">
-              Heritage Modernist Architecture & Jurisprudence. Multi-Generational Legal Craftsmanship.
+            <p className="font-sans text-base text-neutral/80 leading-relaxed font-bold">
+              An innovative law firm by building long-term relationships with clients based on reciprocity, trust and highest standards of professional ethics. By adopting new models for the delivery of legal services, we strive to redefine the role that a law firm plays in an emerging regional market, in order to produce truly exceptional results for our clients.
             </p>
           </div>
 

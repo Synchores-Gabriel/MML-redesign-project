@@ -130,10 +130,14 @@ const LawyerCard = memo(({
     const checkPosition = () => {
       if (!cardRef.current) return;
       const width = window.innerWidth;
-      const cols = width >= 1024 ? 3 : 2; // 2 columns on mobile/tablet, 3 on desktop
+      const cols = width >= 1024 ? 3 : width >= 768 ? 2 : 1;
       const column = index % cols;
-      const isRightMost = column === (cols - 1);
-      setExpandDirection(isRightMost ? "left" : "right");
+
+      // If col 2 (rightmost) of 3, expand left. 
+      // If col 1 (rightmost) of 2, expand left.
+      // Otherwise expand right.
+      const isRightHalf = column >= (cols / 2);
+      setExpandDirection(isRightHalf ? "left" : "right");
     };
     checkPosition();
     window.addEventListener("resize", checkPosition);
@@ -201,7 +205,7 @@ const LawyerCard = memo(({
               duration: 0.6,
               ease: [0.16, 1, 0.3, 1]
             }}
-            className={`hidden md:flex absolute top-2 bottom-2 w-full ${expandDirection === "right" ? 'left-[-8px]' : 'right-[-8px]'} z-[-1] pointer-events-none ${expandDirection === "right" ? 'origin-left' : 'origin-right'} will-change-transform`}
+            className={`hidden md:flex absolute top-2 bottom-2 w-full ${expandDirection === "right" ? 'left-[-8px]' : 'right-[-8px]'} z-[-1] pointer-events-auto ${expandDirection === "right" ? 'origin-left' : 'origin-right'} will-change-transform`}
           >
             <div className="w-full h-full glass-overlay p-8 flex flex-col justify-center border border-white/20 shadow-2xl overflow-hidden mml-lw-card__bio-overlay rounded-[12px]">
               <div className="relative z-10 space-y-4">
@@ -210,7 +214,7 @@ const LawyerCard = memo(({
                   <span className="text-tertiary uppercase tracking-[0.5em] font-black text-[8px]">Insight</span>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="text-white text-xl font-serif italic mml-lw-card__bio-heading tracking-tight">Biographical Record</h4>
+                  <h4 className="text-white text-xl font-serif italic mml-lw-card__bio-heading tracking-tight">{lawyer.name}</h4>
                   <p className="text-white font-sans text-sm md:text-[15px] leading-relaxed overflow-y-auto max-h-[350px] scrollbar-thin scrollbar-thumb-tertiary/20 pr-4 mml-lw-card__bio-content font-medium opacity-90">
                     {lawyer.bio}
                   </p>
@@ -233,7 +237,7 @@ export default function LawyersPage() {
     <div className="flex flex-col min-h-screen bg-neutral paper-texture">
       <Header />
 
-      <main id="mml-lw-directory-root" className="flex-grow pt-32 md:pt-48 pb-24 md:pb-32">
+      <main id="mml-lw-directory-root" className="flex-grow pt-32 md:pt-48 pb-0 md:pb-0">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 space-y-16 md:space-y-24 mml-res-container">
 
 
@@ -251,28 +255,71 @@ export default function LawyersPage() {
           </RevealStagger>
 
 
-          <section className="relative">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          {/* Legal Tiers Sections */}
+          <div className="space-y-32">
 
-              {lawyers.map((lawyer, i) => (
-                <div
-                  key={lawyer.id}
-                  className={`first-letter:uppercase relative transition-[z-index] duration-0 ${hoveredIndex === i ? 'z-[100]' : 'z-0'}`}
-                  onMouseEnter={() => setHoveredIndex(i)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  <LawyerCard
-                    lawyer={lawyer}
-                    index={i}
-                    isHovered={hoveredIndex === i}
-                    onMobileClick={(l) => {
-                      if (window.innerWidth < 768) setSelectedLawyer(l);
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
+            {/* Senior Associates Section */}
+            <section id="seniors" className="space-y-12 scroll-mt-32">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                {lawyers.filter(l => l.title.includes("Senior")).map((lawyer, i) => (
+                  <div
+                    key={lawyer.id}
+                    className={`relative transition-[z-index] duration-0 ${hoveredIndex === i ? 'z-[100]' : 'z-0'}`}
+                    onMouseEnter={() => setHoveredIndex(i)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    <LawyerCard
+                      lawyer={lawyer}
+                      index={i}
+                      isHovered={hoveredIndex === i}
+                      onMobileClick={(l) => {
+                        if (window.innerWidth < 768) setSelectedLawyer(l);
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Junior Associates Section */}
+            <section id="juniors" className="space-y-12 scroll-mt-32">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                {lawyers.filter(l => l.title.includes("Junior")).map((lawyer, i) => {
+                  return (
+                    <div
+                      key={lawyer.id}
+                      className={`relative transition-[z-index] duration-0 ${hoveredIndex === lawyers.findIndex(l => l.id === lawyer.id) ? 'z-[100]' : 'z-0'}`}
+                      onMouseEnter={() => setHoveredIndex(lawyers.findIndex(l => l.id === lawyer.id))}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                    >
+                      <LawyerCard
+                        lawyer={lawyer}
+                        index={i}
+                        isHovered={hoveredIndex === lawyers.findIndex(l => l.id === lawyer.id)}
+                        onMobileClick={(l) => {
+                          if (window.innerWidth < 768) setSelectedLawyer(l);
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* Partners (Optional: For completeness if needed) */}
+            {!lawyers.some(l => l.title.includes("Senior") || l.title.includes("Junior")) && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                {lawyers.map((lawyer, i) => (
+                  <div key={lawyer.id}
+                    className={`relative transition-[z-index] duration-0 ${hoveredIndex === i ? 'z-[100]' : 'z-0'}`}
+                    onMouseEnter={() => setHoveredIndex(i)}
+                    onMouseLeave={() => setHoveredIndex(null)}>
+                    <LawyerCard lawyer={lawyer} index={i} isHovered={hoveredIndex === i} onMobileClick={(l) => { if (window.innerWidth < 768) setSelectedLawyer(l); }} />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
         </div>
 
@@ -306,13 +353,13 @@ export default function LawyersPage() {
           )}
         </AnimatePresence>
 
-        <QuickLinks 
-          id="mml-lw-quick-links" 
+        <QuickLinks
+          id="mml-lw-quick-links"
           links={[
             { name: "About the Firm", href: "/about" },
             { name: "Our Lawyers", href: "/lawyers" },
             { name: "Practice Areas", href: "/practice-areas" },
-          ]} 
+          ]}
           translateClass="translate-y-[20%] mt-32 md:mt-48"
         />
 

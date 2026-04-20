@@ -40,5 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# ignore aicontexnt and original_Assets
+# ignore aicontext and original_Assets
 original_assets/
+aicontext/
+MML-redesign-project/aicontext/
+MML-redesign-project/original_assets/
+
+# ignore deployment files
+deployment/
+nginx_install.md

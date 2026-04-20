@@ -4,7 +4,7 @@ import Image from "next/image";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-import { getAssetPath } from "@/utils/paths";
+import { getAssetPath, getAdaptiveAsset } from "@/utils/paths";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -30,6 +30,8 @@ export const BrandLogo = ({
     lg: "text-2xl md:text-4xl lg:text-5xl gap-x-4 md:gap-x-6",
   };
 
+  const logoAsset = getAdaptiveAsset("/asset/mma-logo-hq.png");
+
   return (
     <div className={cn("inline-flex flex-row items-stretch", sizeClasses[size], className)}>
       {/* 
@@ -37,11 +39,14 @@ export const BrandLogo = ({
         Parent's items-stretch forces the text column to match this height.
       */}
       <div className="h-[1.7em] shrink-0 flex items-center">
-        <img
-          src={getAssetPath("/asset/mma-logo-hq.png")}
-          alt="MML Logo"
-          className="h-full w-auto object-contain block mml-brand-logo__graphic"
-        />
+        <picture className="h-full w-auto">
+          <source srcSet={logoAsset.hq} type="image/webp" />
+          <img
+            src={logoAsset.legacy}
+            alt="MML Logo"
+            className="h-full w-auto object-contain block mml-brand-logo__graphic"
+          />
+        </picture>
       </div>
 
       {/* Text Column - justify-between pushes L2 to the bottom of the logo's height */}

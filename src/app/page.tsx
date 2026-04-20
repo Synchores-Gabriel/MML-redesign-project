@@ -19,7 +19,7 @@ import {
   ArrowRight, MapPin, Phone, Mail, ChevronDown, Award, Scale
 } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
-import { getAssetPath } from "@/utils/paths";
+import { getAssetPath, getAdaptiveAsset } from "@/utils/paths";
 
 
 const practiceAreas = [
@@ -51,15 +51,15 @@ const practiceAreas = [
 
 const HERO_SLIDES = [
   {
-    video: getAssetPath("/asset/vid/hero1.mp4"),
+    asset: getAdaptiveAsset("/asset/vid/hero1.mp4"),
     subtitle: "Corporate Governance & Strategic Transactions"
   },
   {
-    video: getAssetPath("/asset/vid/hero2.mp4"),
+    asset: getAdaptiveAsset("/asset/vid/hero2.mp4"),
     subtitle: "Expert Advocacy & Complex Litigation"
   },
   {
-    video: getAssetPath("/asset/vid/hero3.mp4"),
+    asset: getAdaptiveAsset("/asset/vid/hero3.mp4"),
     subtitle: "Real Estate Development & Specialized Tax Solutions"
   }
 ];
@@ -266,14 +266,16 @@ export default function Home() {
                 style={{ backfaceVisibility: "hidden", transform: "translateZ(0)" }}
               >
                 <video
-                  src={slide.video}
                   autoPlay
                   muted
                   loop
                   playsInline
                   className="w-full h-full object-cover scale-105"
                   style={{ willChange: "transform", backfaceVisibility: "hidden" }}
-                />
+                >
+                  <source src={slide.asset.hq} type="video/webm" />
+                  <source src={slide.asset.legacy} type="video/mp4" />
+                </video>
               </motion.div>
             ))}
           </div>

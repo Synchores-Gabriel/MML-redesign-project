@@ -94,16 +94,30 @@ export default function PracticeAreasPage() {
                             <span className={`text-[11px] font-sans font-bold tracking-widest block transition-colors duration-500 ${isActive ? 'text-tertiary' : 'text-primary/30'}`}>
                               {String(i + 1).padStart(2, '0')}
                             </span>
-                            <h3 className={`text-2xl md:text-3xl font-serif uppercase tracking-tight font-black transition-colors duration-500 ${isActive ? 'text-white' : 'text-primary'}`}>
+                            <motion.h3 
+                              animate={{ 
+                                fontSize: isActive ? (isDesktop ? "1.875rem" : "1.5rem") : (isDesktop ? "3rem" : "2.25rem"),
+                                lineHeight: isActive ? "1.2" : "1.1"
+                              }}
+                              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                              className={`font-serif uppercase tracking-tight font-black transition-colors duration-500 ${isActive ? 'text-white' : 'text-primary'}`}
+                            >
                               {practice.title}
-                            </h3>
+                            </motion.h3>
                           </div>
 
                           {/* Description & Details */}
                           <div className="space-y-6 max-w-2xl">
-                            <p className={`font-sans text-lg leading-relaxed transition-colors duration-500 ${isActive ? 'text-white/90' : 'text-primary/80'} ${!isActive ? 'line-clamp-2' : ''}`}>
+                            <motion.p 
+                              animate={{ 
+                                fontSize: isActive ? "1.125rem" : (isDesktop ? "1.5rem" : "1.25rem"),
+                                opacity: isActive ? 0.9 : 1
+                              }}
+                              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                              className={`font-sans leading-relaxed transition-colors duration-500 ${isActive ? 'text-white/90' : 'text-primary/80'} ${!isActive ? 'line-clamp-2' : ''}`}
+                            >
                               {practice.description}
-                            </p>
+                            </motion.p>
 
                             <AnimatePresence initial={false}>
                               {isActive && (

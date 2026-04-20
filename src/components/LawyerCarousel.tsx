@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { getAssetPath } from "@/utils/paths";
+import { getAssetPath, getAdaptiveAsset } from "@/utils/paths";
 
 
 const lawyers = [
@@ -13,28 +13,40 @@ const lawyers = [
     type: "partner",
     name: "Atty. Manuel M. Lazaro",
     title: "Founding Partner",
-    img: getAssetPath("/asset/avatar/JusticeManuelLazaro-3679.jpg"),
+    asset: getAdaptiveAsset("/asset/avatar/JusticeManuelLazaro-3679.jpg"),
     bio: "Founder and Senior Partner of M.M. Lazaro and Associates. A former Presiding Justice of the Court of Appeals and Presidential Assistant for Legal Affairs, he currently serves as the Chairman and CEO of Philconsa."
   },
   {
     type: "partner",
     name: "Atty. Michelle Lazaro",
     title: "Managing Partner",
-    img: getAssetPath("/asset/avatar/AttyMichelleLazaro-3744.jpg"),
+    asset: getAdaptiveAsset("/asset/avatar/AttyMichelleLazaro-3744.jpg"),
     bio: "Specializing in Corporate Law, Litigation, and Estate Planning, Atty. Michelle Lazaro handles complex legal frameworks for multi-generational wealth and corporate governance."
   },
   {
     type: "grid",
-    title: "Other Lawyers",
+    title: "Our Associates",
+    hash: "#seniors",
     members: [
-      { name: "Atty. Abel M. Almario", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/3.png") },
-      { name: "Atty. Rafael P. Garcia Jr.", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/4.png") },
-      { name: "Atty. Edwin M. Espejo", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/5.png") },
-      { name: "Atty. Irish Marie V. Cabrera", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/6.png") },
-      { name: "Atty. Rommel M. Santiago", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/7.png") },
-      { name: "Atty. Philipe T. Aquino", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/8.png") },
-      { name: "Atty. Ma. Florence R. Fuerte", title: "Junior Lawyer", img: getAssetPath("/asset/avatar/9.png") },
-      { name: "Atty. Loisse Danielle D. Vitug", title: "Junior Lawyer", img: getAssetPath("/asset/avatar/10.png") },
+      { name: "Atty. Rafael P. Garcia Jr.", title: "Senior Associate", asset: getAdaptiveAsset("/asset/avatar/4.png") },
+      { name: "Atty. Rommel M. Santiago", title: "Senior Associate", asset: getAdaptiveAsset("/asset/avatar/7.png") },
+      { name: "Atty. Abel M. Almario", title: "Senior Associate", asset: getAdaptiveAsset("/asset/avatar/3.png") },
+      { name: "Atty. Edwin M. Espejo", title: "Senior Associate", asset: getAdaptiveAsset("/asset/avatar/5.png") },
+      { name: "Atty. Irish Marie V. Cabrera", title: "Senior Associate", asset: getAdaptiveAsset("/asset/avatar/6.png") },
+      { name: "Atty. Philipe T. Aquino", title: "Senior Associate", asset: getAdaptiveAsset("/asset/avatar/8.png") },
+    ]
+  },
+  {
+    type: "grid",
+    title: "Our Associates",
+    hash: "#juniors",
+    members: [
+      { name: "Atty. Ma. Florence R. Fuerte", title: "Junior Associate", asset: getAdaptiveAsset("/asset/avatar/9.png") },
+      { name: "Atty. Loisse Danielle D. Vitug", title: "Junior Associate", asset: getAdaptiveAsset("/asset/avatar/10.png") },
+      { name: "Atty. Gerald H. Caraan", title: "Junior Associate", asset: getAdaptiveAsset("/asset/avatar/11.png") },
+      { name: "Atty. Princess Khaila D. Palabrica", title: "Junior Associate", asset: getAdaptiveAsset("/asset/avatar/12.png") },
+      { name: "Atty. Robert Saimon D. Sison", title: "Junior Associate", asset: getAdaptiveAsset("/asset/avatar/13.png") },
+      { name: "Atty. Joseph Cornelius R. Lazaro", title: "Junior Associate", asset: getAdaptiveAsset("/asset/avatar/14.png") },
     ]
   }
 ];
@@ -73,21 +85,26 @@ export const LawyerCarousel = () => {
               >
 
                 <div className="relative w-full md:w-[45%] aspect-[4/5] md:aspect-auto">
-                  <Image
-                    src={lawyers[index].img!}
-                    alt={lawyers[index].name!}
-                    fill
-                    className="object-cover object-top"
-                  />
+                  {lawyers[index].type === "partner" && (lawyers[index] as any).asset && (
+                    <picture className="absolute inset-0">
+                      <source srcSet={(lawyers[index] as any).asset!.hq} type="image/webp" />
+                      <Image
+                        src={(lawyers[index] as any).asset!.legacy}
+                        alt={lawyers[index].name || ""}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </picture>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
-                <div className="w-full md:w-[55%] p-12 flex flex-col justify-center space-y-6">
+                <div className="w-full md:w-[55%] p-12 flex flex-col justify-center space-y-6 text-primary">
                   <div className="space-y-1">
                     <h3 className="text-2xl font-serif text-primary uppercase font-bold">{lawyers[index].name}</h3>
                     <p className="text-primary/60 font-sans text-sm uppercase tracking-[0.2em] font-bold">{lawyers[index].title}</p>
                   </div>
                   <p className="text-primary/70 font-sans text-base leading-relaxed font-medium">
-                    {lawyers[index].bio}
+                    {(lawyers[index] as any).bio}
                   </p>
                   <div className="pt-4 border-t border-primary/10">
                     <div className="flex gap-4">
@@ -99,57 +116,75 @@ export const LawyerCarousel = () => {
               </motion.div>
             ) : (
               <motion.div
-                key="grid"
+                key={index}
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -100 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="max-w-6xl mx-auto mml-comp-lawyers-carousel__slide mml-comp-lawyers-carousel__slide--grid"
               >
-                <div className="text-center mb-8 mml-comp-lawyers-carousel__header">
-                  <h3 className="text-2xl font-serif text-white uppercase tracking-tighter mml-comp-lawyers-carousel__title">Other Lawyers</h3>
+                <div className="text-center mb-12 mml-comp-lawyers-carousel__header">
+                  <h3 className="text-3xl md:text-4xl font-serif text-white uppercase tracking-tighter mml-comp-lawyers-carousel__title">{lawyers[index].title}</h3>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10 mml-comp-lawyers-carousel__grid">
-                  {/* White-to-transparent gradient as per mockup - FULL SECTION BOTTOM FILL */}
-                  <div className="absolute -inset-x-[200vw] -bottom-[300px] h-[800px] bg-gradient-to-t from-white from-[40%] via-white/80 to-transparent z-0 pointer-events-none mml-comp-lawyers-carousel__full-gradient" />
 
-                  {lawyers[index].members!.map((m, i) => (
-                    <div key={i} className="bg-white p-4 shadow-lg group hover:-translate-y-2 transition-transform duration-500">
-                      <div className="relative aspect-[3/4] mb-4 overflow-hidden">
-                        <Image src={m.img} alt={m.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                {/* Grid Container */}
+                <div className="space-y-12 relative z-10 mml-comp-lawyers-carousel__grid-container">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mml-comp-lawyers-carousel__grid justify-center">
+                    {(lawyers[index] as any).members.map((m: any, i: number) => (
+                      <div key={i} className="bg-white p-4 shadow-xl group hover:-translate-y-4 transition-all duration-700 mml-comp-lawyers-carousel__item">
+                        <div className="relative aspect-[4/5] mb-4 overflow-hidden">
+                          <picture className="absolute inset-0">
+                            <source srcSet={m.asset.hq} type="image/webp" />
+                            <Image 
+                              src={m.asset.legacy} 
+                              alt={m.name} 
+                              fill 
+                              className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" 
+                            />
+                          </picture>
+                        </div>
+                        <div className="space-y-1">
+                          <h5 className="font-serif text-[11px] text-primary uppercase font-bold leading-tight">{m.name}</h5>
+                          <p className="text-[9px] font-sans text-primary/50 uppercase tracking-widest font-semibold">{m.title}</p>
+                        </div>
                       </div>
-                      <div className="space-y-1">
-                        <h4 className="font-serif text-[10px] text-primary uppercase font-bold leading-tight">{m.name}</h4>
-                        <p className="text-[8px] font-sans text-primary/40 uppercase tracking-widest">{m.title}</p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+
+                  <div className="flex justify-center pt-8">
+                    <Link 
+                      href={`/lawyers${(lawyers[index] as any).hash || ""}`} 
+                      className="group flex items-center gap-6 px-10 py-5 bg-primary rounded-sm transition-all duration-500 hover:bg-tertiary shadow-xl mml-comp-lawyers-carousel__button"
+                    >
+                      <span className="text-white group-hover:text-primary font-sans text-[11px] font-black uppercase tracking-[0.4em] transition-colors duration-500">Show More</span>
+                      <ArrowRight size={16} className="text-white group-hover:text-primary group-hover:translate-x-2 transition-all duration-500" />
+                    </Link>
+                  </div>
                 </div>
-                <Link href="/lawyers" className="bg-secondary text-primary p-4 shadow-lg group hover:-translate-y-2 transition-transform duration-500">View All</Link>
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* Carousel Controls - ALIGNED TO TRACK CENTER */}
-          <div className="absolute top-1/2 -left-4 md:-left-12 -translate-y-1/2 z-20 mml-comp-lawyers-carousel__prev">
-            <button onClick={prev} className="p-4 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors">
-              <ChevronLeft size={32} />
+          {/* Carousel Controls */}
+          <div className="absolute top-1/2 -left-4 md:-left-16 -translate-y-1/2 z-20 mml-comp-lawyers-carousel__prev">
+            <button onClick={prev} className="p-4 rounded-full bg-black/20 text-white hover:bg-black/60 hover:scale-110 transition-all duration-500 backdrop-blur-sm">
+              <ChevronLeft size={36} strokeWidth={1} />
             </button>
           </div>
-          <div className="absolute top-1/2 -right-4 md:-right-12 -translate-y-1/2 z-20 mml-comp-lawyers-carousel__next">
-            <button onClick={next} className="p-4 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors">
-              <ChevronRight size={32} />
+          <div className="absolute top-1/2 -right-4 md:-right-16 -translate-y-1/2 z-20 mml-comp-lawyers-carousel__next">
+            <button onClick={next} className="p-4 rounded-full bg-black/20 text-white hover:bg-black/60 hover:scale-110 transition-all duration-500 backdrop-blur-sm">
+              <ChevronRight size={36} strokeWidth={1} />
             </button>
           </div>
         </div>
 
         {/* Indicators */}
-        <div className="flex justify-center gap-4 mt-12">
+        <div className="flex justify-center gap-4 mt-16">
           {lawyers.map((_, i) => (
             <button
               key={i}
               onClick={() => setIndex(i)}
-              className={`h-1.5 transition-all duration-500 rounded-full ${index === i ? 'w-12 bg-tertiary' : 'w-4 bg-white/20'}`}
+              className={`h-1.5 transition-all duration-700 rounded-full ${index === i ? 'w-24 bg-tertiary' : 'w-6 bg-white/10'}`}
             />
           ))}
         </div>

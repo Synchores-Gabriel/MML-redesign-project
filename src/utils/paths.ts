@@ -36,3 +36,36 @@ export function getAssetPath(path: string): string {
 
   return normalizedPath;
 }
+
+/**
+ * Returns a set of paths for a tiered asset loading strategy.
+ * Primary: WebP/WebM (HQ)
+ * Secondary: LQ (Small/Compressed)
+ * Legacy: Original (JPG/MP4)
+ */
+export function getAdaptiveAsset(path: string) {
+  const original = getAssetPath(path);
+  
+  // Images
+  if (/\.(jpg|jpeg|png|heic)$/i.test(path)) {
+    const base = path.replace(/\.(jpg|jpeg|png|heic)$/i, "");
+    return {
+      hq: getAssetPath(`${base}.webp`),
+      lq: getAssetPath(`${base}.lq.webp`),
+      legacy: original,
+      type: "image" as const
+    };
+  }
+
+  // Videos
+  if (/\.mp4$/i.test(path)) {
+    const base = path.replace(/\.mp4$/i, "");
+    return {
+      hq: getAssetPath(`${base}.webm`),
+      legacy: original,
+      type: "video" as const
+    };
+  }
+
+  return { hq: original, legacy: original, type: "other" as const };
+}
