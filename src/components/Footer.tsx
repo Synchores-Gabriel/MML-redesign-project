@@ -94,7 +94,7 @@ export const Footer = () => {
               <Image src="/asset/mma-logo-hq.png" alt="MML" width={44} height={44} />
             </div>
             <span className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] font-bold text-neutral/40 whitespace-nowrap">
-              MM. LAZARO and ASSOCIATES LAW OFFICES
+              MM. LAZARO and ASSOCIATES
             </span>
           </div>
 
