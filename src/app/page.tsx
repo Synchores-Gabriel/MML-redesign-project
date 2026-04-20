@@ -541,9 +541,21 @@ export default function Home() {
         <div className="relative">
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
           <QuickLinks links={[
-            { name: "About the Firm", href: "/about" },
-            { name: "Our Lawyers", href: "/lawyers" },
-            { name: "Practice Areas", href: "/practice-areas" },
+            { 
+              name: "About Our Firm", 
+              href: "/about",
+              asset: getAdaptiveAsset("/asset/office/1.jpg")
+            },
+            { 
+              name: "Our Lawyers", 
+              href: "/lawyers",
+              asset: getAdaptiveAsset("/asset/quick3.png")
+            },
+            { 
+              name: "Our Practice Areas", 
+              href: "/practice-areas",
+              asset: getAdaptiveAsset("/asset/quick2.png")
+            },
           ]} />
 
           {/* CONTACT SECTION — Uses shared component */}

@@ -6,6 +6,7 @@ import { Reveal, RevealStagger } from "@/components/Reveal";
 import { ContactSection } from "@/components/ContactSection";
 import { HeroGridOverlay } from "@/components/HeroGridOverlay";
 import { QuickLinks } from "@/components/QuickLinks";
+import { getAdaptiveAsset } from "@/utils/paths";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -160,9 +161,21 @@ export default function CareersPage() {
         ═══════════════════════════════════════════════════════════ */}
         <div className="relative">
           <QuickLinks id="mml-careers-quick-links" links={[
-            { name: "About the Firm", href: "/about" },
-            { name: "Our Lawyers", href: "/lawyers" },
-            { name: "Practice Areas", href: "/practice-areas" },
+            { 
+              name: "About Our Firm", 
+              href: "/about",
+              asset: getAdaptiveAsset("/asset/office/1.jpg")
+            },
+            { 
+              name: "Our Lawyers", 
+              href: "/lawyers",
+              asset: getAdaptiveAsset("/asset/quick3.png")
+            },
+            { 
+              name: "Our Practice Areas", 
+              href: "/practice-areas",
+              asset: getAdaptiveAsset("/asset/quick2.png")
+            },
           ]} />
 
           {/* ═══════════════════════════════════════════════════════════

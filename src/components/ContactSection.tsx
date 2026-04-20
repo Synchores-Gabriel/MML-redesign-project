@@ -42,19 +42,18 @@ export const ContactSection = () => {
               </div>
             </div>
 
-            {/* Embedded Google Map */}
-            <div className="relative h-[450px] w-full overflow-hidden shadow-ambient ring-1 ring-white/10 rounded-sm mml-ab-contact__map-wrapper bg-primary-dark">
+            {/* Google Map — High Visibility Pin */}
+            <div className="relative h-[450px] w-full overflow-hidden shadow-ambient ring-1 ring-white/10 rounded-sm mml-ab-contact__map-wrapper bg-white">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.536113943343!2d121.0189!3d14.5583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c90858f623e1%3A0x6a0f443a53239a04!2sChatham%20House!5e0!3m2!1sen!2sph!4v1713580000000!5m2!1sen!2sph"
+                src="https://maps.google.com/maps?q=Chatham%20House%20Building%20Salcedo%20Village%20Makati&t=&z=17&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: "grayscale(1) invert(0.9) contrast(1.2)" }}
+                style={{ border: 0 }}
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="opacity-70 group-hover:opacity-100 transition-opacity duration-700"
               />
-              <div className="absolute inset-0 pointer-events-none z-10 opacity-20 border border-white/5" />
+              <div className="absolute inset-0 pointer-events-none z-10 opacity-10 border border-black/5" />
             </div>
           </RevealStagger>
         </div>

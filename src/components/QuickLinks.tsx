@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { RevealStagger, Reveal } from "./Reveal";
@@ -7,6 +8,12 @@ import { RevealStagger, Reveal } from "./Reveal";
 interface QuickLink {
   name: string;
   href: string;
+  asset?: {
+    hq: string;
+    lq?: string;
+    legacy: string;
+    type: "image" | "video" | "other";
+  };
 }
 
 interface QuickLinksProps {
@@ -31,9 +38,25 @@ export const QuickLinks = ({ links, id = "mml-lp-quick-links", title = "EXPLORE 
         <RevealStagger className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {links.map((link, index) => (
             <Link key={index} href={link.href} className="group relative block aspect-[16/7] overflow-hidden bg-primary shadow-2xl rounded-sm mml-lp-quick-links__link">
-              {/* Gold Frame Effect literal look-a-like */}
+              {/* Background Image with adaptive loading */}
+              {link.asset && (
+                <div className="absolute inset-0 z-0">
+                  <Image
+                    src={link.asset.hq}
+                    alt={link.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              )}
+
+              {/* Blue Gradient Overlay (Tint) */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-secondary/95 z-10 mix-blend-multiply mml-lp-quick-links__gradient" />
+              
+              {/* Gold Frame Effect */}
               <div className="absolute inset-4 border-[0.5px] border-tertiary/20 z-20 group-hover:border-tertiary group-hover:inset-3 transition-all duration-500 mml-lp-quick-links__frame" />
-              <div className="absolute inset-0 bg-gradient-to-br from-[#1A243F] via-[#232D4B] to-[#0A0E1A] z-10 mml-lp-quick-links__gradient" />
+              
               <div className="relative z-30 h-full w-full p-8 lg:p-10 flex flex-col justify-end mml-lp-quick-links__content">
                 <span className="text-tertiary uppercase tracking-[0.4em] font-sans font-bold text-[8px] mb-2 opacity-60 group-hover:opacity-100 transition-opacity mml-lp-quick-links__tag">Explore</span>
                 <h3 className="text-xl lg:text-2xl font-serif text-white uppercase tracking-tight mml-lp-quick-links__title leading-tight">{link.name}</h3>
@@ -47,4 +70,4 @@ export const QuickLinks = ({ links, id = "mml-lp-quick-links", title = "EXPLORE 
       </div>
     </section>
   );
-};
+};

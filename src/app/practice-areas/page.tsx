@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { RevealStagger, Reveal } from "@/components/Reveal";
 import { ContactSection } from "@/components/ContactSection";
 import { QuickLinks } from "@/components/QuickLinks";
+import { getAdaptiveAsset } from "@/utils/paths";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -91,11 +92,8 @@ export default function PracticeAreasPage() {
                         <div className="space-y-8 relative z-10 pr-4 md:pr-0">
                           {/* Title & Number */}
                           <div className="space-y-4">
-                            <span className={`text-[11px] font-sans font-bold tracking-widest block transition-colors duration-500 ${isActive ? 'text-tertiary' : 'text-primary/30'}`}>
-                              {String(i + 1).padStart(2, '0')}
-                            </span>
-                            <motion.h3 
-                              animate={{ 
+                            <motion.h3
+                              animate={{
                                 fontSize: isActive ? (isDesktop ? "1.875rem" : "1.5rem") : (isDesktop ? "3rem" : "2.25rem"),
                                 lineHeight: isActive ? "1.2" : "1.1"
                               }}
@@ -108,8 +106,8 @@ export default function PracticeAreasPage() {
 
                           {/* Description & Details */}
                           <div className="space-y-6 max-w-2xl">
-                            <motion.p 
-                              animate={{ 
+                            <motion.p
+                              animate={{
                                 fontSize: isActive ? "1.125rem" : (isDesktop ? "1.5rem" : "1.25rem"),
                                 opacity: isActive ? 0.9 : 1
                               }}
@@ -165,11 +163,11 @@ export default function PracticeAreasPage() {
                       {/* Right Column (Continuous Image) */}
                       <div className="relative w-full h-[300px] md:h-auto">
                         {/* Breakout container: only expands on active and md screen upwards */}
-                        <motion.div 
+                        <motion.div
                           layout
                           initial={false}
                           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                          style={{ 
+                          style={{
                             width: (isActive && isDesktop) ? "calc(100% + 50vw - 50%)" : "100%",
                             right: 0,
                             translateZ: 0,
@@ -186,13 +184,13 @@ export default function PracticeAreasPage() {
                           />
 
                           {/* Interaction Overlays */}
-                          <motion.div 
+                          <motion.div
                             animate={{ opacity: isActive ? 0.4 : 0 }}
-                            className="absolute inset-0 bg-primary/20 mix-blend-multiply transition-opacity duration-700" 
+                            className="absolute inset-0 bg-primary/20 mix-blend-multiply transition-opacity duration-700"
                           />
-                          <motion.div 
+                          <motion.div
                             animate={{ opacity: isActive ? 1 : 0 }}
-                            className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-primary/60 to-transparent transition-opacity duration-700" 
+                            className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-primary/60 to-transparent transition-opacity duration-700"
                           />
                         </motion.div>
                       </div>
@@ -208,9 +206,21 @@ export default function PracticeAreasPage() {
         <div className="relative">
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
           <QuickLinks id="mml-pa-quick-links" links={[
-            { name: "About the Firm", href: "/about" },
-            { name: "Our Lawyers", href: "/lawyers" },
-            { name: "Practice Areas", href: "/practice-areas" },
+            {
+              name: "About Our Firm",
+              href: "/about",
+              asset: getAdaptiveAsset("/asset/office/1.jpg")
+            },
+            {
+              name: "Our Lawyers",
+              href: "/lawyers",
+              asset: getAdaptiveAsset("/asset/quick3.png")
+            },
+            {
+              name: "Our Practice Areas",
+              href: "/practice-areas",
+              asset: getAdaptiveAsset("/asset/quick2.png")
+            },
           ]} />
 
           {/* Contact Section — Uses shared component */}
