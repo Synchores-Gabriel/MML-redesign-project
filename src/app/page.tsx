@@ -488,8 +488,15 @@ export default function Home() {
                               <p className="font-sans text-sm text-white leading-relaxed mml-lp-practice__card-desc">
                                 {area.desc}
                               </p>
-                              <div className="mt-8 pt-4 border-t border-white/20">
+                              <div className="mt-8 pt-4 border-t border-white/20 flex justify-between items-center">
                                 <span className="text-[10px] font-sans font-bold tracking-[0.2em] text-white uppercase italic">Case Inquiry Required</span>
+                                <Link 
+                                  href="#mml-ab-contact"
+                                  className="text-[10px] font-sans font-bold tracking-[0.3em] text-tertiary uppercase hover:text-white transition-colors flex items-center gap-2"
+                                >
+                                  ENQUIRE NOW
+                                  <ArrowRight size={12} />
+                                </Link>
                               </div>
                             </motion.div>
                           )}

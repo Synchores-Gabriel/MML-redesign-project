@@ -64,18 +64,19 @@ export default function AboutPage() {
 
               {/* Outer Wrapper with overflow-visible to show the head popping out */}
               <Reveal
+                width="100%"
                 className="relative w-full h-full flex items-end justify-center lg:justify-start mml-ab-discovery__headshot-container"
                 style={{ overflow: "visible" }}
               >
-                {/* 1. Circular Background Layer */}
+                {/* 1. Circular Background Layer - Absolute Centering Fix */}
                 <div
-                  className="absolute bottom-0 w-[280px] h-[280px] md:w-[480px] md:h-[480px] rounded-full bg-[#E2E8F0] shadow-inner aspect-square"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-[280px] h-[280px] md:w-[480px] md:h-[480px] rounded-full bg-[#E2E8F0] shadow-inner aspect-square"
                 />
 
 
                 {/* 2. Image Layer - Integrated Bounding Box Clipping */}
                 <div
-                  className="relative w-[280px] h-[350px] md:w-[480px] md:h-[600px] pointer-events-none"
+                  className="relative w-[280px] h-[350px] md:w-[480px] md:h-[600px] pointer-events-none mml-ab-discovery__image-layer"
                   style={{ clipPath: 'url(#popout-clip-js)' }}
                 >
 
@@ -96,16 +97,20 @@ export default function AboutPage() {
             {/* Right Column: Text Bio */}
             <RevealStagger className="space-y-8 mml-res-stack--mobile">
               <div className="space-y-4">
-                <h2 className="text-4xl md:text-7xl font-serif text-primary leading-tight mml-res-text--fluid-lg italic">MM LAZARO</h2>
+                <h2 className="text-center md:text-left text-4xl md:text-7xl font-serif text-primary leading-tight mml-res-text--fluid-lg italic">MM LAZARO</h2>
               </div>
 
               <div className="space-y-6 text-primary/70 font-sans leading-relaxed text-base md:text-lg font-medium mml-res-text--fluid">
 
                 <p>
-                  An innovative law firm by building long-term relationships with clients based on reciprocity, trust and highest standards of professional ethics. By adopting new models for the delivery of legal services, we strive to redefine the role that a law firm plays in an emerging regional market, in order to produce truly exceptional results for our clients.
+                  Founder and Senior Partner of M.M. Lazaro and Associates and is one of the
+                  incorporators of TDF.  He previously served the government in the following positions:
+                  Government Corporate Counsel with the rank of Presiding Justice of the Court of Appeals,
+                  Presidential Assistant for Legal Affairs of the Office of the President , and Executive Vice
+                  President and General Counsel of the GSIS.
                 </p>
                 <p>
-                  A vision to create a true corporate meritocracy dedicated to excellence in the practice of law. The sole measures of our success are concrete results and client satisfaction.
+
                 </p>
               </div>
             </RevealStagger>
@@ -120,20 +125,20 @@ export default function AboutPage() {
 
               {/* Mission Overlay Box */}
               <Reveal className="mml-ab-card">
-                <div className="bg-white p-12 md:p-16 shadow-2xl border-t-8 border-tertiary flex flex-col space-y-6 mml-ab-card__glass-wrap">
+                <div className="bg-white p-12 md:p-16 h-full shadow-2xl border-t-8 border-tertiary flex flex-col space-y-6 mml-ab-card__glass-wrap">
                   <h3 className="text-3xl font-serif text-primary uppercase font-black mml-ab-card__title">Mission</h3>
                   <p className="font-sans text-base text-primary/60 mml-res-text--fluid leading-relaxed mml-ab-card__text">
-                    A vision to create a true corporate meritocracy dedicated to excellence in the practice of law. The sole measures of our success are concrete results and client satisfaction.
+                    Leveraging its collective expertise, the Firm is committed to advocating its clients&apos; legal and business interests with the highest degree of competence and integrity.
                   </p>
                 </div>
               </Reveal>
 
               {/* Vision Overlay Box */}
               <Reveal className="mml-ab-card" delay={0.2}>
-                <div className="bg-white p-12 md:p-16 shadow-2xl border-t-8 border-secondary flex flex-col space-y-6 mml-ab-card__glass-wrap">
+                <div className="bg-white p-12 md:p-16 h-full shadow-2xl border-t-8 border-secondary flex flex-col space-y-6 mml-ab-card__glass-wrap">
                   <h3 className="text-3xl font-serif text-primary uppercase font-black mml-ab-card__title">Vision</h3>
                   <p className="font-sans text-base text-primary/60 mml-res-text--fluid leading-relaxed mml-ab-card__text">
-                    A vision to create a true corporate meritocracy dedicated to excellence in the practice of law. The sole measures of our success are concrete results and client satisfaction.
+                    An innovative law firm building long-term relationships based on reciprocity and trust. We strive to redefine the role a law firm plays in an emerging regional market to produce truly exceptional results.
                   </p>
                 </div>
               </Reveal>
