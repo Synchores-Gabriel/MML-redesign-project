@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: mml-redesign-app
     restart: always
-    expose:
-      - "3001"
+    ports:
+      - "3001:3001"
     environment:
       - NODE_ENV=production
       - PORT=3001
@@ -17,39 +17,6 @@ services:
     networks:
       - mml-network
 
-  nginx:
-    image: nginx:1.25-alpine
-    container_name: mml-nginx
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./deployment/nginx/conf.d:/etc/nginx/conf.d:ro
-      - certbot-etc:/etc/letsencrypt:ro
-      - certbot-var:/var/lib/letsencrypt:ro
-      - webroot-data:/var/www/certbot:ro
-    depends_on:
-      - mml-redesign
-    networks:
-      - mml-network
-
-  certbot:
-    image: certbot/certbot
-    container_name: mml-certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - webroot-data:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-    networks:
-      - mml-network
-
 networks:
   mml-network:
     driver: bridge
-
-volumes:
-  certbot-etc:
-  certbot-var:
-  webroot-data:
