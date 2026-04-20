@@ -12,8 +12,8 @@ services:
       - PORT=3001
       - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
       - NEXT_PUBLIC_ASSET_URL=${NEXT_PUBLIC_ASSET_URL:-}
-    volumes:
-      - ./public/asset:/app/public/asset:ro
+    # volumes:
+    #   - ./public/asset:/app/public/asset:ro
     networks:
       - mml-network
 
