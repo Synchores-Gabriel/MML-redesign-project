@@ -19,7 +19,7 @@ const revealVariants = {
     transition: {
       type: "tween",
       ease: [0.16, 1, 0.3, 1], // Custom prestigous quintic ease
-    }
+    } as const
   },
   visible: (delay: number) => ({
     opacity: 1,
@@ -28,9 +28,9 @@ const revealVariants = {
       delay,
       duration: 1,
       ease: [0.16, 1, 0.3, 1],
-    },
+    } as const,
   }),
-};
+} as const;
 
 export const Reveal = ({ children, width = "fit-content", className = "", delay = 0, id, style }: RevealProps) => {
   const ref = useRef(null);
@@ -79,7 +79,7 @@ const staggerChildVariants = {
     transition: {
       duration: 0.8,
       ease: [0.16, 1, 0.3, 1],
-    },
+    } as const,
   },
 };
 

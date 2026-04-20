@@ -1,0 +1,23 @@
+services:
+  mml-redesign:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mml-redesign-app
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
+      - NEXT_PUBLIC_ASSET_URL=${NEXT_PUBLIC_ASSET_URL:-}
+    volumes:
+      # Map shared assets directory for external mapping support
+      # Customize the host path in your Portainer/VPS environment
+      - ./public/asset:/app/public/asset:ro
+    networks:
+      - mml-network
+
+networks:
+  mml-network:
+    driver: bridge

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+import { getAssetPath } from "@/utils/paths";
+
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -36,7 +38,7 @@ export const BrandLogo = ({
       */}
       <div className="h-[1.7em] shrink-0 flex items-center">
         <img
-          src="/asset/mma-logo-hq.png"
+          src={getAssetPath("/asset/mma-logo-hq.png")}
           alt="MML Logo"
           className="h-full w-auto object-contain block mml-brand-logo__graphic"
         />

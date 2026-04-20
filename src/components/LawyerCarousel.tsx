@@ -5,34 +5,36 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { getAssetPath } from "@/utils/paths";
+
 
 const lawyers = [
   {
     type: "partner",
     name: "Atty. Manuel M. Lazaro",
     title: "Founding Partner",
-    img: "/asset/avatar/JusticeManuelLazaro-3679.jpg",
+    img: getAssetPath("/asset/avatar/JusticeManuelLazaro-3679.jpg"),
     bio: "Founder and Senior Partner of M.M. Lazaro and Associates. A former Presiding Justice of the Court of Appeals and Presidential Assistant for Legal Affairs, he currently serves as the Chairman and CEO of Philconsa."
   },
   {
     type: "partner",
     name: "Atty. Michelle Lazaro",
     title: "Managing Partner",
-    img: "/asset/avatar/AttyMichelleLazaro-3744.jpg",
+    img: getAssetPath("/asset/avatar/AttyMichelleLazaro-3744.jpg"),
     bio: "Specializing in Corporate Law, Litigation, and Estate Planning, Atty. Michelle Lazaro handles complex legal frameworks for multi-generational wealth and corporate governance."
   },
   {
     type: "grid",
     title: "Other Lawyers",
     members: [
-      { name: "Atty. Abel M. Almario", title: "Senior Lawyer", img: "/asset/avatar/3.png" },
-      { name: "Atty. Rafael P. Garcia Jr.", title: "Senior Lawyer", img: "/asset/avatar/4.png" },
-      { name: "Atty. Edwin M. Espejo", title: "Senior Lawyer", img: "/asset/avatar/5.png" },
-      { name: "Atty. Irish Marie V. Cabrera", title: "Senior Lawyer", img: "/asset/avatar/6.png" },
-      { name: "Atty. Rommel M. Santiago", title: "Senior Lawyer", img: "/asset/avatar/7.png" },
-      { name: "Atty. Philipe T. Aquino", title: "Senior Lawyer", img: "/asset/avatar/8.png" },
-      { name: "Atty. Ma. Florence R. Fuerte", title: "Junior Lawyer", img: "/asset/avatar/9.png" },
-      { name: "Atty. Loisse Danielle D. Vitug", title: "Junior Lawyer", img: "/asset/avatar/10.png" },
+      { name: "Atty. Abel M. Almario", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/3.png") },
+      { name: "Atty. Rafael P. Garcia Jr.", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/4.png") },
+      { name: "Atty. Edwin M. Espejo", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/5.png") },
+      { name: "Atty. Irish Marie V. Cabrera", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/6.png") },
+      { name: "Atty. Rommel M. Santiago", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/7.png") },
+      { name: "Atty. Philipe T. Aquino", title: "Senior Lawyer", img: getAssetPath("/asset/avatar/8.png") },
+      { name: "Atty. Ma. Florence R. Fuerte", title: "Junior Lawyer", img: getAssetPath("/asset/avatar/9.png") },
+      { name: "Atty. Loisse Danielle D. Vitug", title: "Junior Lawyer", img: getAssetPath("/asset/avatar/10.png") },
     ]
   }
 ];

@@ -19,6 +19,8 @@ import {
   ArrowRight, MapPin, Phone, Mail, ChevronDown, Award, Scale
 } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
+import { getAssetPath } from "@/utils/paths";
+
 
 const practiceAreas = [
   {
@@ -49,15 +51,15 @@ const practiceAreas = [
 
 const HERO_SLIDES = [
   {
-    video: "/asset/vid/hero1.mp4",
+    video: getAssetPath("/asset/vid/hero1.mp4"),
     subtitle: "Corporate Governance & Strategic Transactions"
   },
   {
-    video: "/asset/vid/hero2.mp4",
+    video: getAssetPath("/asset/vid/hero2.mp4"),
     subtitle: "Expert Advocacy & Complex Litigation"
   },
   {
-    video: "/asset/vid/hero3.mp4",
+    video: getAssetPath("/asset/vid/hero3.mp4"),
     subtitle: "Real Estate Development & Specialized Tax Solutions"
   }
 ];

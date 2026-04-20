@@ -3,6 +3,8 @@
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 import { useRef, useState, useMemo, useEffect, useCallback, memo } from "react";
 import Image from "next/image";
+import { getAssetPath } from "@/utils/paths";
+
 
 /**
  * LOGO MARQUEE CONFIGURATION 
@@ -12,14 +14,14 @@ const GLOBAL_OPACITY = 0.7;
 const USE_TINT_BY_DEFAULT = true; 
 
 const logos = [
-  { src: "/asset/logo/1-bsp.png", mode: "silhouette" },
-  { src: "/asset/logo/2-bank-of-commerce-transparent.png", mode: "tinted" },
-  { src: "/asset/logo/3-sterling.png", mode: "silhouette" },
-  { src: "/asset/logo/4-Planters-removebg-transparent.png", mode: "tinted" },
-  { src: "/asset/logo/5-afpslai-removebg-transparent.png", mode: "tinted" },
-  { src: "/asset/logo/6-mercator.png", mode: "silhouette" },
-  { src: "/asset/logo/7-ictsi-strip.png", mode: "tinted" },
-  { src: "/asset/logo/8-SM.png", mode: "silhouette" },
+  { src: getAssetPath("/asset/logo/1-bsp.png"), mode: "silhouette" },
+  { src: getAssetPath("/asset/logo/2-bank-of-commerce-transparent.png"), mode: "tinted" },
+  { src: getAssetPath("/asset/logo/3-sterling.png"), mode: "silhouette" },
+  { src: getAssetPath("/asset/logo/4-Planters-removebg-transparent.png"), mode: "tinted" },
+  { src: getAssetPath("/asset/logo/5-afpslai-removebg-transparent.png"), mode: "tinted" },
+  { src: getAssetPath("/asset/logo/6-mercator.png"), mode: "silhouette" },
+  { src: getAssetPath("/asset/logo/7-ictsi-strip.png"), mode: "tinted" },
+  { src: getAssetPath("/asset/logo/8-SM.png"), mode: "silhouette" },
 ];
 
 /**
