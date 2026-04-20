@@ -27,37 +27,34 @@ export const ContactSection = () => {
             </div>
 
             
-            <div className="space-y-4 text-base font-sans pt-8 border-t border-white/5 mml-ab-contact__info-items">
-              <p className="flex gap-4 items-center mml-ab-contact__info-item">
-                <Phone size={16} className="text-tertiary" /> 
-                <span className="font-bold text-white tracking-tighter self-center">+63 2 8 844 1540</span>
-              </p>
-              <p className="flex gap-4 items-center mml-ab-contact__info-item">
-                <Mail size={16} className="text-tertiary" /> 
-                <span className="font-bold text-white tracking-tighter self-center">contact@mmlazarolaw.com</span>
-              </p>
+            <div className="space-y-6 text-base font-sans pt-10 border-t border-white/10 mml-ab-contact__info-items">
+              <div className="flex gap-5 items-center mml-ab-contact__info-item">
+                <div className="bg-tertiary/10 p-3 rounded-sm">
+                  <Phone size={18} className="text-tertiary" /> 
+                </div>
+                <span className="text-base md:text-lg leading-relaxed text-white font-medium mml-res-text--fluid">+63 2 8 844 1540</span>
+              </div>
+              <div className="flex gap-5 items-center mml-ab-contact__info-item">
+                <div className="bg-tertiary/10 p-3 rounded-sm">
+                  <Mail size={18} className="text-tertiary" /> 
+                </div>
+                <span className="text-base md:text-lg leading-relaxed text-white font-medium mml-res-text--fluid">contact@mmlazarolaw.com</span>
+              </div>
             </div>
 
-            {/* Styled Map Placeholder (Consistent with landing page) */}
-            <div className="relative h-[450px] w-full overflow-hidden shadow-ambient ring-1 ring-ghost grayscale group rounded-sm mml-ab-contact__map-wrapper">
-              <div className="absolute inset-0 bg-primary/40 z-10 mix-blend-multiply" />
-              <Image 
-                src="/asset/office/5.jpg" 
-                alt="Map" 
-                fill 
-                className="object-cover opacity-50 contrast-125 transition-transform duration-[2000ms] group-hover:scale-110" 
+            {/* Embedded Google Map */}
+            <div className="relative h-[450px] w-full overflow-hidden shadow-ambient ring-1 ring-white/10 rounded-sm mml-ab-contact__map-wrapper bg-primary-dark">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.536113943343!2d121.0189!3d14.5583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c90858f623e1%3A0x6a0f443a53239a04!2sChatham%20House!5e0!3m2!1sen!2sph!4v1713580000000!5m2!1sen!2sph"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: "grayscale(1) invert(0.9) contrast(1.2)" }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="opacity-70 group-hover:opacity-100 transition-opacity duration-700"
               />
-              <div className="absolute inset-0 flex items-center justify-center z-20">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-tertiary/20 blur-xl rounded-full scale-150 animate-pulse" />
-                  <MapPin size={48} className="text-tertiary relative z-10 mml-ab-contact__map-pin" />
-                </div>
-              </div>
-              <div className="absolute inset-0 pointer-events-none z-10 opacity-30">
-                <div className="grid grid-cols-10 w-full h-full">
-                  {Array.from({ length: 100 }).map((_, i) => <div key={i} className="border-[0.5px] border-white/5" />)}
-                </div>
-              </div>
+              <div className="absolute inset-0 pointer-events-none z-10 opacity-20 border border-white/5" />
             </div>
           </RevealStagger>
         </div>

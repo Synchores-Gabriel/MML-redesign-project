@@ -123,9 +123,7 @@ export default function AboutPage() {
                 <div className="bg-white p-12 md:p-16 shadow-2xl border-t-8 border-tertiary flex flex-col space-y-6 mml-ab-card__glass-wrap">
                   <h3 className="text-3xl font-serif text-primary uppercase font-black mml-ab-card__title">Mission</h3>
                   <p className="font-sans text-base text-primary/60 mml-res-text--fluid leading-relaxed mml-ab-card__text">
-                    Curabitur quas nets lacus et nulat iaculis lorems etis nisle varius vitae seditum
-                    fugiatur ligula aliquam qui sequi. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit rutrum eleif arcu sit aspernatur nets fugit, sed quia.
+                    A vision to create a true corporate meritocracy dedicated to excellence in the practice of law. The sole measures of our success are concrete results and client satisfaction.
                   </p>
                 </div>
               </Reveal>

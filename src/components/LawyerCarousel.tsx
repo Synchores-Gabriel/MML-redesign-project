@@ -11,23 +11,27 @@ const lawyers = [
     name: "Atty. Manuel M. Lazaro",
     title: "Founding Partner",
     img: "/asset/avatar/JusticeManuelLazaro-3679.jpg",
-    bio: "Atty. Lazaro is the Founder and Senior Partner of M.M. Lazaro and Associates and is one of the incorporators of TDF. He previously served the government in the following positions: Government Corporate Counsel with the rank of Presiding Justice of the Court of Appeals, Presidential Assistant for Legal Affairs of the Office of the President, and Executive Vice-President and General Counsel of the GSIS. He is presently the Chairman and CEO of Philippine Constitution Association (Philconsa), and Member of the Board of Advisors (Ateneo Law School)."
+    bio: "Founder and Senior Partner of M.M. Lazaro and Associates. A former Presiding Justice of the Court of Appeals and Presidential Assistant for Legal Affairs, he currently serves as the Chairman and CEO of Philconsa."
   },
   {
     type: "partner",
     name: "Atty. Michelle Lazaro",
     title: "Managing Partner",
     img: "/asset/avatar/AttyMichelleLazaro-3744.jpg",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    bio: "Specializing in Corporate Law, Litigation, and Estate Planning, Atty. Michelle Lazaro handles complex legal frameworks for multi-generational wealth and corporate governance."
   },
   {
     type: "grid",
     title: "Other Lawyers",
     members: [
-      { name: "Atty. Manuel B. Lazaro", title: "Senior Partner", img: "/asset/avatar/MBLpic.jpg" },
-      { name: "Atty. Mike Lazaro", title: "Associate Partner", img: "/asset/avatar/MMLpic.jpg" },
-      { name: "Atty. Maria Santos", title: "Associate", img: "/asset/avatar/AttyMichelleLazaro-3744.jpg" },
-      { name: "Atty. Ricardo Reyes", title: "Associate", img: "/asset/avatar/MBLpic.jpg" },
+      { name: "Atty. Abel M. Almario", title: "Senior Lawyer", img: "/asset/avatar/3.png" },
+      { name: "Atty. Rafael P. Garcia Jr.", title: "Senior Lawyer", img: "/asset/avatar/4.png" },
+      { name: "Atty. Edwin M. Espejo", title: "Senior Lawyer", img: "/asset/avatar/5.png" },
+      { name: "Atty. Irish Marie V. Cabrera", title: "Senior Lawyer", img: "/asset/avatar/6.png" },
+      { name: "Atty. Rommel M. Santiago", title: "Senior Lawyer", img: "/asset/avatar/7.png" },
+      { name: "Atty. Philipe T. Aquino", title: "Senior Lawyer", img: "/asset/avatar/8.png" },
+      { name: "Atty. Ma. Florence R. Fuerte", title: "Junior Lawyer", img: "/asset/avatar/9.png" },
+      { name: "Atty. Loisse Danielle D. Vitug", title: "Junior Lawyer", img: "/asset/avatar/10.png" },
     ]
   }
 ];

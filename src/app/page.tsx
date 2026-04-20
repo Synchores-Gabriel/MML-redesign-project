@@ -24,7 +24,7 @@ const practiceAreas = [
   {
     id: "corp",
     title: "CORPORATE SERVICES & BUSINESS TRANSACTIONS",
-    desc: "Our firm provides a full range of services for corporate accounts. We help clients establish and maintain corporate entities suitable for their commercial or personal activities. We also help clients manage changes in laws and regulations, or as their business plans and objectives evolve.",
+    desc: "Our firm provides a full range of services for corporate accounts. We help clients establish and maintain corporate entities suitable for their commercial personal or commercial activities.",
     icon: Building2
   },
   {
@@ -36,13 +36,13 @@ const practiceAreas = [
   {
     id: "real",
     title: "REAL ESTATE",
-    desc: "Our experience in real estate practice covers the simplest portfolio purchase to more complex deals and transactions, with expertise in land titling, industrial parks, and multi-use projects.",
+    desc: "Our experience in real estate practice covers the simplest portfolio purchase to more complex deals and transactions, and our clients range from individuals to foreign governments.",
     icon: Landmark
   },
   {
     id: "tax",
     title: "TAXATION LAW",
-    desc: "Our tax lawyers advise on the tax aspects of, and provide efficient structuring solutions for all types of transactions, including tax audits, assessments, and estate planning.",
+    desc: "Our tax lawyers advise on the tax aspects of, and provide efficient structuring solutions for all types of transactions. Their depth of experience in corporate work sets them apart from other tax advisers.",
     icon: Calculator
   },
 ];
@@ -50,15 +50,15 @@ const practiceAreas = [
 const HERO_SLIDES = [
   {
     video: "/asset/vid/hero1.mp4",
-    subtitle: "All our clients make the right choices!"
+    subtitle: "Corporate Governance & Strategic Transactions"
   },
   {
     video: "/asset/vid/hero2.mp4",
-    subtitle: "Get in touch with us today"
+    subtitle: "Expert Advocacy & Complex Litigation"
   },
   {
     video: "/asset/vid/hero3.mp4",
-    subtitle: "We look forward hearing from you"
+    subtitle: "Real Estate Development & Specialized Tax Solutions"
   }
 ];
 
@@ -507,7 +507,7 @@ export default function Home() {
 
         <div className="relative">
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
-          <QuickLinks translateClass="-translate-y-[20%] md:-translate-y-[35%]" links={[
+          <QuickLinks translateClass="-translate-y-[0%] md:-translate-y-[0%]" links={[
             { name: "About the Firm", href: "/about" },
             { name: "Our Lawyers", href: "/lawyers" },
             { name: "Practice Areas", href: "/practice-areas" },

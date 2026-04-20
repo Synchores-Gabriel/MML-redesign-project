@@ -209,9 +209,9 @@ function LawyerCard({
                   <span className="text-tertiary uppercase tracking-[0.5em] font-black text-[8px]">Insight</span>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="text-white text-lg font-serif italic mml-lw-card__bio-heading">Biographical Record</h4>
-                  <p className="text-white/80 font-sans text-xs leading-relaxed overflow-y-auto max-h-[250px] scrollbar-thin scrollbar-thumb-tertiary/20 pr-4 mml-lw-card__bio-content uppercase tracking-widest text-[9px]">
-                    {lawyer.bio}
+                  <h4 className="text-white text-xl font-serif italic mml-lw-card__bio-heading tracking-tight">Biographical Record</h4>
+                  <p className="text-white font-sans text-sm md:text-[15px] leading-relaxed overflow-y-auto max-h-[350px] scrollbar-thin scrollbar-thumb-tertiary/20 pr-4 mml-lw-card__bio-content font-medium opacity-90">
+                    {lawyer.cardBio || lawyer.bio}
                   </p>
                 </div>
               </div>
@@ -295,8 +295,8 @@ export default function LawyersPage() {
                   <ArrowRight size={20} className="rotate-45" />
                 </button>
               </div>
-              <div className="max-h-[30vh] overflow-y-auto pr-2 mml-scrollbar">
-                <p className="text-white/70 font-sans text-base leading-loose italic lowercase first-letter:uppercase">
+              <div className="max-h-[40vh] overflow-y-auto pr-2 mml-scrollbar">
+                <p className="text-white font-sans text-lg md:text-xl leading-relaxed font-semibold opacity-90 first-letter:text-3xl first-letter:font-serif">
                   {selectedLawyer.bio}
                 </p>
               </div>

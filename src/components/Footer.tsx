@@ -79,11 +79,6 @@ export const Footer = () => {
                 <span>19th Floor Chatham House Building, Valero cor. V.A. Rufino Sts., Salcedo Village, Makati City 1227</span>
               </li>
             </ul>
-            <div className="flex gap-6 pt-4 border-t border-white/5">
-              <Link href="#" className="text-neutral/20 hover:text-white transition-colors"><Facebook size={18} /></Link>
-              <Link href="#" className="text-neutral/20 hover:text-white transition-colors"><Linkedin size={18} /></Link>
-              <Link href="#" className="text-neutral/20 hover:text-white transition-colors"><Twitter size={18} /></Link>
-            </div>
           </div>
         </div>
 
@@ -91,7 +86,7 @@ export const Footer = () => {
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-6 grayscale opacity-30">
             <Image src="/asset/mma-logo-hq.png" alt="Law Firm" width={30} height={30} />
-            <span className="text-[9px] uppercase tracking-[0.5em] font-bold text-white">The Jurisprudence Group</span>
+            <span className="text-[9px] uppercase tracking-[0.5em] font-bold text-white">MM. LAZARO and ASSOCIATES LAW OFFICES</span>
           </div>
           <p className="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral/20 mml-global-footer__disclaimer">
             © {new Date().getFullYear()} M. M. LAZARO AND ASSOCIATES. PIXEL-PERFECTION IN LEGAL SERVICE.
