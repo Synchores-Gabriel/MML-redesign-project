@@ -148,7 +148,7 @@ export default function AboutPage() {
         </div>
 
         {/* 4. QUICK LINKS SECTION - PERFECTLY CENTERED BREATHER */}
-        <QuickLinks id="mml-lp-quick-links" title="Explore Further" translateClass="md:translate-y-[30%]" paddingClass="pt-24 pb-48" links={[
+        <QuickLinks id="mml-lp-quick-links" translateClass="md:translate-y-[30%]" paddingClass="pt-24 pb-48" links={[
           { name: "About the Firm", href: "/about" },
           { name: "Our Lawyers", href: "/lawyers" },
           { name: "Practice Areas", href: "/practice-areas" },

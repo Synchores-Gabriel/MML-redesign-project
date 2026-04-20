@@ -536,7 +536,7 @@ export default function Home() {
 
         <div className="relative">
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
-          <QuickLinks translateClass="-translate-y-[0%] md:-translate-y-[0%]" links={[
+          <QuickLinks links={[
             { name: "About the Firm", href: "/about" },
             { name: "Our Lawyers", href: "/lawyers" },
             { name: "Practice Areas", href: "/practice-areas" },

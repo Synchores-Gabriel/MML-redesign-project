@@ -17,13 +17,13 @@ interface QuickLinksProps {
   paddingClass?: string;
 }
 
-export const QuickLinks = ({ links, id = "mml-lp-quick-links", title = "Explore Further", translateClass = "md:-translate-y-[20%]", paddingClass }: QuickLinksProps) => {
+export const QuickLinks = ({ links, id = "mml-lp-quick-links", title = "EXPLORE FURTHER", translateClass = "md:-translate-y-[20%]", paddingClass }: QuickLinksProps) => {
   return (
     <section id={id} className={`px-6 md:px-12 relative z-30 ${translateClass} ${paddingClass || ""}`}>
       <div className="max-w-screen-2xl mx-auto mml-res-container">
         {title && (
           <Reveal className="mb-12 text-center w-full">
-            <h2 className="text-3xl font-serif text-primary/10 uppercase tracking-[0.3em]">
+            <h2 className="text-3xl md:text-4xl font-serif text-primary/10 uppercase tracking-[0.3em] font-black">
               {title}
             </h2>
           </Reveal>

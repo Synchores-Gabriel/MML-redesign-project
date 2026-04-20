@@ -159,7 +159,7 @@ export default function CareersPage() {
             3. QUICK LINKS — Gold-framed navigation cards
         ═══════════════════════════════════════════════════════════ */}
         <div className="relative">
-          <QuickLinks id="mml-careers-quick-links" title="Quick Links" links={[
+          <QuickLinks id="mml-careers-quick-links" links={[
             { name: "About the Firm", href: "/about" },
             { name: "Our Lawyers", href: "/lawyers" },
             { name: "Practice Areas", href: "/practice-areas" },
