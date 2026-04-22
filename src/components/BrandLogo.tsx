@@ -27,7 +27,7 @@ export const BrandLogo = ({
   const sizeClasses = {
     sm: "text-[11px] md:text-xs gap-x-2",
     md: "text-[13px] md:text-base gap-x-3",
-    lg: "text-2xl md:text-4xl lg:text-5xl gap-x-4 md:gap-x-6",
+    lg: "text-3xl sm:text-4xl md:text-4xl lg:text-5xl gap-x-4 md:gap-x-6",
   };
 
   const logoAsset = getAdaptiveAsset("/asset/mma-logo-hq.png");

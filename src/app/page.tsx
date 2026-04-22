@@ -20,6 +20,12 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { getAssetPath, getAdaptiveAsset } from "@/utils/paths";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 
 const practiceAreas = [
@@ -80,9 +86,12 @@ function HeroSubtitleLayer({
   isDesktop: boolean;
 }) {
   const shot = getSubtitleShot(currentSlide);
-  const isShot1 = shot === 0;
-  const isShot2 = shot === 1;
-  const isShot3 = shot === 2;
+  
+  // Mobile override: all slides use the T->B animation (shot 2)
+  const activeShot = isDesktop ? shot : 2;
+  const isShot1 = activeShot === 0;
+  const isShot2 = activeShot === 1;
+  const isShot3 = activeShot === 2;
 
   const [revealDone, setRevealDone] = useState(false);
 
@@ -102,8 +111,6 @@ function HeroSubtitleLayer({
   const maskLtoR = useMemo(
     () =>
       ({
-        // One-sided feather: only the leading edge is transparent.
-        // This prevents any trailing-edge “fade-out” while drifting.
         maskImage: "linear-gradient(90deg, transparent 0%, #000 16%, #000 100%)",
         WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 16%, #000 100%)",
         maskSize: "220% 100%",
@@ -134,21 +141,8 @@ function HeroSubtitleLayer({
     [],
   );
 
-  const solidMask = useMemo(
-    () =>
-      ({
-        maskImage: "linear-gradient(#000, #000)",
-        WebkitMaskImage: "linear-gradient(#000, #000)",
-        maskSize: "100% 100%",
-        WebkitMaskSize: "100% 100%",
-        maskPosition: "0% 0%",
-        WebkitMaskPosition: "0% 0%",
-      }) as const,
-    [],
-  );
-
   const revealStart = isShot1
-    ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" } // L→R (starts at transp side)
+    ? { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" } // L→R
     : isShot2
       ? { maskPosition: "100% 0%", WebkitMaskPosition: "100% 0%" } // R→L
       : { maskPosition: "0% 0%", WebkitMaskPosition: "0% 0%" }; // T→B
@@ -167,13 +161,12 @@ function HeroSubtitleLayer({
 
   const clipEnd = { clipPath: "inset(-120px -120px -120px -120px)", WebkitClipPath: "inset(-120px -120px -120px -120px)" };
 
-  const endX = isDesktop ? "4%" : "2%";
-
   const motionInitial = isShot1
     ? { x: "-2%", y: "0%", scale: 1, ...revealStart, ...clipStart }
     : isShot2
       ? { x: "2%", y: "4%", scale: 1, ...revealStart, ...clipStart }
-      : { x: "0%", y: "0%", scale: 1.4, ...revealStart, ...clipStart };
+      // On mobile, force a top-to-bottom translate as requested
+      : { x: "0%", y: isDesktop ? "0%" : "-15%", scale: isDesktop ? 1.4 : 1, ...revealStart, ...clipStart };
 
   const motionAnimate = isShot1
     ? { x: "0%", y: "0%", scale: 1, ...revealEnd, ...clipEnd }
@@ -181,31 +174,32 @@ function HeroSubtitleLayer({
       ? { x: "0%", y: "8%", scale: 1, ...revealEnd, ...clipEnd }
       : { x: "0%", y: "0%", scale: 1.0, ...revealEnd, ...clipEnd };
 
-  const duration = isShot3 ? 0.8 : 1.2;
+  const duration = isShot3 ? (isDesktop ? 0.8 : 1.0) : 1.2;
 
   return (
     <div className="absolute inset-0 z-50 pointer-events-none overflow-visible">
-      <div className={`absolute left-1/2 top-[38%] md:top-[40%] -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12 flex ${isShot1 ? 'justify-start' : isShot2 ? 'justify-end' : 'justify-center'} overflow-visible`}>
+      <div className={cn(
+        "absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12 flex overflow-visible transition-all duration-700",
+        isDesktop ? "top-[40%]" : "top-1/2",
+        isDesktop 
+          ? (isShot1 ? 'justify-start' : isShot2 ? 'justify-end' : 'justify-center') 
+          : 'justify-start'
+      )}>
         <motion.p
           key={currentSlide}
           initial={motionInitial}
           animate={motionAnimate}
           transition={{ duration, ease: "easeOut" }}
           onAnimationComplete={() => setRevealDone(true)}
-          className={[
-            "select-none",
-            "font-sans font-bold",
-            "text-white",
-            isShot1 ? "text-left" : isShot2 ? "text-right" : "text-center",
-            "leading-[1.12]",
-            "whitespace-normal",
-            "break-words",
-            isShot3 ? "mx-auto" : "",
-            "max-w-[min(86vw,44rem)] md:max-w-[min(78vw,52rem)]",
-            "text-[clamp(1.45rem,3.6vw,3.5rem)]",
-            "overflow-visible",
-            "py-20", // Expand bounding box for shadow safety
-          ].join(" ")}
+          className={cn(
+            "select-none font-sans font-bold text-white leading-[1.12] whitespace-normal break-words overflow-visible py-20",
+            isDesktop 
+              ? (isShot1 ? "text-left" : isShot2 ? "text-right" : "text-center") 
+              : "text-left",
+            isShot3 && isDesktop ? "mx-auto" : "",
+            "max-w-[min(92vw,44rem)] md:max-w-[min(78vw,52rem)]",
+            "text-[clamp(2rem,8vw,3.5rem)] md:text-[clamp(1.45rem,3.6vw,3.5rem)]"
+          )}
           style={{
             textShadow: "0 12px 40px rgba(0,0,0,0.35)",
             ...(revealDone
@@ -222,6 +216,7 @@ function HeroSubtitleLayer({
     </div>
   );
 }
+
 
 export default function Home() {
   const [activePractice, setActivePractice] = useState<string | null>(null);
@@ -328,7 +323,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex gap-5 mml-lp-hero__actions">
-                  <Link href="#mml-lp-about" className="glow-gold px-8 py-3 md:px-10 md:py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-xs uppercase mml-lp-hero__btn-more inline-block">
+                  <Link href="#mml-lp-about" className="glow-gold px-10 py-4 md:px-10 md:py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-[11px] md:text-xs uppercase mml-lp-hero__btn-more inline-block">
                     MORE ABOUT US
                   </Link>
                 </div>
