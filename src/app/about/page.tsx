@@ -150,18 +150,18 @@ export default function AboutPage() {
 
         {/* 4. QUICK LINKS SECTION - PERFECTLY CENTERED BREATHER */}
         <QuickLinks id="mml-lp-quick-links" translateClass="md:translate-y-[30%]" paddingClass="pt-24 pb-48" links={[
-          { 
-            name: "About Our Firm", 
+          {
+            name: "About The Firm",
             href: "/about",
             asset: getAdaptiveAsset("/asset/office/1.jpg")
           },
-          { 
-            name: "Our Lawyers", 
+          {
+            name: "Our Lawyers",
             href: "/lawyers",
             asset: getAdaptiveAsset("/asset/quick3.png")
           },
-          { 
-            name: "Our Practice Areas", 
+          {
+            name: "Our Practice Areas",
             href: "/practice-areas",
             asset: getAdaptiveAsset("/asset/quick2.png")
           },

@@ -207,7 +207,7 @@ export default function PracticeAreasPage() {
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
           <QuickLinks id="mml-pa-quick-links" links={[
             {
-              name: "About Our Firm",
+              name: "About The Firm",
               href: "/about",
               asset: getAdaptiveAsset("/asset/office/1.jpg")
             },

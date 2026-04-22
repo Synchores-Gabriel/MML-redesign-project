@@ -9,9 +9,9 @@ import { getAssetPath, getAdaptiveAsset } from "@/utils/paths";
 /**
  * LOGO MARQUEE CONFIGURATION 
  */
-const LOGO_HEIGHT_CLASS = "h-14"; 
-const GLOBAL_OPACITY = 0.7;       
-const USE_TINT_BY_DEFAULT = true; 
+const LOGO_HEIGHT_CLASS = "h-14";
+const GLOBAL_OPACITY = 0.7;
+const USE_TINT_BY_DEFAULT = true;
 
 const logos = [
   { asset: getAdaptiveAsset("/asset/logo/1-bsp.png"), mode: "silhouette" },
@@ -28,10 +28,10 @@ const logos = [
  * OPTIMIZED LOGO ITEM
  * Using React.memo to prevent re-renders during smooth sliding
  */
-const LogoItem = memo(({ asset, mode, filter, opacity }: { 
-  asset: any; 
-  mode: string; 
-  filter: string; 
+const LogoItem = memo(({ asset, mode, filter, opacity }: {
+  asset: any;
+  mode: string;
+  filter: string;
   opacity: number;
 }) => (
   <div className={`${LOGO_HEIGHT_CLASS} w-auto flex-shrink-0 relative flex items-center will-change-transform`}>
@@ -80,10 +80,10 @@ export function LogoMarquee() {
       const oneThird = scrollWidth / 3;
       let moveBy = baseVelocity * (delta / 16);
       let nextX = x.get() + moveBy;
-      
+
       if (nextX <= -oneThird) nextX += oneThird;
       else if (nextX > 0) nextX -= oneThird;
-      
+
       x.set(nextX);
     }
   });
@@ -96,8 +96,8 @@ export function LogoMarquee() {
   }, [x]);
 
   const filters = useMemo(() => ({
-    silhouette: "brightness(0) saturate(100%) invert(9%) sepia(87%) saturate(1633%) hue-rotate(143deg) brightness(91%) contrast(106%)",
-    tinted: "grayscale(1) brightness(0.6) sepia(1) hue-rotate(185deg) saturate(3) contrast(1.1)",
+    silhouette: "brightness(0) saturate(100%) invert(9%) sepia(87%) saturate(0%) hue-rotate(143deg) brightness(91%) contrast(106%)",
+    tinted: "grayscale(1) brightness(0.6) sepia(1) hue-rotate(185deg) saturate(0) contrast(1.5)",
   }), []);
 
   return (
@@ -123,7 +123,7 @@ export function LogoMarquee() {
             dragConstraints={containerRef}
           >
             {duplicatedLogos.map((logo, index) => (
-              <LogoItem 
+              <LogoItem
                 key={index}
                 asset={logo.asset}
                 mode={logo.mode}

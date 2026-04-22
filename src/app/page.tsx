@@ -86,7 +86,7 @@ function HeroSubtitleLayer({
   isDesktop: boolean;
 }) {
   const shot = getSubtitleShot(currentSlide);
-  
+
   // Mobile override: all slides use the T->B animation (shot 2)
   const activeShot = isDesktop ? shot : 2;
   const isShot1 = activeShot === 0;
@@ -181,8 +181,8 @@ function HeroSubtitleLayer({
       <div className={cn(
         "absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-6 md:px-12 flex overflow-visible transition-all duration-700",
         isDesktop ? "top-[40%]" : "top-1/2",
-        isDesktop 
-          ? (isShot1 ? 'justify-start' : isShot2 ? 'justify-end' : 'justify-center') 
+        isDesktop
+          ? (isShot1 ? 'justify-start' : isShot2 ? 'justify-end' : 'justify-center')
           : 'justify-start'
       )}>
         <motion.p
@@ -193,8 +193,8 @@ function HeroSubtitleLayer({
           onAnimationComplete={() => setRevealDone(true)}
           className={cn(
             "select-none font-sans font-bold text-white leading-[1.12] whitespace-normal break-words overflow-visible py-20",
-            isDesktop 
-              ? (isShot1 ? "text-left" : isShot2 ? "text-right" : "text-center") 
+            isDesktop
+              ? (isShot1 ? "text-left" : isShot2 ? "text-right" : "text-center")
               : "text-left",
             isShot3 && isDesktop ? "mx-auto" : "",
             "max-w-[min(92vw,44rem)] md:max-w-[min(78vw,52rem)]",
@@ -232,7 +232,7 @@ export default function Home() {
   useEffect(() => {
     const handleStickyResilience = () => {
       const vh = window.innerHeight;
-      
+
       if (strip1Ref.current) {
         setIsStrip1Sticky(strip1Ref.current.offsetHeight <= vh + 10);
       }
@@ -245,7 +245,7 @@ export default function Home() {
     window.addEventListener("resize", handleStickyResilience);
     // Also check on a timer as images might load and change height
     const timer = setInterval(handleStickyResilience, 1000);
-    
+
     return () => {
       window.removeEventListener("resize", handleStickyResilience);
       clearInterval(timer);
@@ -331,12 +331,12 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
+
         {/* DECK OF CARDS STACKING CONTAINER */}
         <div id="mml-lp-deck-container" className="relative">
-          <section 
-            ref={strip1Ref} 
-            id="mml-lp-strip-1" 
+          <section
+            ref={strip1Ref}
+            id="mml-lp-strip-1"
             className={`relative h-[42vh] min-h-[350px] overflow-hidden z-20 ${isStrip1Sticky ? 'sticky top-[5rem]' : 'relative'}`}
           >
             <motion.div
@@ -344,50 +344,50 @@ export default function Home() {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ amount: 0.6, margin: "0px 0px -20% 0px", once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              style={{ 
+              style={{
                 translateZ: "0px",
                 backfaceVisibility: "hidden",
                 willChange: "transform, opacity"
               }}
               className="w-full h-full flex items-center justify-start text-left px-6 md:px-12 relative"
             >
-            {/* Ken Burns Background */}
-            <div className="absolute inset-0 z-0">
-              <motion.div
-                initial={{ scale: 1, x: 0 }}
-                animate={{ scale: 1.1, x: "2%" }}
-                transition={{
-                  duration: 15,
-                  ease: "linear",
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-                className="absolute inset-x-[-5%] inset-y-[-5%] wood-strip opacity-100"
-              />
-            </div>
-            <div className="absolute inset-0 bg-primary/40 z-10" />
-            <div className="relative z-20 w-full max-w-screen-2xl mx-auto">
-              <Reveal style={{ overflow: "visible" }} className="space-y-6 max-w-3xl mml-res-stack--mobile">
-                <h2 className="text-3xl md:text-5xl font-serif text-white uppercase italic tracking-tight mml-res-text--fluid-lg">
-                  &quot;All our clients make the right choices!&quot;
-                </h2>
-                <p className="text-tertiary/80 font-sans font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mml-res-text--fluid">
-                  Get in touch with us today we look forward hearing from you
-                </p>
-                <div className="pt-4">
-                  <button className="glow-gold px-10 py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-[10px] uppercase">
-                    OUR LAWYERS
-                  </button>
-                </div>
-              </Reveal>
-            </div>
-          </motion.div>
-        </section>
+              {/* Ken Burns Background */}
+              <div className="absolute inset-0 z-0">
+                <motion.div
+                  initial={{ scale: 1, x: 0 }}
+                  animate={{ scale: 1.1, x: "2%" }}
+                  transition={{
+                    duration: 15,
+                    ease: "linear",
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                  className="absolute inset-x-[-5%] inset-y-[-5%] wood-strip opacity-100"
+                />
+              </div>
+              <div className="absolute inset-0 bg-primary/40 z-10" />
+              <div className="relative z-20 w-full max-w-screen-2xl mx-auto">
+                <Reveal style={{ overflow: "visible" }} className="space-y-6 max-w-3xl mml-res-stack--mobile">
+                  <h2 className="text-3xl md:text-5xl font-serif text-white uppercase italic tracking-tight mml-res-text--fluid-lg">
+                    &quot;All our clients make the right choices!&quot;
+                  </h2>
+                  <p className="text-tertiary/80 font-sans font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mml-res-text--fluid">
+                    Get in touch with us today we look forward hearing from you
+                  </p>
+                  <div className="pt-4">
+                    <button className="glow-gold px-10 py-4 rounded-[0.25rem] text-primary font-sans font-bold tracking-[0.2em] text-[10px] uppercase">
+                      OUR LAWYERS
+                    </button>
+                  </div>
+                </Reveal>
+              </div>
+            </motion.div>
+          </section>
 
           {/* HERO SECTION 3 - BRANDED STRIP 2 */}
-          <section 
-            ref={strip2Ref} 
-            id="mml-lp-strip-2" 
+          <section
+            ref={strip2Ref}
+            id="mml-lp-strip-2"
             className={`relative h-[42vh] min-h-[350px] overflow-hidden z-40 bg-[#1A243F] ${isStrip2Sticky ? 'sticky top-[5rem] lg:top-[calc(5rem+42vh)]' : 'relative'}`}
           >
             <motion.div
@@ -395,7 +395,7 @@ export default function Home() {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ amount: 0.2, margin: "0px 0px -10% 0px", once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              style={{ 
+              style={{
                 translateZ: "0px",
                 backfaceVisibility: "hidden",
                 willChange: "transform, opacity"
@@ -535,7 +535,7 @@ export default function Home() {
                               </p>
                               <div className="mt-8 pt-4 border-t border-white/20 flex justify-between items-center">
                                 <span className="text-[10px] font-sans font-bold tracking-[0.2em] text-white uppercase italic">Case Inquiry Required</span>
-                                <Link 
+                                <Link
                                   href="#mml-ab-contact"
                                   className="text-[10px] font-sans font-bold tracking-[0.3em] text-tertiary uppercase hover:text-white transition-colors flex items-center gap-2"
                                 >
@@ -560,18 +560,18 @@ export default function Home() {
         <div className="relative">
           {/* QUICK LINKS - OVERLAY POSITION BETWEEN SECTIONS */}
           <QuickLinks links={[
-            { 
-              name: "About Our Firm", 
+            {
+              name: "About The Firm",
               href: "/about",
               asset: getAdaptiveAsset("/asset/office/1.jpg")
             },
-            { 
-              name: "Our Lawyers", 
+            {
+              name: "Our Lawyers",
               href: "/lawyers",
               asset: getAdaptiveAsset("/asset/quick3.png")
             },
-            { 
-              name: "Our Practice Areas", 
+            {
+              name: "Our Practice Areas",
               href: "/practice-areas",
               asset: getAdaptiveAsset("/asset/quick2.png")
             },

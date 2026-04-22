@@ -18,7 +18,7 @@ const navLinks = [
   { name: "ABOUT US", href: "/about" },
   { name: "LAWYERS", href: "/lawyers" },
   { name: "PRACTICE AREAS", href: "/practice-areas" },
-  { name: "CAREER", href: "/careers" },
+  { name: "CAREERS", href: "/careers" },
   { name: "CONTACT US", href: "/contact" },
 ];
 
