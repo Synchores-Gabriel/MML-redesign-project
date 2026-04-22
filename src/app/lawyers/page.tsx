@@ -252,23 +252,29 @@ export default function LawyersPage() {
           {/* Unified Lawyer Grid */}
           <section id="directory" className="scroll-mt-32 pb-24">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-              {lawyers.map((lawyer, i) => (
-                <div
-                  key={lawyer.id}
-                  className={`relative transition-[z-index] duration-0 ${hoveredIndex === i ? 'z-[100]' : 'z-0'}`}
-                  onMouseEnter={() => setHoveredIndex(i)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  <LawyerCard
-                    lawyer={lawyer}
-                    index={i}
-                    isHovered={hoveredIndex === i}
-                    onMobileClick={(l) => {
-                      if (window.innerWidth < 768) setSelectedLawyer(l);
-                    }}
-                  />
-                </div>
-              ))}
+              {lawyers.map((lawyer, i) => {
+                const isFirstSenior = lawyer.title.includes("Senior") && lawyers.findIndex(l => l.title.includes("Senior")) === i;
+                const isFirstJunior = lawyer.title.includes("Junior") && lawyers.findIndex(l => l.title.includes("Junior")) === i;
+
+                return (
+                  <div
+                    key={lawyer.id}
+                    id={isFirstSenior ? "seniors" : isFirstJunior ? "juniors" : undefined}
+                    className={`relative transition-[z-index] duration-0 ${hoveredIndex === i ? 'z-[100]' : 'z-0'} scroll-mt-48`}
+                    onMouseEnter={() => setHoveredIndex(i)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    <LawyerCard
+                      lawyer={lawyer}
+                      index={i}
+                      isHovered={hoveredIndex === i}
+                      onMobileClick={(l) => {
+                        if (window.innerWidth < 768) setSelectedLawyer(l);
+                      }}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </section>
 
