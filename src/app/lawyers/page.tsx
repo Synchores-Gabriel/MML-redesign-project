@@ -14,18 +14,11 @@ import { getAdaptiveAsset } from "@/utils/paths";
 
 const lawyers = [
   {
-    id: 1,
-    name: "Manuel M. Lazaro",
-    title: "Founding Partner",
-    img: "/asset/avatar/JusticeManuelLazaro-3679.jpg",
-    bio: "Atty. Lazaro is the Founder and Senior Partner of M.M. Lazaro and Associates and is one of the incorporators of TDF. He previously served the government in the following positions: Government Corporate Counsel with the rank of Presiding Justice of the Court of Appeals, Presidential Assistant for Legal Affairs of the Office of the President, and Executive Vice-President and General Counsel of the GSIS. He is presently the Chairman and CEO of Philippine Constitution Association (Philconsa), and Member of the Board of Advisors (Ateneo Law School)."
-  },
-  {
     id: 2,
     name: "Michelle B. Lazaro",
-    title: "Managing Partner",
-    img: "/asset/avatar/AttyMichelleLazaro-3744.jpg",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    title: "MANAGING PARTNER",
+    img: "/asset/avatar/MBLpic.webp",
+    bio: "Specializing in Corporate Law, Litigation, and Estate Planning, Atty. Michelle Lazaro handles complex legal frameworks for multi-generational wealth and corporate governance."
   },
   {
     id: 3,
@@ -256,71 +249,28 @@ export default function LawyersPage() {
           </RevealStagger>
 
 
-          {/* Legal Tiers Sections */}
-          <div className="space-y-32">
-
-            {/* Senior Associates Section */}
-            <section id="seniors" className="space-y-12 scroll-mt-32">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                {lawyers.filter(l => l.title.includes("Senior")).map((lawyer, i) => (
-                  <div
-                    key={lawyer.id}
-                    className={`relative transition-[z-index] duration-0 ${hoveredIndex === i ? 'z-[100]' : 'z-0'}`}
-                    onMouseEnter={() => setHoveredIndex(i)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                  >
-                    <LawyerCard
-                      lawyer={lawyer}
-                      index={i}
-                      isHovered={hoveredIndex === i}
-                      onMobileClick={(l) => {
-                        if (window.innerWidth < 768) setSelectedLawyer(l);
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Junior Associates Section */}
-            <section id="juniors" className="space-y-12 scroll-mt-32">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                {lawyers.filter(l => l.title.includes("Junior")).map((lawyer, i) => {
-                  return (
-                    <div
-                      key={lawyer.id}
-                      className={`relative transition-[z-index] duration-0 ${hoveredIndex === lawyers.findIndex(l => l.id === lawyer.id) ? 'z-[100]' : 'z-0'}`}
-                      onMouseEnter={() => setHoveredIndex(lawyers.findIndex(l => l.id === lawyer.id))}
-                      onMouseLeave={() => setHoveredIndex(null)}
-                    >
-                      <LawyerCard
-                        lawyer={lawyer}
-                        index={i}
-                        isHovered={hoveredIndex === lawyers.findIndex(l => l.id === lawyer.id)}
-                        onMobileClick={(l) => {
-                          if (window.innerWidth < 768) setSelectedLawyer(l);
-                        }}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-
-            {/* Partners (Optional: For completeness if needed) */}
-            {!lawyers.some(l => l.title.includes("Senior") || l.title.includes("Junior")) && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                {lawyers.map((lawyer, i) => (
-                  <div key={lawyer.id}
-                    className={`relative transition-[z-index] duration-0 ${hoveredIndex === i ? 'z-[100]' : 'z-0'}`}
-                    onMouseEnter={() => setHoveredIndex(i)}
-                    onMouseLeave={() => setHoveredIndex(null)}>
-                    <LawyerCard lawyer={lawyer} index={i} isHovered={hoveredIndex === i} onMobileClick={(l) => { if (window.innerWidth < 768) setSelectedLawyer(l); }} />
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* Unified Lawyer Grid */}
+          <section id="directory" className="scroll-mt-32 pb-24">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+              {lawyers.map((lawyer, i) => (
+                <div
+                  key={lawyer.id}
+                  className={`relative transition-[z-index] duration-0 ${hoveredIndex === i ? 'z-[100]' : 'z-0'}`}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  <LawyerCard
+                    lawyer={lawyer}
+                    index={i}
+                    isHovered={hoveredIndex === i}
+                    onMobileClick={(l) => {
+                      if (window.innerWidth < 768) setSelectedLawyer(l);
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
 
         </div>
 

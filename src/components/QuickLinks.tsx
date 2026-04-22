@@ -30,7 +30,7 @@ export const QuickLinks = ({ links, id = "mml-lp-quick-links", title = "EXPLORE 
       <div className="max-w-screen-2xl mx-auto mml-res-container">
         {title && (
           <Reveal className="mb-12 text-center w-full">
-            <h2 className="text-3xl md:text-4xl font-serif text-primary/10 uppercase tracking-[0.3em] font-black">
+            <h2 className="text-3xl md:text-4xl font-serif text-primary uppercase tracking-[0.3em] font-black">
               {title}
             </h2>
           </Reveal>
@@ -52,11 +52,11 @@ export const QuickLinks = ({ links, id = "mml-lp-quick-links", title = "EXPLORE 
               )}
 
               {/* Blue Gradient Overlay (Tint) */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-secondary/95 z-10 mix-blend-multiply mml-lp-quick-links__gradient" />
-              
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/70 to-secondary/20 z-10 mix-blend-normal mml-lp-quick-links__gradient" />
+
               {/* Gold Frame Effect */}
               <div className="absolute inset-4 border-[0.5px] border-tertiary/20 z-20 group-hover:border-tertiary group-hover:inset-3 transition-all duration-500 mml-lp-quick-links__frame" />
-              
+
               <div className="relative z-30 h-full w-full p-8 lg:p-10 flex flex-col justify-end mml-lp-quick-links__content">
                 <span className="text-tertiary uppercase tracking-[0.4em] font-sans font-bold text-[8px] mb-2 opacity-60 group-hover:opacity-100 transition-opacity mml-lp-quick-links__tag">Explore</span>
                 <h3 className="text-xl lg:text-2xl font-serif text-white uppercase tracking-tight mml-lp-quick-links__title leading-tight">{link.name}</h3>
@@ -70,4 +70,4 @@ export const QuickLinks = ({ links, id = "mml-lp-quick-links", title = "EXPLORE 
       </div>
     </section>
   );
-};
+};
