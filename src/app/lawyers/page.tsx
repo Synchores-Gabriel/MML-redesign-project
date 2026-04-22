@@ -313,18 +313,18 @@ export default function LawyersPage() {
         <QuickLinks
           id="mml-lw-quick-links"
           links={[
-            { 
-              name: "About the Firm", 
+            {
+              name: "About the Firm",
               href: "/about",
               asset: getAdaptiveAsset("/asset/office/1.jpg")
             },
-            { 
-              name: "Our Lawyers", 
+            {
+              name: "Our Lawyers",
               href: "/lawyers",
-              asset: getAdaptiveAsset("/asset/quick3.png")
+              asset: getAdaptiveAsset("/asset/quick_alt2.png")
             },
-            { 
-              name: "Practice Areas", 
+            {
+              name: "Practice Areas",
               href: "/practice-areas",
               asset: getAdaptiveAsset("/asset/quick2.png")
             },

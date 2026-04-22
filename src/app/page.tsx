@@ -494,7 +494,8 @@ export default function Home() {
                   <span className="text-tertiary uppercase tracking-[0.5em] font-sans font-bold text-[10px] inline-block">Expertise Dashboard</span>
                   <h2 className="text-4xl md:text-5xl font-serif text-primary uppercase leading-tight font-black mml-res-text--fluid-lg">Our Practice Areas</h2>
                   <p className="text-primary/60 font-sans text-base font-medium max-w-xl leading-relaxed mml-res-text--fluid">
-                    A vision to create a true corporate meritocracy dedicated to excellence in the practice of law. The sole measures of our success are concrete results and client satisfaction.
+                    Precision legal counsel grounded in heritage and modern jurisprudence.
+                    Our specialized departments represent the pinnacle of legal excellence in the Philippines.
                   </p>
                 </RevealStagger>
 
@@ -568,7 +569,7 @@ export default function Home() {
             {
               name: "Our Lawyers",
               href: "/lawyers",
-              asset: getAdaptiveAsset("/asset/quick3.png")
+              asset: getAdaptiveAsset("/asset/quick_alt2.png")
             },
             {
               name: "Our Practice Areas",

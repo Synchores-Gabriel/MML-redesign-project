@@ -49,3 +49,6 @@ MML-redesign-project/original_assets/
 # ignore deployment files
 deployment/
 nginx_install.md
+
+# ignore scratch quotation files
+scratch/

@@ -158,7 +158,7 @@ export default function AboutPage() {
           {
             name: "Our Lawyers",
             href: "/lawyers",
-            asset: getAdaptiveAsset("/asset/quick3.png")
+            asset: getAdaptiveAsset("/asset/quick_alt2.png")
           },
           {
             name: "Our Practice Areas",
