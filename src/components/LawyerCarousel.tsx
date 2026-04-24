@@ -167,12 +167,12 @@ export const LawyerCarousel = () => {
 
           {/* Carousel Controls */}
           <div className="absolute top-1/2 -left-4 md:-left-16 -translate-y-1/2 z-20 mml-comp-lawyers-carousel__prev">
-            <button onClick={prev} className="p-4 rounded-full bg-black/20 text-white hover:bg-black/60 hover:scale-110 transition-all duration-500 backdrop-blur-sm">
+            <button suppressHydrationWarning onClick={prev} className="p-4 rounded-full bg-black/20 text-white hover:bg-black/60 hover:scale-110 transition-all duration-500 backdrop-blur-sm">
               <ChevronLeft size={36} strokeWidth={1} />
             </button>
           </div>
           <div className="absolute top-1/2 -right-4 md:-right-16 -translate-y-1/2 z-20 mml-comp-lawyers-carousel__next">
-            <button onClick={next} className="p-4 rounded-full bg-black/20 text-white hover:bg-black/60 hover:scale-110 transition-all duration-500 backdrop-blur-sm">
+            <button suppressHydrationWarning onClick={next} className="p-4 rounded-full bg-black/20 text-white hover:bg-black/60 hover:scale-110 transition-all duration-500 backdrop-blur-sm">
               <ChevronRight size={36} strokeWidth={1} />
             </button>
           </div>
@@ -182,6 +182,7 @@ export const LawyerCarousel = () => {
         <div className="flex justify-center gap-4 mt-16">
           {lawyers.map((_, i) => (
             <button
+              suppressHydrationWarning
               key={i}
               onClick={() => setIndex(i)}
               className={`h-1.5 transition-all duration-700 rounded-full ${index === i ? 'w-24 bg-tertiary' : 'w-6 bg-white/10'}`}

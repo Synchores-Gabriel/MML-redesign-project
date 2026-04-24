@@ -505,6 +505,7 @@ export default function Home() {
                   {practiceAreas.map((area) => (
                     <Reveal key={area.id} width="100%" className="h-full">
                       <button
+                        suppressHydrationWarning
                         onClick={() => setActivePractice(activePractice === area.id ? null : area.id)}
                         {...(isDesktop && {
                           onMouseEnter: () => setActivePractice(area.id),

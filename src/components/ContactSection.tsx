@@ -74,6 +74,7 @@ export const ContactSection = () => {
                 <div className="space-y-3 mml-ab-contact__form-field">
                   <label className="text-[10px] text-neutral/40 tracking-[0.3em] font-bold uppercase">NAME</label>
                   <input 
+                    suppressHydrationWarning
                     type="text" 
                     className="w-full bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-tertiary transition-all font-sans text-sm focus:pl-4" 
                     placeholder="Full Name" 
@@ -82,6 +83,7 @@ export const ContactSection = () => {
                 <div className="space-y-3 mml-ab-contact__form-field">
                   <label className="text-[10px] text-neutral/40 tracking-[0.3em] font-bold uppercase">EMAIL</label>
                   <input 
+                    suppressHydrationWarning
                     type="email" 
                     className="w-full bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-tertiary transition-all font-sans text-sm focus:pl-4" 
                     placeholder="email@address.com" 
@@ -91,12 +93,14 @@ export const ContactSection = () => {
               <div className="space-y-3 mml-ab-contact__form-field">
                 <label className="text-[10px] text-neutral/40 tracking-[0.3em] font-bold uppercase">MESSAGE</label>
                 <textarea 
+                  suppressHydrationWarning
                   rows={5} 
                   className="w-full bg-transparent border-b border-white/20 py-4 text-white outline-none focus:border-tertiary transition-all font-sans text-sm resize-none focus:pl-4" 
                   placeholder="Describe your case or inquiry..." 
                 />
               </div>
               <button 
+                suppressHydrationWarning
                 type="submit" 
                 className="glow-gold w-full py-6 rounded-sm text-primary font-sans font-bold tracking-[0.4em] text-[12px] uppercase mml-ab-contact__submit-btn"
               >
