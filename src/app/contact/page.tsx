@@ -16,7 +16,7 @@ export default function ContactPage() {
     <div className="flex flex-col min-h-screen bg-neutral">
       <Header />
 
-      <main className="flex-grow">
+      <main className="flex-grow overflow-x-hidden">
         {/* ═══════════════════════════════════════════════════════════
             1. HERO SECTION — Dark boardroom with glassmorphism grid
         ═══════════════════════════════════════════════════════════ */}

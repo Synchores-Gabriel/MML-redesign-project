@@ -101,7 +101,7 @@ export function LogoMarquee() {
   }), []);
 
   return (
-    <section id="mml-lp-marquee" className="py-24 md:py-32 bg-neutral/80 relative z-20 border-y border-primary/5 min-h-[250px] flex flex-col justify-center">
+    <section id="mml-lp-marquee" className="py-24 md:py-32 bg-neutral/80 relative z-20 border-y border-primary/5 min-h-[250px] flex flex-col justify-center overflow-x-hidden">
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 w-full">
         <h2 className="text-[10px] md:text-xs font-sans font-bold uppercase tracking-[0.4em] text-primary/30 mb-20 text-center">
           EMINENT CLIENTS & INSTITUTIONAL PARTNERS

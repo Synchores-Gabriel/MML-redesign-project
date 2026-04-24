@@ -16,7 +16,7 @@ export default function AboutPage() {
     <div className="flex flex-col min-h-screen bg-neutral">
       <Header />
 
-      <main className="flex-grow text-primary">
+      <main className="flex-grow text-primary overflow-x-hidden">
         {/* Hidden SVG for Precision Clipping of Headshot */}
         <svg width="0" height="0" className="absolute pointer-events-none opacity-0">
           <defs>

@@ -231,7 +231,7 @@ export default function LawyersPage() {
     <div className="flex flex-col min-h-screen bg-neutral paper-texture">
       <Header />
 
-      <main id="mml-lw-directory-root" className="flex-grow pt-32 md:pt-48 pb-0 md:pb-0">
+      <main id="mml-lw-directory-root" className="flex-grow pt-32 md:pt-48 pb-0 md:pb-0 overflow-x-hidden">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 space-y-16 md:space-y-24 mml-res-container">
 
 

@@ -270,7 +270,7 @@ export default function Home() {
     <>
       <Header />
 
-      <main className="flex-grow scroll-smooth bg-neutral">
+      <main className="flex-grow scroll-smooth bg-neutral overflow-x-hidden">
         {/* HERO SECTION 1 - CINEMATIC SQUARE GRID */}
         <section id="mml-lp-hero" className="relative h-screen overflow-hidden bg-primary z-30">
 
