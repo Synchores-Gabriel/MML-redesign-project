@@ -53,6 +53,7 @@ export function getAdaptiveAsset(path: string) {
       hq: getAssetPath(`${base}.webp`),
       lq: getAssetPath(`${base}.lq.webp`),
       legacy: original,
+      poster: original, // Images can use themselves as posters
       type: "image" as const
     };
   }
@@ -68,5 +69,5 @@ export function getAdaptiveAsset(path: string) {
     };
   }
 
-  return { hq: original, legacy: original, type: "other" as const };
+  return { hq: original, legacy: original, poster: original, type: "other" as const };
 }

@@ -287,8 +287,8 @@ export default function Home() {
               >
                 {/* High-Fidelity Poster Fallback */}
                 <Image
-                  src={slide.asset.poster}
-                  alt={slide.subtitle}
+                  src={(slide.asset as any).poster || slide.asset.legacy}
+                  alt={slide.subtitle || "Law Firm Hero"}
                   fill
                   className="object-cover scale-105"
                   priority={index === 0}
@@ -298,7 +298,7 @@ export default function Home() {
                   muted
                   loop
                   playsInline
-                  poster={slide.asset.poster}
+                  poster={(slide.asset as any).poster}
                   className="w-full h-full object-cover scale-105"
                   style={{ willChange: "transform", WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
                 >
