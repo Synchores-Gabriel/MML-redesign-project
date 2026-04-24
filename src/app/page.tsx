@@ -285,6 +285,14 @@ export default function Home() {
                 transition={{ duration: 1.5, ease: "easeInOut" }}
                 style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden", transform: "translateZ(0)" }}
               >
+                {/* High-Fidelity Poster Fallback */}
+                <Image
+                  src={slide.asset.poster}
+                  alt={slide.subtitle}
+                  fill
+                  className="object-cover scale-105"
+                  priority={index === 0}
+                />
                 <video
                   autoPlay
                   muted
