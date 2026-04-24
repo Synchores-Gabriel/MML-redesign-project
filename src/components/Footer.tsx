@@ -99,7 +99,7 @@ export const Footer = () => {
           </div>
 
           <div className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] font-bold text-neutral/40 mml-global-footer__disclaimer text-center md:text-right">
-            © {new Date().getFullYear()} M. M. LAZARO AND ASSOCIATES. PIXEL-PERFECTION IN LEGAL SERVICE.
+            © {new Date().getFullYear()} M. M. LAZARO AND ASSOCIATES.
           </div>
         </div>
       </div>
