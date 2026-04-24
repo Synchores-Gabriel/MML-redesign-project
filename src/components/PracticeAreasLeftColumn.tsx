@@ -48,7 +48,7 @@ const AtomIcon = memo(({ item, rotationMv, radius, isActive }: {
 
   return (
     <motion.div
-      style={{ x, y }}
+      style={{ x, y, WebkitBackfaceVisibility: "hidden" }}
       className="absolute z-30 flex items-center justify-center will-change-transform"
     >
       <motion.div 
@@ -138,7 +138,7 @@ export function PracticeAreasLeftColumn({ activePractice, isDesktop }: PracticeA
         className="relative w-full h-[450px] md:h-full flex items-center justify-center lg:justify-start overflow-visible mb-24 md:mb-0"
     >
       <motion.div 
-        style={{ scale: config.scale, x: config.offsetX, y: config.offsetY }}
+        style={{ scale: config.scale, x: config.offsetX, y: config.offsetY, WebkitBackfaceVisibility: "hidden" }}
         className="relative w-0 h-0 flex items-center justify-center overflow-visible perspective-[1000px]"
       >
         <div className="absolute rounded-full border border-primary/5 pointer-events-none will-change-transform" style={{ width: radius * 2.1, height: radius * 2.1 }} />

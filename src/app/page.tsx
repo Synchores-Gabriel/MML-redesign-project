@@ -283,15 +283,16 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: currentSlide === index ? 1 : 0 }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                style={{ backfaceVisibility: "hidden", transform: "translateZ(0)" }}
+                style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden", transform: "translateZ(0)" }}
               >
                 <video
                   autoPlay
                   muted
                   loop
                   playsInline
+                  poster={slide.asset.poster}
                   className="w-full h-full object-cover scale-105"
-                  style={{ willChange: "transform", backfaceVisibility: "hidden" }}
+                  style={{ willChange: "transform", WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
                 >
                   <source src={slide.asset.hq} type="video/webm" />
                   <source src={slide.asset.legacy} type="video/mp4" />

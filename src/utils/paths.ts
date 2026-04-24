@@ -63,6 +63,7 @@ export function getAdaptiveAsset(path: string) {
     return {
       hq: getAssetPath(`${base}.webm`),
       legacy: original,
+      poster: getAssetPath(`${base}.jpg`), // Assuming a .jpg poster exists or falls back
       type: "video" as const
     };
   }

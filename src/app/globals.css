@@ -129,10 +129,12 @@ body {
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glow-gold:hover {
-  box-shadow: 0 0 25px rgba(197, 160, 89, 0.5), 0 0 50px rgba(197, 160, 89, 0.2);
-  transform: translateY(-2px);
-  filter: brightness(1.1);
+@media (hover: hover) {
+  .glow-gold:hover {
+    box-shadow: 0 0 25px rgba(197, 160, 89, 0.5), 0 0 50px rgba(197, 160, 89, 0.2);
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+  }
 }
 
 /* Square Grid Helper */
@@ -163,6 +165,7 @@ body {
 /* GPU Performance Utilities */
 .gpu-forced {
   transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   perspective: 1000;
   will-change: transform, opacity;
@@ -178,8 +181,10 @@ html {
   transition: color 0.4s ease;
 }
 
-.mml-footer-link:hover {
-  color: #B38E3E !important; /* Gold color shift */
+@media (hover: hover) {
+  .mml-footer-link:hover {
+    color: #B38E3E !important; /* Gold color shift */
+  }
 }
 
 .mml-footer-link::after {
@@ -193,8 +198,10 @@ html {
   transition: width 0.3s ease;
 }
 
-.mml-footer-link:hover::after {
-  width: 100%;
+@media (hover: hover) {
+  .mml-footer-link:hover::after {
+    width: 100%;
+  }
 }
 
 /* HIGH-PERFORMANCE GRID ENGINE */
